@@ -4,6 +4,9 @@ import Home from './pages/Home';
 import Decks from './pages/Decks';
 import AddDeck from './pages/AddDeck';
 import EditDeck from './pages/EditDeck';
+import Cards from './pages/Cards';
+import AddCard from './pages/AddCard';
+import EditCard from './pages/EditCard';
 import Secret from './pages/Secret';
 import Profile from './pages/Profile';
 import Login from './pages/Login';
@@ -33,6 +36,8 @@ class App extends Component {
           <NavLink to="/" exact>Home</NavLink>
           <NavLink to="/decks">Deck</NavLink>
           <NavLink to="/add-deck">Add deck</NavLink>
+          <NavLink to="/cards">Cards</NavLink>
+          <NavLink to="/add-card">Add card</NavLink>
           {!api.isLoggedIn() && <NavLink to="/signup">Signup</NavLink>}
           {!api.isLoggedIn() && <NavLink to="/login">Login</NavLink>}
           {api.isLoggedIn() && <Link to="/profile">Profile</Link>}
@@ -44,6 +49,9 @@ class App extends Component {
           <Route path="/decks" component={Decks} />
           <Route path="/add-deck" component={AddDeck} />
           <Route path="/edit-deck/:id" component={EditDeck} />
+          <Route path="/cards" component={Cards} />
+          <Route path="/add-card" component={AddCard} />
+          <Route path="/edit-card/:id" component={EditCard} />
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
           <Route path="/profile" component={Profile} />

@@ -13,7 +13,7 @@ router.get('/profile', isLoggedIn, (req,res,next) => {
 
 router.put('/profile', isLoggedIn, (req,res,next) => {
   let updates = {
-    username: req.body.username,
+    email: req.body.email,
     // pictureUrl: req.body.pictureUrl, // done by "POST /api/users/pictures"
   }
   // If the user sends "newPassword" and "currentPassword", check if the "req.body.currentPassword" is correct and sets the new password with "req.body.newPassword"

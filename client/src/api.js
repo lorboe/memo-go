@@ -33,10 +33,10 @@ export default {
       .catch(errHandler)
   },
 
-  login(username, password) {
+  login(email, password) {
     return service
       .post('/login', {
-        username,
+        email,
         password,
       })
       .then(res => {
@@ -88,12 +88,52 @@ export default {
       .catch(errHandler)
   },
 
+//CARDS CALLS
+getCards() {
+  return service
+    .get('/cards')
+    .then(res => res.data)
+    .catch(errHandler)
+},
+
+getCardDetail(id) {
+  return service
+    .get('/cards/'+id)
+    .then(res => res.data)
+    .catch(errHandler)
+},
+
+updateCard(id, body) {
+  return service
+    .put('/cards/'+id, body)
+    .then(res => res.data)
+    .catch(errHandler)
+},
+
+postCards(data) {
+  return service
+    .post('/cards', data)
+    .then(res => res.data)
+    .catch(errHandler)
+},
+
+deleteCard(id) {
+  return service
+    .delete('/cards/'+id)
+    .then(res => res.data)
+    .catch(errHandler)
+},
+
+//
+
   getSecret() {
     return service
       .get('/secret')
       .then(res => res.data)
       .catch(errHandler)
   },
+
+  //PROFILE CALLS
 
   getProfile() {
     return service
