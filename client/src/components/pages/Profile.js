@@ -6,7 +6,7 @@ export default class Profile extends Component {
     super(props)
     this.state = {
       // user: null,
-      username: null,
+      email: null,
       currentPassword: null,
       newPassword: null,
       pictureUrl: null,
@@ -26,7 +26,7 @@ export default class Profile extends Component {
   handleSubmit(e) {
     e.preventDefault()
     let body = {
-      username: this.state.username,
+      email: this.state.email,
       pictureUrl: this.state.pictureUrl,
     }
     if (this.state.newPassword && this.state.newPassword.length > 0) {
@@ -66,7 +66,7 @@ export default class Profile extends Component {
   }
   render() {
     // If there is 
-    if (!this.state.username) {
+    if (!this.state.email) {
       return <div><h2>Profile</h2><p>Loading...</p></div>
     }
     return (
@@ -75,8 +75,8 @@ export default class Profile extends Component {
 
 
         <form onSubmit={(e) => this.handleSubmit(e)}>
-          Username:
-          <input type="text" name="username" value={this.state.username} onChange={this.handleChange} />
+          Email:
+          <input type="text" name="email" value={this.state.email} onChange={this.handleChange} />
           <br />
 
           Current Password:
@@ -106,7 +106,7 @@ export default class Profile extends Component {
     api.getProfile()
       .then(user => {
         this.setState({
-          username: user.username,
+          email: user.email,
           pictureUrl: user.pictureUrl
         })
       })

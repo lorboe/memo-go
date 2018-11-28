@@ -10,7 +10,7 @@ const router = express.Router();
 // Route to get all countries
 router.get('/', (req, res, next) => {
   Country.find()
-  .populate('_owner', 'username') // populate on _owner and only send the username and _id (default)
+  .populate('_owner', 'name') // populate on _owner and only send the name and _id (default)
     .then(countries => {
       res.json(countries);
     })
