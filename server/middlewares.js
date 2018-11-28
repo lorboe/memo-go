@@ -6,7 +6,7 @@ function isLoggedIn(req, res, next) {
   else next({ status: 403, message: 'Unauthorized' })
 }
 
-// Example on how to use this middleware: checkId('countryId')
+// Example on how to use this middleware: checkId('deckId')
 function checkId(idField) {
   return (req,res,next) => {
     let id = req.params[idField]

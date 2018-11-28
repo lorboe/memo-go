@@ -10,6 +10,7 @@ export default class Profile extends Component {
       currentPassword: null,
       newPassword: null,
       pictureUrl: null,
+      alt: null,
       message: null
     }
   }
@@ -88,7 +89,7 @@ export default class Profile extends Component {
           <br />
 
           <input type="file" onChange={this.handleFileChange} /> <br />
-          {this.state.pictureUrl && <img src={this.state.pictureUrl} style={{height: 200}} />}
+          {this.state.pictureUrl && <img src={this.state.pictureUrl} style={{height: 200}} alt={this.state.alt}/>}
           <br />
 
 

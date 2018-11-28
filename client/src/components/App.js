@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Route, Link, NavLink, Switch } from 'react-router-dom';
 import Home from './pages/Home';
-import Countries from './pages/Countries';
-import AddCountry from './pages/AddCountry';
-import EditCountry from './pages/EditCountry';
+import Decks from './pages/Decks';
+import AddDeck from './pages/AddDeck';
+import EditDeck from './pages/EditDeck';
 import Secret from './pages/Secret';
 import Profile from './pages/Profile';
 import Login from './pages/Login';
@@ -15,7 +15,7 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      countries: []
+      decks: []
     }
     // api.loadUser();
   }
@@ -29,10 +29,10 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">MERN Boilerplate</h1>
+          <h1 className="App-title">Learn with FlashCards</h1>
           <NavLink to="/" exact>Home</NavLink>
-          <NavLink to="/countries">Countries</NavLink>
-          <NavLink to="/add-country">Add country</NavLink>
+          <NavLink to="/decks">Deck</NavLink>
+          <NavLink to="/add-deck">Add deck</NavLink>
           {!api.isLoggedIn() && <NavLink to="/signup">Signup</NavLink>}
           {!api.isLoggedIn() && <NavLink to="/login">Login</NavLink>}
           {api.isLoggedIn() && <Link to="/profile">Profile</Link>}
@@ -41,9 +41,9 @@ class App extends Component {
         </header>
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/countries" component={Countries} />
-          <Route path="/add-country" component={AddCountry} />
-          <Route path="/edit-country/:id" component={EditCountry} />
+          <Route path="/decks" component={Decks} />
+          <Route path="/add-deck" component={AddDeck} />
+          <Route path="/edit-deck/:id" component={EditDeck} />
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
           <Route path="/profile" component={Profile} />

@@ -1,57 +1,58 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const Country = require('../models/Country')
+const Deck = require('../models/Deck')
 
 // The same as: const checkId = require('../middlewares').checkId
 const { checkId, isLoggedIn } = require('../middlewares')
 
 const router = express.Router();
 
-// Route to get all countries
+// Route to get all decks
 router.get('/', (req, res, next) => {
-  Country.find()
+  Deck.find()
   .populate('_owner', 'username') // populate on _owner and only send the username and _id (default)
-    .then(countries => {
-      res.json(countries);
+    .then(decks => {
+      res.json(decks);
     })
     .catch(err => next(err))
 });
 
-// Route to get the detail of a country
+// Route to get the detail of a deck
 router.get('/:id', checkId('id'), (req, res, next) => {
   let id = req.params.id
-  Country.findById(id)
-    .then(countryDoc => {
-      res.json(countryDoc)
+  Deck.findById(id)
+    .then(deckDoc => {
+      res.json(deckDoc)
     })
 })
 
-// Route to update a country
-router.put('/:countryId', isLoggedIn, checkId('countryId'), (req, res, next) => {
-  let id = req.params.countryId
-  Country.findByIdAndUpdate(id, {
-    name: req.body.name,
-    capitals: req.body.capitals,
-    area: req.body.area,
+// Route to update a deck
+router.put('/:deckId', isLoggedIn, checkId('deckId'), (req, res, next) => {
+  let id = req.params.deckId
+  Deck.findByIdAndUpdate(id, {
+    title: req.body.title,
+    category: req.body.category,
+    // cards: req.body.cards,
+    // likes: req.body.likes,
     description: req.body.description,
   })
-    .then(countryDoc => {
+    .then(deckDoc => {
       res.json({
-        success: !!countryDoc // true only if a country was found
+        success: !!deckDoc // true only if a deck was found
       })
     })
     .catch(err => next(err))
 })
 
-// Route to add a country
+// Route to add a name
 router.post('/', isLoggedIn, (req, res, next) => {
-  let { name, capitals, area, description } = req.body
+  let { title, category, description } = req.body
   let _owner = req.user._id
-  Country.create({ name, capitals, area, description, _owner })
-    .then(country => {
+  Deck.create({ title, category, description, _owner })
+    .then(deck => {
       res.json({
         success: true,
-        country
+        deck
       });
     })
     .catch(err => next(err))
@@ -59,13 +60,13 @@ router.post('/', isLoggedIn, (req, res, next) => {
 
 router.delete('/:id', isLoggedIn, checkId('id'), (req, res, next) => {
   let id = req.params.id
-  Country.findByIdAndDelete(id)
-    .then(countryDoc => {
-      console.log("DEBUG countryDoc", countryDoc)
+  Deck.findByIdAndDelete(id)
+    .then(deckDoc => {
+      console.log("DEBUG deckDoc", deckDoc)
       res.json({
         // !!myVariable converts truthy to true and falsy to false
-        success: !!countryDoc,
-        country: countryDoc,
+        success: !!deckDoc,
+        deck: deckDoc,
         // message: "This is just a test!"
       })
     })

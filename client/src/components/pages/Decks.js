@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
 import api from '../../api';
 
-class Countries extends Component {
+class Decks extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      countries: []
+      decks: []
     }
   }
   handleDelete(idClicked) {
-    api.deleteCountry(idClicked)
+    api.deleteDeck(idClicked)
     .then(data => {
       console.log('Delete', data)
       this.setState({
-        // The new countries are the ones where their _id are diffrent from idClicked
-        countries: this.state.countries.filter(c => c._id !== idClicked)
+        // The new decks are the ones where their _id are diffrent from idClicked
+        decks: this.state.decks.filter(c => c._id !== idClicked)
       })
     })
     .catch(err => {
@@ -22,27 +22,27 @@ class Countries extends Component {
     })
   }
   handleEdit(idClicked) {
-    // Redirects the user to '/edit-country/'+idClicked
-    this.props.history.push('/edit-country/'+idClicked)
+    // Redirects the user to '/edit-deck/'+idClicked
+    this.props.history.push('/edit-deck/'+idClicked)
   }
   render() {
     return (
-      <div className="Countries">
-        <h2>List of countries</h2>
+      <div className="Decks">
+        <h2>List of decks</h2>
         <table style={{margin: 'auto'}}>
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Capitals</th>
+              <th>Title</th>
+              <th>Category</th>
               <th>Owner</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            {this.state.countries.map(c => (
+            {this.state.decks.map(c => (
               <tr key={c._id}>
-                <td>{c.name}</td>
-                <td>{c.capitals}</td>
+                <td>{c.title}</td>
+                <td>{c.category}</td>
                 <td>{c._owner.username}</td>
                 <td>
                   {api.isLoggedIn() && <button onClick={() => this.handleEdit(c._id)}>Edit</button>}
@@ -56,15 +56,15 @@ class Countries extends Component {
     );
   }
   componentDidMount() {
-    api.getCountries()
-      .then(countries => {
-        console.log(countries)
+    api.getDecks()
+      .then(decks => {
+        console.log(decks)
         this.setState({
-          countries: countries
+          decks: decks
         })
       })
       .catch(err => console.log(err))
   }
 }
 
-export default Countries;
+export default Decks;

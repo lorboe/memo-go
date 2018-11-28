@@ -53,37 +53,37 @@ export default {
       .get('/logout')
   },
 
-  getCountries() {
+  getDecks() {
     return service
-      .get('/countries')
+      .get('/decks')
       .then(res => res.data)
       .catch(errHandler)
   },
 
-  getCountryDetail(id) {
+  getDeckDetail(id) {
     return service
-      .get('/countries/'+id)
+      .get('/decks/'+id)
       .then(res => res.data)
       .catch(errHandler)
   },
 
-  updateCountry(id, body) {
+  updateDeck(id, body) {
     return service
-      .put('/countries/'+id, body)
+      .put('/decks/'+id, body)
       .then(res => res.data)
       .catch(errHandler)
   },
 
-  postCountries(data) {
+  postDecks(data) {
     return service
-      .post('/countries', data)
+      .post('/decks', data)
       .then(res => res.data)
       .catch(errHandler)
   },
 
-  deleteCountry(id) {
+  deleteDeck(id) {
     return service
-      .delete('/countries/'+id)
+      .delete('/decks/'+id)
       .then(res => res.data)
       .catch(errHandler)
   },
