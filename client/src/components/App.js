@@ -4,6 +4,9 @@ import Home from './pages/Home';
 import Countries from './pages/Countries';
 import AddCountry from './pages/AddCountry';
 import EditCountry from './pages/EditCountry';
+import Cards from './pages/Cards';
+import AddCard from './pages/AddCard';
+import EditCard from './pages/EditCard';
 import Secret from './pages/Secret';
 import Profile from './pages/Profile';
 import Login from './pages/Login';
@@ -33,6 +36,8 @@ class App extends Component {
           <NavLink to="/" exact>Home</NavLink>
           <NavLink to="/countries">Countries</NavLink>
           <NavLink to="/add-country">Add country</NavLink>
+          <NavLink to="/cards">Cards</NavLink>
+          <NavLink to="/add-card">Add card</NavLink>
           {!api.isLoggedIn() && <NavLink to="/signup">Signup</NavLink>}
           {!api.isLoggedIn() && <NavLink to="/login">Login</NavLink>}
           {api.isLoggedIn() && <Link to="/profile">Profile</Link>}
@@ -43,7 +48,10 @@ class App extends Component {
           <Route path="/" exact component={Home} />
           <Route path="/countries" component={Countries} />
           <Route path="/add-country" component={AddCountry} />
+          <Route path="/cards" component={Cards} />
+          <Route path="/add-card" component={AddCard} />
           <Route path="/edit-country/:id" component={EditCountry} />
+          <Route path="/edit-card/:id" component={EditCard} />
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
           <Route path="/profile" component={Profile} />
