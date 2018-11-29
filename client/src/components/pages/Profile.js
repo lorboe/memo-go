@@ -104,7 +104,10 @@ export default class Profile extends Component {
           {this.state.message}
         </div>}
        <div>
-         {this.state.decks}
+         Decks:
+         {this.state.decks.map(deck => (
+           <div>{deck.title}</div>
+         ))}
        </div>
 
       </div>
@@ -112,11 +115,11 @@ export default class Profile extends Component {
   }
   componentDidMount() {
     api.getProfile()
-      .then(user => {
+      .then((data) => {
         this.setState({
-          email: user.email,
-          pictureUrl: user.pictureUrl,
-          decks: user._decks.title
+          email: data.user.email,
+          pictureUrl: data.user.pictureUrl,
+          decks: data.decks
         })
       })
   }

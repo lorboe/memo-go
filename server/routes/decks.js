@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const Deck = require('../models/Deck')
+const Deck = require('../models/Deck');
+const User = require('../models/User')
 
 // The same as: const checkId = require('../middlewares').checkId
 const { checkId, isLoggedIn } = require('../middlewares')
@@ -48,15 +49,20 @@ router.put('/:deckId', isLoggedIn, checkId('deckId'), (req, res, next) => {
 router.post('/', isLoggedIn, (req, res, next) => {
   let { title, category, description } = req.body
   let _owner = req.user._id
-  Deck.create({ title, category, description, _owner })
+  
+ Deck.create({ title, category, description, _owner })
     .then(deck => {
+      console.log("DECK:" + deck)
       res.json({
-        success: true,
-        deck
-      });
+       deck
     })
+    console.log("USER:" + user)
+    console.log("USER" + user._deck )
     .catch(err => next(err))
-});
+ 
+  });
+})
+
 
 router.delete('/:id', isLoggedIn, checkId('id'), (req, res, next) => {
   let id = req.params.id

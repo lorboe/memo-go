@@ -1,5 +1,7 @@
 const express = require('express');
 const User = require('../models/User');
+const Deck = require('../models/Deck');
+
 const { isLoggedIn } = require('../middlewares')
 const router = express.Router();
 const parser = require('../configs/cloudinary')
@@ -8,13 +10,20 @@ const bcryptSalt = 10
 
 router.get('/profile', isLoggedIn, (req,res,next) => {
   req.user.password = null
-User.findById(req.user._id)
-.populate('_decks', 'title')
- .then(user => {
-  res.json(user)
-})
-.catch(err => next(err))
-})
+  let id = req.user._id
+Promise.all ([
+  User.findById(id),
+  Deck.find({_owner: id})
+])
+.then (([user, decks]) => {
+    console.log("USER:" + user)
+    console.log("DECK" + decks)
+    res.json({user, decks})
+  })
+  .catch(err => next(err))
+  })
+
+
 
 router.put('/profile', isLoggedIn, (req,res,next) => {
   let updates = {
