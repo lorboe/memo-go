@@ -11,6 +11,7 @@ export default class Profile extends Component {
       newPassword: null,
       pictureUrl: null,
       alt: null,
+      decks: [],
       message: null
     }
   }
@@ -71,6 +72,8 @@ export default class Profile extends Component {
       return <div><h2>Profile</h2><p>Loading...</p></div>
     }
     return (
+
+
       <div className="Profile">
         <h2>Profile</h2>
 
@@ -100,15 +103,23 @@ export default class Profile extends Component {
         {this.state.message && <div className="info">
           {this.state.message}
         </div>}
+       <div>
+         Decks:
+         {this.state.decks.map(deck => (
+           <div>{deck.title}</div>
+         ))}
+       </div>
+
       </div>
     );
   }
   componentDidMount() {
     api.getProfile()
-      .then(user => {
+      .then((data) => {
         this.setState({
-          email: user.email,
-          pictureUrl: user.pictureUrl
+          email: data.user.email,
+          pictureUrl: data.user.pictureUrl,
+          decks: data.decks
         })
       })
   }
