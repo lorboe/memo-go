@@ -29,7 +29,7 @@ class Decks extends Component {
     return (
       <div className="contentCenter">
         <div className="Decks">
-          <h2>List of decks</h2>
+          <h2>Your Decks</h2>
           <table style={{ margin: 'auto' }}>
             <thead>
               <tr>
