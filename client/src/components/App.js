@@ -13,11 +13,11 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import api from '../api';
 import DeckDetail from './pages/DeckDetail';
-import HomeIcon from '/Users/GG/Documents/SofDev/Ironhack/w8/Project_3/learning-app/client/src/images/Home-icon-66_2180674.svg';
-import SearchIcon from '/Users/GG/Documents/SofDev/Ironhack/w8/Project_3/learning-app/client/src/images/iconfinder_Search_1214984.svg';
-import PlusIcon from '/Users/GG/Documents/SofDev/Ironhack/w8/Project_3/learning-app/client/src/images/plus-icon-79_2180657.svg';
-import ProfileIcon from '/Users/GG/Documents/SofDev/Ironhack/w8/Project_3/learning-app/client/src/images/Profile-icon-74_2180663.svg';
-import DeckIcon from '/Users/GG/Documents/SofDev/Ironhack/w8/Project_3/learning-app/client/src/images/Deck-icon_3525389.svg';
+import HomeIcon from '../../src/images/Home-icon-66_2180674.svg';
+import SearchIcon from '../../src/images/iconfinder_Search_1214984.svg';
+import PlusIcon from '../../src/images/plus-icon-79_2180657.svg';
+import ProfileIcon from '../../src/images/Profile-icon-74_2180663.svg';
+import DeckIcon from '../../src/images/Deck-icon_3525389.svg';
 
 class App extends Component {
   constructor(props) {
@@ -34,7 +34,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App ">
+      <div className="prfl">
         <div id="navbar">
           <nav className="flexRow">
             <NavLink to="/" exact className="navIcon">
@@ -55,10 +55,10 @@ class App extends Component {
           </nav>
         </div>
         <div className="fixed">
-          <header className="App-header">
-            <div className="flexRow">
-              <div>
-                <h1 className="App-title">Profile</h1>
+          <header>
+            <div>
+              <div className="flexBasic">
+                <h1>Profile</h1>
               </div>
               <div>
                 <div className="deck deckHome"></div>
@@ -72,7 +72,7 @@ class App extends Component {
             <NavLink to="/secret">Secret</NavLink>
           </header>
         </div>
-        <hr />
+        
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/decks" component={Decks} />
