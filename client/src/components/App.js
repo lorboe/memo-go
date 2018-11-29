@@ -29,13 +29,12 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="App ">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Learn with FlashCards</h1>
           <NavLink to="/" exact>Home</NavLink>
           <NavLink to="/decks">Deck</NavLink>
-          <NavLink to="/add-deck">Add deck</NavLink>
+          <NavLink to="/add-deck">Add Deck</NavLink>
           <NavLink to="/cards">Cards</NavLink>
           <NavLink to="/add-card">Add card</NavLink>
           {!api.isLoggedIn() && <NavLink to="/signup">Signup</NavLink>}
@@ -44,6 +43,7 @@ class App extends Component {
           {api.isLoggedIn() && <Link to="/" onClick={(e) => this.handleLogoutClick(e)}>Logout</Link>}
           <NavLink to="/secret">Secret</NavLink>
         </header>
+        <hr />
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/decks" component={Decks} />

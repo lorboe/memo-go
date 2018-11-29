@@ -45,17 +45,30 @@ class EditDeck extends Component {
   render() {
     return (
       <div className="EditDeck">
-        <h2>Edit deck</h2>
-        <form>
-          Title: <input type="text" value={this.state.title} onChange={(e) => { this.handleInputChange("title", e) }} /> <br />
-          Category: <input type="text" value={this.state.category} onChange={(e) => { this.handleInputChange("category", e) }} /> <br />
-          Cards: <input type="number" value={this.state.cards} onChange={(e) => { this.handleInputChange("cards", e) }} /> <br />
-          Description: <textarea value={this.state.description} cols="30" rows="10" onChange={(e) => { this.handleInputChange("description", e) }} ></textarea> <br />
-          <button onClick={(e) => this.handleClick(e)}>Update deck</button>
-        </form>
-        {this.state.message && <div className="info">
-          {this.state.message}
-        </div>}
+        <h3>Create Deck</h3>
+        <div className="flex">
+          <div className="deck"></div>
+          <div>
+            <form>
+              Title: <input type="text" value={this.state.title} onChange={(e) => { this.handleInputChange("title", e) }} />
+              <br />
+              Category: <input type="text" value={this.state.category} onChange={(e) => { this.handleInputChange("category", e) }} />
+              <br />
+              {/* Cards: <input type="number" value={this.state.cards} onChange={(e) => { this.handleInputChange("cards", e) }} /> <br /> */}
+              {/* Description: <textarea value={this.state.description} cols="30" rows="10" onChange={(e) => { this.handleInputChange("description", e) }} ></textarea> <br />
+            <button onClick={(e) => this.handleClick(e)}>Update deck</button> */}
+            </form>
+            {this.state.message && <div className="info">
+              {this.state.message}
+            </div>}
+          </div>
+        </div>
+        <hr />
+        <div id="cardContainer">
+          <div className="card">
+          </div>
+        </div>
+
       </div>
     );
   }
