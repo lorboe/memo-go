@@ -10,9 +10,21 @@ const cardSchema = new mongoose.Schema({
     type: [String],
     default: []
   },
-  visibility: {type: String, enum:["public", "private"], default: "public"},
-  difficulty: {type: String, enum: ["beginner", "advanced-beginner", "experienced", "expert"], default: "beginner" },
-  owner_assessment: {type: String, enum: ["easy", "hard"], defult: "hard"},
+  // visibility: {
+  //   type: String, 
+  //   enum:["public", "private"], 
+  //   default: "public"
+  // },
+  difficulty: {
+    type: String, 
+    enum: ["beginner", "advanced-beginner", "experienced", "expert"], 
+    default: "beginner" 
+  },
+  owner_assessment: {
+    type: String, 
+    enum: ["easy", "hard"], 
+    defult: "hard"
+  },
   assessment_easy: Number,
   assessment_hard:Number,
   _owner: {

@@ -11,6 +11,7 @@ export default class Profile extends Component {
       newPassword: null,
       pictureUrl: null,
       alt: null,
+      decks: [],
       message: null
     }
   }
@@ -71,6 +72,8 @@ export default class Profile extends Component {
       return <div><h2>Profile</h2><p>Loading...</p></div>
     }
     return (
+
+
       <div className="Profile">
         <h2>Profile</h2>
 
@@ -100,6 +103,10 @@ export default class Profile extends Component {
         {this.state.message && <div className="info">
           {this.state.message}
         </div>}
+       <div>
+         {this.state.decks}
+       </div>
+
       </div>
     );
   }
@@ -108,7 +115,8 @@ export default class Profile extends Component {
       .then(user => {
         this.setState({
           email: user.email,
-          pictureUrl: user.pictureUrl
+          pictureUrl: user.pictureUrl,
+          decks: user._decks.title
         })
       })
   }

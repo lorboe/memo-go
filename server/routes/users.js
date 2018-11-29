@@ -8,7 +8,12 @@ const bcryptSalt = 10
 
 router.get('/profile', isLoggedIn, (req,res,next) => {
   req.user.password = null
-  res.json(req.user)
+User.findById(req.user._id)
+.populate('_decks', 'title')
+ .then(user => {
+  res.json(user)
+})
+.catch(err => next(err))
 })
 
 router.put('/profile', isLoggedIn, (req,res,next) => {

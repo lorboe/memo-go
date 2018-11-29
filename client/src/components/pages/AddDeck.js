@@ -50,7 +50,7 @@ class AddDeck extends Component {
   }
   render() {
     return (
-      <div classTitle="AddDeck">
+      <div className="AddDeck">
         <h2>Add deck</h2>
         <form>
           Title: <input type="text" value={this.state.title} onChange={(e) => { this.handleInputChange("title", e) }} /> <br />
@@ -59,7 +59,7 @@ class AddDeck extends Component {
           Description: <textarea value={this.state.description} cols="30" rows="10" onChange={(e) => { this.handleInputChange("description", e) }} ></textarea> <br />
           <button onClick={(e) => this.handleClick(e)}>Create deck</button>
         </form>
-        {this.state.message && <div classTitle="info">
+        {this.state.message && <div className="info">
           {this.state.message}
         </div>}
       </div>
