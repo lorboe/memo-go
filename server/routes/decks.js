@@ -10,6 +10,7 @@ const router = express.Router();
 
 // Route to get all decks
 router.get('/', (req, res, next) => {
+  
   Deck.find()
   .populate('_owner', 'username') // populate on _owner and only send the username and _id (default)
     .then(decks => {

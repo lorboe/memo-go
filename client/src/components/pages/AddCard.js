@@ -27,7 +27,6 @@ class AddCard extends Component {
     let data = {
       question: this.state.question,
       answers: this.state.answers,
-      visibility: this.state.visibility,
       difficulty: this.state.difficulty,
     }
     api.postCards(data)
@@ -36,7 +35,6 @@ class AddCard extends Component {
         this.setState({
           question: "",
           answers: "",
-          visibility: "",
           difficulty: "",
           message: `Your card '${this.state.question}' has been created`
         })
@@ -55,13 +53,8 @@ class AddCard extends Component {
         <form>
           Question: <input type="text" value={this.state.question} onChange={(e) => { this.handleInputChange("question", e) }} /> <br />
           Answers: <input type="text" value={this.state.answers} onChange={(e) => { this.handleInputChange("answers", e) }} /> <br />
-          Visibility:
-          <select onChange={(e) => { this.handleInputChange("visibility", e) }}>
-          <option value={this.state.visibility}>public</option>
-          <option value={this.state.visibility}>private</option>
-          </select>
           <br />
-          Difficulty;
+          Difficulty:
           <select onChange={(e) => { this.handleInputChange("difficulty", e) }}>
           <option value={this.state.difficulty}>beginner</option>
           <option value={this.state.difficulty}>advanced-beginner</option>

@@ -23,8 +23,6 @@ Promise.all ([
   .catch(err => next(err))
   })
 
-
-
 router.put('/profile', isLoggedIn, (req,res,next) => {
   let updates = {
     email: req.body.email,

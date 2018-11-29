@@ -13,6 +13,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import api from '../api';
 import logo from '../logo.svg';
+import DeckDetail from './pages/DeckDetail';
 
 class App extends Component {
   constructor(props) {
@@ -48,6 +49,7 @@ class App extends Component {
           <Route path="/" exact component={Home} />
           <Route path="/decks" component={Decks} />
           <Route path="/add-deck" component={AddDeck} />
+          <Route path="/details/:id" component={DeckDetail}/>
           <Route path="/edit-deck/:id" component={EditDeck} />
           <Route path="/cards" component={Cards} />
           <Route path="/add-card" component={AddCard} />

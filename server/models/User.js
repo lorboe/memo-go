@@ -6,10 +6,6 @@ const userSchema = new Schema({
   name: String,
   password: String,
   pictureUrl: String,
-  _decks: [
-    {type: Schema.Types.ObjectId, 
-      ref: 'Deck'}
-    ],
   }, {
     timestamps: {
       createdAt: 'created_at',
