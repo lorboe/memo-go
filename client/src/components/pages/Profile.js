@@ -79,7 +79,7 @@ export default class Profile extends Component {
 
 
         <form onSubmit={(e) => this.handleSubmit(e)}>
-          Email:
+          {/* Email:
           <input type="text" name="email" value={this.state.email} onChange={this.handleChange} />
           <br />
 
@@ -89,7 +89,7 @@ export default class Profile extends Component {
 
           New Password:
           <input type="password" name="newPassword" value={this.state.newPassword} onChange={this.handleChange} />
-          <br />
+          <br /> */}
 
           <input type="file" onChange={this.handleFileChange} /> <br />
           {this.state.pictureUrl && <img src={this.state.pictureUrl} style={{height: 200}} alt={this.state.alt}/>}
