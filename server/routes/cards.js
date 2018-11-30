@@ -60,7 +60,7 @@ router.put('/:cardId', isLoggedIn, checkId('cardId'), (req, res, next) => {
 
 //EDITING!!!! Route to add card on deck 
 
-router.post('/:deckId/add', isLoggedIn, (req, res, next) => {
+router.post('/:deckId', isLoggedIn, (req, res, next) => {
   let { question, answers, visibility, difficulty } = req.body
   let _owner = req.user._id
   let _deck= req.params.deckId

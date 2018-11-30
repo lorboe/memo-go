@@ -54,7 +54,8 @@ class App extends Component {
             </Link>}
           </nav>
         </div>
-        <div className="fixed">
+        <div style={{marginTop:"9vh"}}></div>
+        {/* <div className="fixed">
           <header>
             <div>
               <div className="flexBasic">
@@ -66,12 +67,12 @@ class App extends Component {
             </div>
             <NavLink to="/cards">Cards</NavLink>
             {/* <NavLink to="/add-card">Add card</NavLink> */}
-            {!api.isLoggedIn() && <NavLink to="/signup">Signup</NavLink>}
+            {/* {!api.isLoggedIn() && <NavLink to="/signup">Signup</NavLink>}
             {!api.isLoggedIn() && <NavLink to="/login">Login</NavLink>}
             {api.isLoggedIn() && <Link to="/" onClick={(e) => this.handleLogoutClick(e)}>Logout</Link>}
             <NavLink to="/secret">Secret</NavLink>
-          </header>
-        </div>
+          </header> */}
+        {/* </div> */}
         
         <Switch>
           <Route path="/" exact component={Home} />

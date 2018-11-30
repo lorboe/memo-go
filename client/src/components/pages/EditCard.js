@@ -10,6 +10,7 @@ class EditCard extends Component {
       answers: "",
       visibility: "",
       difficulty: "",
+      deck: "",
       message: null
     }
   }
@@ -28,6 +29,7 @@ class EditCard extends Component {
       visibility: this.state.visibility,
       difficulty: this.state.difficulty,
     }
+    let deckId = this.state.deck
     api.updateCard(this.props.match.params.id, data)
       .then(result => {
         console.log('SUCCESS!')
@@ -40,6 +42,9 @@ class EditCard extends Component {
           })
         }, 2000)
       })
+      .then( result =>
+        {this.props.history.push('/details/'+deckId)}
+      )
       .catch(err => this.setState({ message: err.toString() }))
   }
   render() {
@@ -63,7 +68,7 @@ class EditCard extends Component {
           <option value={this.state.difficulty}>expert</option>
           </select>
           {/* Difficulty: <textarea value={this.state.difficulty} cols="30" rows="10" onChange={(e) => { this.handleInputChange("difficulty", e) }} ></textarea> <br /> */}
-          <button onClick={(e) => this.handleClick(e)}>Create card</button>
+          <button onClick={(e) => this.handleClick(e)}>Save Changes</button>
         </form>
         {this.state.message && <div className="info">
           {this.state.message}
@@ -80,6 +85,7 @@ class EditCard extends Component {
           answers: card.answers,
           visibility: card.visibility,
           difficulty: card.difficulty,
+          deck: card._deck
         })
       })
   }
