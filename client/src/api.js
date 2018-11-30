@@ -110,9 +110,16 @@ updateCard(id, body) {
     .catch(errHandler)
 },
 
-postCards(data) {
+// postCards(data) {
+//   return service
+//     .post('/cards', data)
+//     .then(res => res.data)
+//     .catch(errHandler)
+// },
+postCards(data, deckId) {
+  console.log('DECKID',deckId)
   return service
-    .post('/cards', data)
+    .post(`/cards/${deckId}/add`, data)
     .then(res => res.data)
     .catch(errHandler)
 },

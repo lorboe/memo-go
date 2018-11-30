@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Link, NavLink, Switch } from 'react-router-dom';
 import Home from './pages/Home';
-import Decks from './pages/Decks';
+// import Decks from './pages/Decks';
 import AddDeck from './pages/AddDeck';
 import EditDeck from './pages/EditDeck';
 import Cards from './pages/Cards';
@@ -35,10 +35,10 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Learn with FlashCards</h1>
           <NavLink to="/" exact>Home</NavLink>
-          <NavLink to="/decks">Deck</NavLink>
+          {/* <NavLink to="/decks">Deck</NavLink> */}
           <NavLink to="/add-deck">Add deck</NavLink>
           <NavLink to="/cards">Cards</NavLink>
-          <NavLink to="/add-card">Add card</NavLink>
+          {/* <NavLink to="/add-card">Add card</NavLink> */}
           {!api.isLoggedIn() && <NavLink to="/signup">Signup</NavLink>}
           {!api.isLoggedIn() && <NavLink to="/login">Login</NavLink>}
           {api.isLoggedIn() && <Link to="/profile">Profile</Link>}
@@ -47,12 +47,13 @@ class App extends Component {
         </header>
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/decks" component={Decks} />
+          {/* <Route path="/decks" component={Decks} /> */}
           <Route path="/add-deck" component={AddDeck} />
-          <Route path="/details/:id" component={DeckDetail}/>
+          <Route exact path="/details/:id/" component={DeckDetail}/>
+          <Route path="/details/:deckId/add-card" component={AddCard}/>
           <Route path="/edit-deck/:id" component={EditDeck} />
           <Route path="/cards" component={Cards} />
-          <Route path="/add-card" component={AddCard} />
+          {/* <Route path="/add-card" component={AddCard} /> */}
           <Route path="/edit-card/:id" component={EditCard} />
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />

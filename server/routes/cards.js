@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const Card = require('../models/Card')
+const Deck = require('../models/Deck')
 
 // The same as: const checkId = require('../middlewares').checkId
 const { checkId, isLoggedIn } = require('../middlewares')
@@ -44,18 +45,40 @@ router.put('/:cardId', isLoggedIn, checkId('cardId'), (req, res, next) => {
 })
 
 // Route to add a card
-router.post('/', isLoggedIn, (req, res, next) => {
+// router.post('/', isLoggedIn, (req, res, next) => {
+//   let { question, answers, visibility, difficulty } = req.body
+//   let _owner = req.user._id
+//   Card.create({ question, answers, visibility, difficulty, _owner })
+//     .then(card => {
+//       res.json({
+//         success: true,
+//         card
+//       });
+//     })
+//     .catch(err => next(err))
+// });
+
+//EDITING!!!! Route to add card on deck 
+
+router.post('/:deckId/add', isLoggedIn, (req, res, next) => {
   let { question, answers, visibility, difficulty } = req.body
   let _owner = req.user._id
-  Card.create({ question, answers, visibility, difficulty, _owner })
-    .then(card => {
-      res.json({
-        success: true,
-        card
-      });
-    })
+  let _deckId = req.params.deckId
+  Promise.all ([
+    Deck.findById(_deckId),
+    Card.create({ question, answers, visibility, difficulty, _owner })
+  ])
+  .then (([deck, card]) => {
+    deck._cards = deck._cards.push(card)
+    console.log("CARD:" + card)
+    console.log("DECK" + deck)
+    res.json({
+      success: true,
+     card})
+  })
     .catch(err => next(err))
 });
+
 
 router.delete('/:id', isLoggedIn, checkId('id'), (req, res, next) => {
   let id = req.params.id

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import api from '../../api'
+import {Link} from 'react-router-dom'
 
 export default class Profile extends Component {
   constructor(props) {
@@ -106,7 +107,10 @@ export default class Profile extends Component {
        <div>
          Decks:
          {this.state.decks.map(deck => (
-           <div>{deck.title}</div>
+           <div>
+             {/* {deck._id} */}
+           <Link to={`/details/${deck._id}`}> {deck.title} </Link>
+           </div>
          ))}
        </div>
 
