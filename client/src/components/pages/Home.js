@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import Atom from "../../images/science-icon_25410.png";
 import Food from "../../images/Food-icon_379338.png";
 import Sport from "../../images/Sport_icon_289620.svg";
+import api from '../../api'
 
 class Home extends Component {
-  // constructor(props) {
-  //   super(props)
-  //   this.state = {
-  //   }
-  // }
+  constructor(props) {
+    super(props)
+    this.state = {
+      decks: []
+    }
+  }
   render() {
     return (
       <div>
@@ -29,30 +31,11 @@ class Home extends Component {
         <div className="flexRow flexShadow">
           <div className="scrollFlex">
             <div className="deck deckHome"><img src={Atom} style={{backgroundSize: "cover", margin:"auto",}}/></div>
-            <div className="deck deckHome"></div>
-            <div className="deck deckHome"></div>
-            <div className="deck deckHome"></div>
-            <div className="deck deckHome"></div>
-            <div className="deck deckHome"></div>
-            <div className="deck deckHome"></div>
-            <div className="deck deckHome"></div>
-            <div className="deck deckHome"></div>
-            <div className="deck deckHome"></div>
-            <div className="deck deckHome"></div>
-            <div className="deck deckHome"></div>
-            <div className="deck deckHome"></div>
-            <div className="deck deckHome"></div>
-            <div className="deck deckHome"></div>
-            <div className="deck deckHome"></div>
-            <div className="deck deckHome"></div>
-            <div className="deck deckHome"></div>
-            <div className="deck deckHome"></div>
-            <div className="deck deckHome"></div>
-            <div className="deck deckHome"></div>
-            <div className="deck deckHome"></div>
-            <div className="deck deckHome"></div>
-            <div className="deck deckHome"></div>
-            <div className="deck deckHome"></div>
+            {this.state.decks.map(deck => 
+            <div className="deck deckHome">
+            {deck.title}
+            </div>
+            )}
           </div>
         </div>
     
@@ -63,29 +46,6 @@ class Home extends Component {
         <div className="flexRow flexShadow">
           <div className="scrollFlex">
             <div className="deck deck1 deckHome"><img src={Food} style={{width: "14vh", backgroundSize: "cover", margin: "auto",}} /></div>
-            <div className="deck deck1 deckHome"></div>
-            <div className="deck deck1 deckHome"></div>
-            <div className="deck deck1 deckHome"></div>
-            <div className="deck deck1 deckHome"></div>
-            <div className="deck deck1 deckHome"></div>
-            <div className="deck deck1 deckHome"></div>
-            <div className="deck deck1 deckHome"></div>
-            <div className="deck deck1 deckHome"></div>
-            <div className="deck deck1 deckHome"></div>
-            <div className="deck deck1 deckHome"></div>
-            <div className="deck deck1 deckHome"></div>
-            <div className="deck deck1 deckHome"></div>
-            <div className="deck deck1 deckHome"></div>
-            <div className="deck deck1 deckHome"></div>
-            <div className="deck deck1 deckHome"></div>
-            <div className="deck deck1 deckHome"></div>
-            <div className="deck deck1 deckHome"></div>
-            <div className="deck deck1 deckHome"></div>
-            <div className="deck deck1 deckHome"></div>
-            <div className="deck deck1 deckHome"></div>
-            <div className="deck deck1 deckHome"></div>
-            <div className="deck deck1 deckHome"></div>
-            <div className="deck deck1 deckHome"></div>
             <div className="deck deck1 deckHome"></div>
           </div>
         </div>
@@ -98,29 +58,7 @@ class Home extends Component {
           <div className="scrollFlex">
             <div className="deck deck2 deckHome"><img src={Sport} style={{width: "14vh", backgroundSize: "cover", margin: "auto",}} /></div>
             <div className="deck deck2 deckHome"></div>
-            <div className="deck deck2 deckHome"></div>
-            <div className="deck deck2 deckHome"></div>
-            <div className="deck deck2 deckHome"></div>
-            <div className="deck deck2 deckHome"></div>
-            <div className="deck deck2 deckHome"></div>
-            <div className="deck deck2 deckHome"></div>
-            <div className="deck deck2 deckHome"></div>
-            <div className="deck deck2 deckHome"></div>
-            <div className="deck deck2 deckHome"></div>
-            <div className="deck deck2 deckHome"></div>
-            <div className="deck deck2 deckHome"></div>
-            <div className="deck deck2 deckHome"></div>
-            <div className="deck deck2 deckHome"></div>
-            <div className="deck deck2 deckHome"></div>
-            <div className="deck deck2 deckHome"></div>
-            <div className="deck deck2 deckHome"></div>
-            <div className="deck deck2 deckHome"></div>
-            <div className="deck deck2 deckHome"></div>
-            <div className="deck deck2 deckHome"></div>
-            <div className="deck deck2 deckHome"></div>
-            <div className="deck deck2 deckHome"></div>
-            <div className="deck deck2 deckHome"></div>
-            <div className="deck deck2 deckHome"></div>
+            
           </div>
         </div>
    
@@ -128,6 +66,16 @@ class Home extends Component {
       </div>
     );
   }
+
+  componentDidMount() {
+    api.getDecks()
+      .then(decks => {
+        this.setState({
+          decks: decks
+        })
+      })
+  }
+
 }
 
 export default Home;

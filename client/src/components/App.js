@@ -77,8 +77,8 @@ class App extends Component {
           <Route path="/" exact component={Home} />
           {/* <Route path="/decks" component={Decks} /> */}
           <Route path="/add-deck" component={AddDeck} />
-          <Route exact path="/details/:id/" component={DeckDetail}/>
-          <Route path="/details/:deckId/add-card" component={AddCard}/>
+          <Route path="/details/:deckId/" component={DeckDetail}/>
+          {/* <Route path="/details/:deckId/add-card" component={AddCard}/> */}
           <Route path="/edit-deck/:id" component={EditDeck} />
           <Route path="/cards" component={Cards} />
           {/* <Route path="/add-card" component={AddCard} /> */}

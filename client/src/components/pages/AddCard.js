@@ -5,15 +5,12 @@ import api from '../../api';
 class AddCard extends Component {
   constructor(props) {
     super(props)
-    const deckId = this.props.match.params.deckId;
-    console.log( this.props.deckId)
     this.state = {
       question: "",
       answers: [],
       visibility: "public",
       difficulty: "beginner",
       message: null,
-      deckId: ""
       // const {deckId} = props.location.state
     }
   }
@@ -66,10 +63,10 @@ class AddCard extends Component {
           <br />
           Difficulty:
           <select onChange={(e) => { this.handleInputChange("difficulty", e) }} value={this.state.difficulty}>
-          <option value="beginner">beginner</option>
-          <option value="advanced-beginner">advanced-beginner</option>
-          <option value="experienced">experienced</option>
-          <option value="expert">expert</option>
+            <option value="beginner">beginner</option>
+            <option value="advanced-beginner">advanced-beginner</option>
+            <option value="experienced">experienced</option>
+            <option value="expert">expert</option>
           </select>
           {/* Difficulty: <textarea value={this.state.difficulty} cols="30" rows="10" onChange={(e) => { this.handleInputChange("difficulty", e) }} ></textarea> <br /> */}
           <button onClick={(e) => this.handleClick(e)}>Create card</button>
@@ -83,7 +80,7 @@ class AddCard extends Component {
 
 
   componentDidMount() {
-    let id = this.props.match.params.id
+    let id = this.props.match.params.deckId
     api.getDeckDetail(id)
       .then(deck => {
         this.setState({
