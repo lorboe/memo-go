@@ -136,6 +136,13 @@ header{
   }
 }
 
+.selectBox {
+  box-sizing: border-box;
+  resize: none;
+  border: none;
+  border-bottom: 2px solid gray;
+}
+
 .deck1{
   background: linear-gradient(to bottom right, rgba(118, 252, 9, 0.3), rgb(32, 139, 0));
 }
@@ -190,15 +197,21 @@ header{
   text-align: left;
   flex-direction: column;
   margin: 5vh;
-  .flexBasic input, form, select{
-    margin: 2vh;
-  }
+  // .flexBasic input, form, select{
+  //   margin: 2vh;
+  // }
 }
 
 .navIcon {
   flex: 1;
   img{
     width: 7vh;
+  }
+}
+
+nav{
+  img:hover{
+    width: 7.4vh;
   }
 }
 
@@ -210,5 +223,5 @@ header{
 .iconCategories {
   margin: 20px;
   text-align: left;
-  
+
 }

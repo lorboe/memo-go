@@ -41,10 +41,6 @@ class App extends Component {
               <img src={HomeIcon} />
             </NavLink>
 
-            <NavLink to="/decks" className="navIcon">
-              <img src={DeckIcon} />
-            </NavLink>
-
             <NavLink to="/add-deck" className="navIcon">
               <img src={PlusIcon} />
             </NavLink>
@@ -54,7 +50,8 @@ class App extends Component {
             </Link>}
           </nav>
         </div>
-        <div className="fixed">
+        
+        {/* <div className="fixed">
           <header>
             <div>
               <div className="flexBasic">
@@ -64,6 +61,7 @@ class App extends Component {
                 <div className="deck deckHome"></div>
               </div>
             </div>
+            <NavLink to="/decks" className="navIcon"></NavLink>
             <NavLink to="/cards">Cards</NavLink>
             <NavLink to="/add-card">Add card</NavLink>
             {!api.isLoggedIn() && <NavLink to="/signup">Signup</NavLink>}
@@ -71,7 +69,7 @@ class App extends Component {
             {api.isLoggedIn() && <Link to="/" onClick={(e) => this.handleLogoutClick(e)}>Logout</Link>}
             <NavLink to="/secret">Secret</NavLink>
           </header>
-        </div>
+        </div> */}
         
         <Switch>
           <Route path="/" exact component={Home} />

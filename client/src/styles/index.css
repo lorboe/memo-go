@@ -76,6 +76,12 @@ header {
     color: gray;
     display: flex; }
 
+.selectBox {
+  box-sizing: border-box;
+  resize: none;
+  border: none;
+  border-bottom: 2px solid gray; }
+
 .deck1 {
   background: linear-gradient(to bottom right, rgba(118, 252, 9, 0.3), #208b00); }
 
@@ -121,13 +127,14 @@ header {
   text-align: left;
   flex-direction: column;
   margin: 5vh; }
-  .flexBasic .flexBasic input, .flexBasic form, .flexBasic select {
-    margin: 2vh; }
 
 .navIcon {
   flex: 1; }
   .navIcon img {
     width: 7vh; }
+
+nav img:hover {
+  width: 7.4vh; }
 
 .flex1 {
   flex: 1; }

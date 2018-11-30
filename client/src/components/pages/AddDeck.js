@@ -57,36 +57,41 @@ class AddDeck extends Component {
     return (
       <div className="AddDeck">
         <h2>Add deck</h2>
-        <div className="flexBasic">
-          <form className="test">
-            Title: <input type="text" value={this.state.title} onChange={(e) => { this.handleInputChange("title", e) }} placeholder="Your deck topic" />
-            <br />
-            Category:
-          <select onChange={(e) => { this.handleInputChange("category", e) }}>
-              <option value={this.state.category}>web development</option>
-              <option value={this.state.category}>languages</option>
-              <option value={this.state.category}>business</option>
-              <option value={this.state.category}>other</option>
-            </select>
-            <br />
-            {/* Card: <input type="number" value={this.state.card} onChange={(e) => { this.handleInputChange("card", e) }} /> <br /> */}
-            Visibility:
-          <select onChange={(e) => { this.handleInputChange("visibility", e) }}>
-              <option value={this.state.visibility}>public</option>
-              <option value={this.state.visibility}>private</option>
-            </select>
-            <br />
-            Difficulty:
-          <select onChange={(e) => { this.handleInputChange("difficulty", e) }}>
-              <option value={this.state.difficulty}>beginner</option>
-              <option value={this.state.difficulty}>advanced-beginner</option>
-              <option value={this.state.difficulty}>experienced</option>
-              <option value={this.state.difficulty}>expert</option>
-            </select>
-            <br />
-            Description: <textarea value={this.state.description} cols="30" rows="2" onChange={(e) => { this.handleInputChange("description", e) }} ></textarea> <br />
-            <button onClick={(e) => this.handleClick(e)}>Create deck</button>
-          </form>
+        <div className="flex">
+          <div className="deck deckHome"></div>
+          <div className="flexBasic">
+            <form className="test">
+              {/* Title: */}
+              <input className="selectBox" type="text" value={this.state.title} onChange={(e) => { this.handleInputChange("title", e) }} placeholder="Title of your deck" />
+              <br />
+              {/* Category: */}
+          <select className="selectBox" onChange={(e) => { this.handleInputChange("category", e) }}>
+                <option value={this.state.category}>web development</option>
+                <option value={this.state.category}>languages</option>
+                <option value={this.state.category}>business</option>
+                <option value={this.state.category}>other</option>
+              </select>
+              <br />
+              {/* Card: <input type="number" value={this.state.card} onChange={(e) => { this.handleInputChange("card", e) }} /> <br /> */}
+              {/* Visibility: */}
+          <select className="selectBox" onChange={(e) => { this.handleInputChange("visibility", e) }}>
+                <option value={this.state.visibility}>public</option>
+                <option value={this.state.visibility}>private</option>
+              </select>
+              <br />
+              {/* Difficulty: */}
+          <select className="selectBox" onChange={(e) => { this.handleInputChange("difficulty", e) }}>
+                <option value={this.state.difficulty}>beginner</option>
+                <option value={this.state.difficulty}>advanced-beginner</option>
+                <option value={this.state.difficulty}>experienced</option>
+                <option value={this.state.difficulty}>expert</option>
+              </select>
+              <br />
+              {/* Description:  */}
+              <textarea className="selectBox" value={this.state.description} cols="30" rows="2" onChange={(e) => { this.handleInputChange("description", e) }} ></textarea> <br />
+              <button onClick={(e) => this.handleClick(e)}>Create deck</button>
+            </form>
+          </div>
         </div>
         {this.state.message && <div className="info">
           {this.state.message}
