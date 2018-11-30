@@ -1,6 +1,6 @@
 // --------------------
 // Definition of variables
-$primary: #32c3ff;
+$primary: papayawhip;
 
 
 // ----------------------------------------
@@ -10,13 +10,33 @@ $primary: #32c3ff;
 // @import 'bootstrap/scss/bootstrap';
 // ----------------------------------------
 
+// FONT 
+
+// @font-face {
+//   font-family: 'Text Me One', sans-serif;
+//   src: url('../fonts/Text_Me_One/TextMeOne-Regular.ttf');
+//   // src: local('Text Me One'), local('SansSerif'),
+//   //      url('../fonts/Text_Me_One/TextMeOne-Regular.ttf') format('embedded-opentype'), /* IE6-IE8 */
+//   //      url('../fonts/Text_Me_One/TextMeOne-Regular.ttf') format('woff2'), /* Super Modern Browsers */
+//   //      url('../fonts/Text_Me_One/TextMeOne-Regular.ttf.woff') format('woff'), /* Modern Browsers */
+//   //      url('../fonts/Text_Me_One/TextMeOne-Regular.ttf.ttf') format('truetype'), /* Safari, Android, iOS */
+//   //      url('../fonts/Text_Me_One/TextMeOne-Regular.ttf.svg#OpenSans') format('svg'); /* Legacy iOS */
+// }
 
 // --------------------
 // Style reusable for all components
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Dosis', sans-serif;
+}
+
+nav{
+  width: 100%;
+  height: 8vh;
+  background:#0668CF;
+  position: fixed;
+  top: 0;
 }
 
 .info {
@@ -25,7 +45,7 @@ body {
   border-radius: 10px;
   display: inline-block;
   background-color: #5776e9;
-  color: white;
+  color: gray;
 }
 
 .info.info-danger {
@@ -34,48 +54,20 @@ body {
 
 // --------------------
 // Style for App component
-.App {
+.prfl {
+  margin: auto;
   text-align: center;
-
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-    height: 80px;
-  }
-
-  .App-header {
-    background-color: $primary;
-    padding: 20px;
-    color: white;
-
-    a {
-      color: white;
-      padding: 0 5px;
-      text-decoration: unset;
-    }
-
-    a.active {
-      font-weight: bold;
-    }
-  }
-
-  .App-title {
-    font-size: 1.5em;
-  }
-
-  .App-intro {
-    font-size: large;
-  }
-
-  @keyframes App-logo-spin {
-    from {
-      transform: rotate(0deg);
-    }
-
-    to {
-      transform: rotate(360deg);
-    }
+  list-style: none;
+  a{
+    text-decoration: none;
+    color:silver;
   }
 }
+
+header{
+  padding: 10px;
+}
+
 
 // --------------------
 // Style for Home component
@@ -90,6 +82,133 @@ body {
 .Secret {
   .result {
     font-size: 1.2em;
-    color: $primary;
+    // color: $primary;
   }
+}
+
+.fixed{
+  margin-top: 8vh;
+  top:0;
+  box-shadow: 0 2px 10px silver;
+}
+
+.scrollFlex {
+  display: flex;
+  flex-basis: 984px;
+  flex-direction: row;
+  flex-grow: 0;
+  flex-shrink: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 5px 0;
+  scroll-behavior: smooth;
+}
+
+@media (max-width: 1008px){
+  .scrollFlex {
+      flex-basis: auto;
+      flex-grow: 1;
+      flex-shrink: 1;
+      overflow-x: auto;
+    }
+}
+// DECK
+
+.deck {
+  display: flex;
+  margin: auto;
+  flex-shrink: 0;
+  width: 20vh;
+  height: 23vh;
+  border: 1px solid silver;
+  border-radius: 7px;
+  text-align: center;
+  align-content: center;
+  // background: radial-gradient(top, rgba(9, 252, 252, .3), darkcyan);
+  // box-shadow: 0px 15px 20px -10px gray;
+  box-shadow: 2px 2px 6px rgba(0,0,0,.1), 4px 6px 0 -1px #fff, 6px 7px 6px rgba(0,0,0,.1), 10px 11px 0 -1px #fff, 12px 12px 6px rgba(0,0,0,.1);
+  
+  &:before {
+    // content: "";
+    color: gray;
+    display: flex;
+    // margin: auto;
+  }
+}
+
+.deck1{
+  background: linear-gradient(to bottom right, rgba(118, 252, 9, 0.3), rgb(32, 139, 0));
+}
+.deck2{
+  background: linear-gradient(to bottom right, rgba(203, 9, 252, 0.3), rgb(72, 0, 139));
+}
+
+#cardContainer {
+    display: flex;
+    margin: auto;
+    align-content: center;
+    text-align: center;
+    margin: 20px;
+    width: 20vh;
+    border: 1px solid gray;
+    border-radius: 7px;
+    height: 30vh;
+    display: flex;
+    background: white;
+    box-shadow: 0px 15px 20px -10px gray;
+    
+    &:before{
+      content: "CARD";
+      color: gray;
+      display: flex;
+      margin: auto;
+    }
+
+}
+
+.deckHome {
+  margin: 2vh;
+}
+
+.flex{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.flexRow{
+  display: flex;
+  flex-direction: row;
+}
+
+.flexShadow{
+  box-shadow: 0 3px 3px 0 silver;
+}
+
+.flexBasic {
+  display: flex;
+  justify-content: center;
+  text-align: left;
+  flex-direction: column;
+  margin: 5vh;
+  .flexBasic input, form, select{
+    margin: 2vh;
+  }
+}
+
+.navIcon {
+  flex: 1;
+  img{
+    width: 7vh;
+  }
+}
+
+.flex1{
+  flex:1;
+}
+
+
+.iconCategories {
+  margin: 20px;
+  text-align: left;
+  
 }

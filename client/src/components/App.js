@@ -12,8 +12,12 @@ import Profile from './pages/Profile';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import api from '../api';
-import logo from '../logo.svg';
 import DeckDetail from './pages/DeckDetail';
+import HomeIcon from '../../src/images/Home-icon-66_2180674.svg';
+import SearchIcon from '../../src/images/iconfinder_Search_1214984.svg';
+import PlusIcon from '../../src/images/plus-icon-79_2180657.svg';
+import ProfileIcon from '../../src/images/Profile-icon-74_2180663.svg';
+import DeckIcon from '../../src/images/Deck-icon_3525389.svg';
 
 class App extends Component {
   constructor(props) {
@@ -30,21 +34,45 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Learn with FlashCards</h1>
-          <NavLink to="/" exact>Home</NavLink>
-          {/* <NavLink to="/decks">Deck</NavLink> */}
-          <NavLink to="/add-deck">Add deck</NavLink>
-          <NavLink to="/cards">Cards</NavLink>
-          {/* <NavLink to="/add-card">Add card</NavLink> */}
-          {!api.isLoggedIn() && <NavLink to="/signup">Signup</NavLink>}
-          {!api.isLoggedIn() && <NavLink to="/login">Login</NavLink>}
-          {api.isLoggedIn() && <Link to="/profile">Profile</Link>}
-          {api.isLoggedIn() && <Link to="/" onClick={(e) => this.handleLogoutClick(e)}>Logout</Link>}
-          <NavLink to="/secret">Secret</NavLink>
-        </header>
+      <div className="prfl">
+        <div id="navbar">
+          <nav className="flexRow">
+            <NavLink to="/" exact className="navIcon">
+              <img src={HomeIcon} />
+            </NavLink>
+
+            {/* <NavLink to="/decks" className="navIcon">
+              <img src={DeckIcon} />
+            </NavLink> */}
+
+            <NavLink to="/add-deck" className="navIcon">
+              <img src={PlusIcon} />
+            </NavLink>
+
+            {api.isLoggedIn() && <Link to="/profile" className="navIcon">
+              <img src={ProfileIcon} />
+            </Link>}
+          </nav>
+        </div>
+        <div className="fixed">
+          <header>
+            <div>
+              <div className="flexBasic">
+                <h1>Profile</h1>
+              </div>
+              <div>
+                <div className="deck deckHome"></div>
+              </div>
+            </div>
+            <NavLink to="/cards">Cards</NavLink>
+            {/* <NavLink to="/add-card">Add card</NavLink> */}
+            {!api.isLoggedIn() && <NavLink to="/signup">Signup</NavLink>}
+            {!api.isLoggedIn() && <NavLink to="/login">Login</NavLink>}
+            {api.isLoggedIn() && <Link to="/" onClick={(e) => this.handleLogoutClick(e)}>Logout</Link>}
+            <NavLink to="/secret">Secret</NavLink>
+          </header>
+        </div>
+        
         <Switch>
           <Route path="/" exact component={Home} />
           {/* <Route path="/decks" component={Decks} /> */}
