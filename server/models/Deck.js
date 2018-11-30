@@ -11,7 +11,8 @@ const deckSchema = new mongoose.Schema({
   category: {
     type: String, 
     enum:["web development", "languages", "business", "other"], 
-    required:true
+    required:true,
+    default: "other"
   },
   difficulty: {
     type: String, 

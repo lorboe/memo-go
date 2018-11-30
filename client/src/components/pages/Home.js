@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Atom from "../../images/science-icon_25410.png";
-import Food from "../../images/Food-icon_379338.png";
-import Sport from "../../images/Sport_icon_289620.svg";
+import Atom from "../../images/original/science-icon_25410.png";
+import Food from "../../images/original/Food-icon_379338.png";
+import Sport from "../../images/original/Sport_icon_289620.svg";
 
 class Home extends Component {
   // constructor(props) {

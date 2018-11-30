@@ -2,6 +2,12 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Dosis', sans-serif; }
+  @media only screen and (min-width: 800px) {
+    body body {
+      display: flex;
+      justify-content: center;
+      margin: auto;
+      background: whitesmoke; } }
 
 nav {
   width: 100%;
@@ -15,8 +21,9 @@ nav {
   padding: 10px 20px;
   border-radius: 10px;
   display: inline-block;
-  background-color: #5776e9;
-  color: gray; }
+  background-color: #0668CF;
+  font-size: 2.4vh;
+  color: whitesmoke; }
 
 .info.info-danger {
   background-color: #e73f3f; }
@@ -80,7 +87,11 @@ header {
   box-sizing: border-box;
   resize: none;
   border: none;
-  border-bottom: 2px solid gray; }
+  border-bottom: 2px solid gray;
+  width: 100%;
+  font-size: 100%;
+  line-height: 2;
+  margin-bottom: 3vh; }
 
 .deck1 {
   background: linear-gradient(to bottom right, rgba(118, 252, 9, 0.3), #208b00); }
@@ -106,6 +117,13 @@ header {
     color: gray;
     display: flex;
     margin: auto; }
+
+.content {
+  margin: 12vh;
+  padding: 10vh;
+  border-radius: 7px;
+  background: white;
+  box-shadow: 2px 2px 20px silver; }
 
 .deckHome {
   margin: 2vh; }
@@ -135,6 +153,10 @@ header {
 
 nav img:hover {
   width: 7.4vh; }
+
+nav nav:after {
+  content: "";
+  border-bottom: 2px solid white; }
 
 .flex1 {
   flex: 1; }

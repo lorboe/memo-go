@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="347px" height="297px" viewBox="0 0 347 297" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+    <title>Heart</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="Heart" transform="translate(6.000000, 6.000000)" stroke="#FFFFFF" stroke-width="12">
+            <path d="M302.7,149.4 C303.1,149.1 302.3,149.8 302.7,149.4" id="Path"></path>
+            <path d="M315.2,136.1 C319,131.5 322.4,126.4 325,121.2 C342.5,86.3 334.6,47.2 305.4,21.1 C277.7,-3.8 232.8,-6.1 203.3,16.5 C193.4,24.1 184.9,33.4 175.8,42 C169.9,47.6 164.2,47.7 158.4,42 C153,36.7 147.7,31.2 142.2,25.9 C111.2,-4.6 66.1,-8 31.9,18.3 C16.3,30.3 6.5,45.4 2.3,63.2" id="Path"></path>
+            <path d="M0.1,82.9 C0.1,83.3 0.1,83.6 0.1,84 C0.1,107.3 9.3,127.1 25.8,143.6 C72,189.7 118.1,235.8 164.2,281.9 C165.1,282.8 166,283.6 167,284.5 C167.9,283.7 168.8,283 169.5,282.2 C209.4,242.5 249.3,202.9 289,163.1" id="Path"></path>
+        </g>
+    </g>
+</svg>

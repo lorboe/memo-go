@@ -6,10 +6,10 @@ class AddDeck extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      title2: "",
-      category: "",
-      visibility: "",
-      difficulty: "",
+      title: "",
+      category: "web development",
+      visibility: "public",
+      difficulty: "beginner",
       description: "",
       message: null
     }
@@ -24,13 +24,12 @@ class AddDeck extends Component {
 
   handleClick(e) {
     e.preventDefault()
-    console.log(this.state.title, this.state.description)
+    console.log(this.state.title, this.state.description,this.state.visibility,this.state.difficulty)
     let data = {
       title: this.state.title,
       category: this.state.category,
       visibility: this.state.visibility,
-      difficulty: this.state.difficulty,
-      // card: this.state.card,
+      difficulty:this.state.difficulty,
       description: this.state.description,
     }
     api.postDecks(data)
@@ -39,9 +38,8 @@ class AddDeck extends Component {
         this.setState({
           title: "",
           category: "",
-          visibility: "",
-          difficulty: "",
-          // card: "",
+          visibility: '',
+          difficulty: "" ,
           description: "",
           message: `Your deck '${this.state.title}' has been created`
         })

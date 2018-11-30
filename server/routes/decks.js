@@ -10,7 +10,7 @@ const router = express.Router();
 
 // Route to get all decks
 router.get('/', (req, res, next) => {
-  
+
   Deck.find()
   .populate('_owner', 'username') // populate on _owner and only send the username and _id (default)
     .then(decks => {
@@ -48,17 +48,14 @@ router.put('/:deckId', isLoggedIn, checkId('deckId'), (req, res, next) => {
 
 // Route to add a name
 router.post('/', isLoggedIn, (req, res, next) => {
-  let { title, category, description } = req.body
+  let { title, category, visibility, difficulty, description } = req.body
   let _owner = req.user._id
-  
- Deck.create({ title, category, description, _owner })
+ Deck.create({ title, category, visibility, difficulty, description, _owner })
     .then(deck => {
       console.log("DECK:" + deck)
       res.json({
        deck
     })
-    console.log("USER:" + user)
-    console.log("USER" + user._deck )
     .catch(err => next(err))
  
   });
@@ -79,5 +76,8 @@ router.delete('/:id', isLoggedIn, checkId('id'), (req, res, next) => {
     })
     .catch(err => next(err))
 })
+
+
+
 
 module.exports = router;

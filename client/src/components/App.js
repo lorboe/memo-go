@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Link, NavLink, Switch } from 'react-router-dom';
 import Home from './pages/Home';
-import Decks from './pages/Decks';
+// import Decks from './pages/Decks';
 import AddDeck from './pages/AddDeck';
 import EditDeck from './pages/EditDeck';
 import Cards from './pages/Cards';
@@ -13,11 +13,11 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import api from '../api';
 import DeckDetail from './pages/DeckDetail';
-import HomeIcon from '../../src/images/Home-icon-66_2180674.svg';
-import SearchIcon from '../../src/images/iconfinder_Search_1214984.svg';
-import PlusIcon from '../../src/images/plus-icon-79_2180657.svg';
-import ProfileIcon from '../../src/images/Profile-icon-74_2180663.svg';
-import DeckIcon from '../../src/images/Deck-icon_3525389.svg';
+import HomeIcon from '../../src/images/original/Home-icon-66_2180674.svg';
+// import SearchIcon from '../../src/images/Search_icon.svg';
+import PlusIcon from '../../src/images/original/plus-icon-79_2180657.svg';
+import ProfileIcon from '../../src/images/original/Profile-icon-74_2180663.svg';
+// import DeckIcon from '../../src/images/Deck-icon_3525389.svg';
 
 class App extends Component {
   constructor(props) {
@@ -41,16 +41,22 @@ class App extends Component {
               <img src={HomeIcon} />
             </NavLink>
 
+            {/* <NavLink to="/decks" className="navIcon">
+              <img src={DeckIcon} />
+            </NavLink> */}
+
             <NavLink to="/add-deck" className="navIcon">
               <img src={PlusIcon} />
             </NavLink>
 
-            {api.isLoggedIn() && <Link to="/profile" className="navIcon">
+            {api.isLoggedIn() ? <Link to="/profile" className="navIcon">
               <img src={ProfileIcon} />
-            </Link>}
+            </Link> :
+              <Link to="/login" className="navIcon">
+                <img src={ProfileIcon} />
+              </Link>}
           </nav>
         </div>
-        
         {/* <div className="fixed">
           <header>
             <div>
@@ -61,24 +67,24 @@ class App extends Component {
                 <div className="deck deckHome"></div>
               </div>
             </div>
-            <NavLink to="/decks" className="navIcon"></NavLink>
             <NavLink to="/cards">Cards</NavLink>
-            <NavLink to="/add-card">Add card</NavLink>
-            {!api.isLoggedIn() && <NavLink to="/signup">Signup</NavLink>}
-            {!api.isLoggedIn() && <NavLink to="/login">Login</NavLink>}
-            {api.isLoggedIn() && <Link to="/" onClick={(e) => this.handleLogoutClick(e)}>Logout</Link>}
-            <NavLink to="/secret">Secret</NavLink>
           </header>
         </div> */}
+        <div className="content">
+          {/* <NavLink to="/add-card">Add card</NavLink> */}
+          {!api.isLoggedIn() && <NavLink to="/signup"></NavLink>}
+          {/* {api.isLoggedIn() && <Link to="/" onClick={(e) => this.handleLogoutClick(e)}>Logout</Link>} */}
+          {/* <NavLink to="/secret">Secret</NavLink> */}
         
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/decks" component={Decks} />
+          {/* <Route path="/decks" component={Decks} /> */}
           <Route path="/add-deck" component={AddDeck} />
-          <Route path="/details/:id" component={DeckDetail} />
+          <Route exact path="/details/:id/" component={DeckDetail} />
+          <Route path="/details/:deckId/add-card" component={AddCard} />
           <Route path="/edit-deck/:id" component={EditDeck} />
           <Route path="/cards" component={Cards} />
-          <Route path="/add-card" component={AddCard} />
+          {/* <Route path="/add-card" component={AddCard} /> */}
           <Route path="/edit-card/:id" component={EditCard} />
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
@@ -86,6 +92,7 @@ class App extends Component {
           <Route path="/secret" component={Secret} />
           <Route render={() => <h2>404</h2>} />
         </Switch>
+        </div>
       </div>
     );
   }

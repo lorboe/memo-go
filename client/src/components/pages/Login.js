@@ -31,14 +31,20 @@ class Login extends Component {
     return (
       <div className="Login">
         <h2>Login</h2>
-        <form>
-          Email: <input type="text" value={this.state.email} onChange={(e) => this.handleInputChange("email", e)} /> <br />
-          Password: <input type="password" value={this.state.password} onChange={(e) => this.handleInputChange("password", e)} /> <br />
-          <button onClick={(e) => this.handleClick(e)}>Login</button>
-        </form>
-        {this.state.message && <div className="info info-danger">
-          {this.state.message}
-        </div>}
+        <div className="flex">
+          <div className="flexBasic">
+            <form>
+              <input className="selectBox" type="text" value={this.state.email} onChange={(e) => this.handleInputChange("email", e)} placeholder="Email" />
+              <br />
+              <input className="selectBox" type="password" value={this.state.password} onChange={(e) => this.handleInputChange("password", e)} placeholder="Password" />
+              <br />
+              <button className="info" onClick={(e) => this.handleClick(e)}>Login</button>
+            </form>
+            {this.state.message && <div className="info info-danger">
+              {this.state.message}
+            </div>}
+          </div>
+        </div>
       </div>
     );
   }

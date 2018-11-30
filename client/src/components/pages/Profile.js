@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import api from '../../api'
+import {Link} from 'react-router-dom'
 
 export default class Profile extends Component {
   constructor(props) {
@@ -91,12 +92,12 @@ export default class Profile extends Component {
           <input type="password" name="newPassword" value={this.state.newPassword} onChange={this.handleChange} />
           <br /> */}
 
-          <input type="file" onChange={this.handleFileChange} /> <br />
+          <input type="file" onChange={this.handleFileChange} className="selectBox"/> <br />
           {this.state.pictureUrl && <img src={this.state.pictureUrl} style={{height: 200}} alt={this.state.alt}/>}
           <br />
 
 
-          <button type="submit">Save profile</button>
+          <button className="info" type="submit">Save profile</button>
         </form>
 
         {/* If we have this.state.message, display the message  */}
@@ -106,7 +107,10 @@ export default class Profile extends Component {
        <div>
          Decks:
          {this.state.decks.map(deck => (
-           <div>{deck.title}</div>
+           <div>
+             {/* {deck._id} */}
+           <Link to={`/details/${deck._id}`}> {deck.title} </Link>
+           </div>
          ))}
        </div>
 

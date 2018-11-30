@@ -5,12 +5,16 @@ import api from '../../api';
 class AddCard extends Component {
   constructor(props) {
     super(props)
+    const deckId = this.props.match.params.deckId;
+    console.log( this.props.deckId)
     this.state = {
       question: "",
-      answers: "",
+      answers: [],
       visibility: "public",
       difficulty: "beginner",
-      message: null
+      message: null,
+      deckId: ""
+      // const {deckId} = props.location.state
     }
   }
 
@@ -23,13 +27,13 @@ class AddCard extends Component {
 
   handleClick(e) {
     e.preventDefault()
-    console.log(this.state.question, this.state.description)
+    console.log(this.state.question, this.state.answers)
     let data = {
       question: this.state.question,
       answers: this.state.answers,
       difficulty: this.state.difficulty,
     }
-    api.postCards(data)
+    api.postCards(data, this.state.deckId)
       .then(result => {
         console.log('SUCCESS!')
         this.setState({
@@ -38,6 +42,7 @@ class AddCard extends Component {
           difficulty: "",
           message: `Your card '${this.state.question}' has been created`
         })
+
         setTimeout(() => {
           this.setState({
             message: null
@@ -46,7 +51,12 @@ class AddCard extends Component {
       })
       .catch(err => this.setState({ message: err.toString() }))
   }
-  render() {
+
+  
+
+  
+  render() {   
+
     return (
       <div className="AddCard">
         <h2>New card</h2>
@@ -55,11 +65,11 @@ class AddCard extends Component {
           Answers: <input type="text" value={this.state.answers} onChange={(e) => { this.handleInputChange("answers", e) }} /> <br />
           <br />
           Difficulty:
-          <select onChange={(e) => { this.handleInputChange("difficulty", e) }}>
-          <option value={this.state.difficulty}>beginner</option>
-          <option value={this.state.difficulty}>advanced-beginner</option>
-          <option value={this.state.difficulty}>experienced</option>
-          <option value={this.state.difficulty}>expert</option>
+          <select onChange={(e) => { this.handleInputChange("difficulty", e) }} value={this.state.difficulty}>
+          <option value="beginner">beginner</option>
+          <option value="advanced-beginner">advanced-beginner</option>
+          <option value="experienced">experienced</option>
+          <option value="expert">expert</option>
           </select>
           {/* Difficulty: <textarea value={this.state.difficulty} cols="30" rows="10" onChange={(e) => { this.handleInputChange("difficulty", e) }} ></textarea> <br /> */}
           <button onClick={(e) => this.handleClick(e)}>Create card</button>
@@ -70,6 +80,22 @@ class AddCard extends Component {
       </div>
     );
   }
+
+
+  componentDidMount() {
+    let id = this.props.match.params.id
+    api.getDeckDetail(id)
+      .then(deck => {
+        this.setState({
+          deckId: deck._id
+        })
+      })
+  }
+
 }
+
+
+
+
 
 export default AddCard;
