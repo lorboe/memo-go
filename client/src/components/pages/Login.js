@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import api from '../../api';
+import Signup from '../pages/Signup';
+import { Link } from 'react-router-dom';
 
 class Login extends Component {
   constructor(props) {
@@ -31,6 +33,7 @@ class Login extends Component {
     return (
       <div className="Login">
         <h2>Login</h2>
+        Don't have your account? <Link to="/signup">Signup</Link>
         <div className="flex">
           <div className="flexBasic">
             <form>

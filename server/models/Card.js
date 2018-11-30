@@ -27,10 +27,10 @@ const cardSchema = new mongoose.Schema({
   },
   assessment_easy: Number,
   assessment_hard:Number,
-  _owner: {
+  _deck: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User"
-  }
+    ref: "Deck"
+  },
 });
 
 const Card = mongoose.model("Card", cardSchema);

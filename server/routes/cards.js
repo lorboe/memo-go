@@ -63,15 +63,10 @@ router.put('/:cardId', isLoggedIn, checkId('cardId'), (req, res, next) => {
 router.post('/:deckId/add', isLoggedIn, (req, res, next) => {
   let { question, answers, visibility, difficulty } = req.body
   let _owner = req.user._id
-  let _deckId = req.params.deckId
-  Promise.all ([
-    Deck.findById(_deckId),
-    Card.create({ question, answers, visibility, difficulty, _owner })
-  ])
-  .then (([deck, card]) => {
-    deck._cards = deck._cards.push(card)
+  let _deck= req.params.deckId
+  Card.create({ question, answers, visibility, difficulty, _deck })
+  .then (card => {
     console.log("CARD:" + card)
-    console.log("DECK" + deck)
     res.json({
       success: true,
      card})

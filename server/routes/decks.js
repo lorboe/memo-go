@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const Deck = require('../models/Deck');
+const Card = require('../models/Card');
 const User = require('../models/User')
 
 // The same as: const checkId = require('../middlewares').checkId
@@ -22,8 +23,12 @@ router.get('/', (req, res, next) => {
 // Route to get the detail of a deck
 router.get('/:id', checkId('id'), (req, res, next) => {
   let id = req.params.id
-  Deck.findById(id)
-    .then(deckDoc => {
+  Promise.all([
+    Deck.findById(id).lean(),
+    Card.find({_deck: id}),
+  ])
+    .then(([deckDoc,cardDocs]) => {
+      deckDoc.cards = cardDocs
       res.json(deckDoc)
     })
 })

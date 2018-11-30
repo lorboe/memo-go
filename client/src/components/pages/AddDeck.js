@@ -54,7 +54,7 @@ class AddDeck extends Component {
   render() {
     return (
       <div className="AddDeck">
-        <h2>Add deck</h2>
+        <h2>Create deck</h2>
         <div className="flex">
           <div className="deck deckHome"></div>
           <div className="flexBasic">
