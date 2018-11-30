@@ -30,8 +30,8 @@ class AddCard extends Component {
       answers: this.state.answers,
       difficulty: this.state.difficulty,
     }
-    api.postCards(data, this.state.deckId)
-      .then(result => {
+    api.postCards(data, this.props.deckId)
+      .then(data => {
         console.log('SUCCESS!')
         this.setState({
           question: "",
@@ -39,6 +39,7 @@ class AddCard extends Component {
           difficulty: "",
           message: `Your card '${this.state.question}' has been created`
         })
+        this.props.onAdd(data.card)
 
         setTimeout(() => {
           this.setState({
@@ -53,7 +54,7 @@ class AddCard extends Component {
 
   
   render() {   
-
+    let card = this.state
     return (
       <div className="AddCard">
         <h2>New card</h2>
@@ -79,15 +80,15 @@ class AddCard extends Component {
   }
 
 
-  componentDidMount() {
-    let id = this.props.match.params.deckId
-    api.getDeckDetail(id)
-      .then(deck => {
-        this.setState({
-          deckId: deck._id
-        })
-      })
-  }
+  // componentDidMount() {
+  //   let id = this.props.deckId
+  //   api.getDeckDetail(id)
+  //     .then(deck => {
+  //       this.setState({
+  //         deckId: deck._id
+  //       })
+  //     })
+  // }
 
 }
 

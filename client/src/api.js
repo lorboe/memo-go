@@ -119,7 +119,7 @@ updateCard(id, body) {
 postCards(data, deckId) {
   console.log('DECKID',deckId)
   return service
-    .post(`/cards/${deckId}/add`, data)
+    .post(`/cards/${deckId}`, data)
     .then(res => res.data)
     .catch(errHandler)
 },

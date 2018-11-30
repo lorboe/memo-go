@@ -57,6 +57,7 @@ class App extends Component {
               </Link>}
           </nav>
         </div>
+        <div style={{marginTop:"9vh"}}></div>
         {/* <div className="fixed">
           <header>
             <div>
@@ -68,13 +69,13 @@ class App extends Component {
               </div>
             </div>
             <NavLink to="/cards">Cards</NavLink>
-          </header>
-        </div> */}
-        <div className="content">
-          {/* <NavLink to="/add-card">Add card</NavLink> */}
-          {!api.isLoggedIn() && <NavLink to="/signup"></NavLink>}
-          {/* {api.isLoggedIn() && <Link to="/" onClick={(e) => this.handleLogoutClick(e)}>Logout</Link>} */}
-          {/* <NavLink to="/secret">Secret</NavLink> */}
+            {/* <NavLink to="/add-card">Add card</NavLink> */}
+            {/* {!api.isLoggedIn() && <NavLink to="/signup">Signup</NavLink>}
+            {!api.isLoggedIn() && <NavLink to="/login">Login</NavLink>}
+            {api.isLoggedIn() && <Link to="/" onClick={(e) => this.handleLogoutClick(e)}>Logout</Link>}
+            <NavLink to="/secret">Secret</NavLink>
+          </header> */}
+        {/* </div> */}
         
         <Switch>
           <Route path="/" exact component={Home} />
@@ -93,7 +94,7 @@ class App extends Component {
           <Route render={() => <h2>404</h2>} />
         </Switch>
         </div>
-      </div>
+      // </div>
     );
   }
 }

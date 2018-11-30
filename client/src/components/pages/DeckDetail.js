@@ -8,7 +8,7 @@ class DeckDetail extends Component {
     super(props);
     this.state = {
       deck: null,
-      cards: [],
+      // cards: [],
       isFormVisible: false
     };
   }
@@ -22,6 +22,36 @@ class DeckDetail extends Component {
       this.setState({
         isFormVisible:true
       })
+  }
+
+  handleDelete(idClicked) {
+    api.deleteCard(idClicked)
+    .then(data => {
+      console.log('Delete', data)
+      this.setState({
+        // The new cards are the ones where their _id are diffrent from idClicked
+        deck: {
+          ...this.state.deck,
+          cards: this.state.deck.cards.filter(card => card._id !== idClicked)
+        }        
+      })
+    })
+    .catch(err => {
+      console.log("ERROR", err);
+    })
+  }
+  handleEdit(idClicked) {
+    // Redirects the user to '/edit-card/'+idClicked
+    this.props.history.push('/edit-card/'+idClicked)
+  }
+
+  handleAdd = (card) => {
+    this.setState({
+      deck: {
+        ...this.state.deck,
+        cards: [...this.state.deck.cards,card]
+      }
+    })
   }
 
 
@@ -48,18 +78,20 @@ class DeckDetail extends Component {
         <div className="cardLinks">
        
           <button className={this.state.isFormVisible ? "shown" : "hidden"} onClick={() => this.handleClick()} >
-          <Link to={ `/details/${this.props.match.params.deckId}/add-card`}          >
             New card
-          </Link>
           </button>
            
-           {this.state.isFormVisible === true && <Route path="/details/:deckId/add-card" component={AddCard}/> }
+          {this.state.isFormVisible && <AddCard 
+            deckId={this.props.match.params.deckId} 
+            onAdd={this.handleAdd} /> }
           
 
-          {this.state.deck && this.state.deck.cards.map((card, i) => (
-            <div key={i}>
+          {this.state.deck && this.state.deck.cards.map((card, _id) => (
+            <div key={card._id}>
             <div style={{fontWeight:"bold"}}>{card.question}</div>
             <div>{card.answers}</div>
+            {api.isLoggedIn() && <button onClick={() => this.handleEdit(card._id)}>Edit</button>}
+            {api.isLoggedIn() && <button onClick={() => this.handleDelete(card._id)}>Delete</button>}
             </div>
           ))}
         </div>
@@ -70,7 +102,8 @@ class DeckDetail extends Component {
     let id = this.props.match.params.deckId;
     api.getDeckDetail(id).then(deck => {
       this.setState({
-        deck: deck
+        deck: deck,
+        // cards: deck.cards
       });
     });
   }
