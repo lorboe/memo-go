@@ -28,7 +28,9 @@ $primary: papayawhip;
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Dosis', sans-serif;
+  // font-family: 'Dosis', sans-serif;
+  // font-family: 'Ubuntu', sans-serif;
+  font-family: 'Concert One', cursive;
   
   @media only screen and (min-width: 800px) {
     body {
@@ -129,10 +131,10 @@ header{
   display: flex;
   margin: auto;
   flex-shrink: 0;
-  width: 20vh;
-  height: 23vh;
+  width: 145px;
+  height: 155px;
   border: 1px solid silver;
-  border-radius: 7px;
+  border-radius: 12%;
   text-align: center;
   align-content: center;
   // background: radial-gradient(top, rgba(9, 252, 252, .3), darkcyan);

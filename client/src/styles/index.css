@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Dosis', sans-serif; }
+  font-family: 'Concert One', cursive; }
   @media only screen and (min-width: 800px) {
     body body {
       display: flex;
@@ -72,10 +72,10 @@ header {
   display: flex;
   margin: auto;
   flex-shrink: 0;
-  width: 20vh;
-  height: 23vh;
+  width: 145px;
+  height: 155px;
   border: 1px solid silver;
-  border-radius: 7px;
+  border-radius: 12%;
   text-align: center;
   align-content: center;
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1), 4px 6px 0 -1px #fff, 6px 7px 6px rgba(0, 0, 0, 0.1), 10px 11px 0 -1px #fff, 12px 12px 6px rgba(0, 0, 0, 0.1); }
