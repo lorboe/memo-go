@@ -10,9 +10,11 @@ class Home extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      decks: []
+      decks: [],
+      pictureUrls: []
     }
   }
+
   render() {
     return (
       <div>
@@ -32,9 +34,14 @@ class Home extends Component {
         </div>
         <div className="flexRow flexShadow">
           <div className="scrollFlex">
-            <div className="deck deckHome"><img src={Atom} style={{ backgroundSize: "cover", margin: "auto", }} /></div>
+            <div className="deck deckHome">
+              <img src={Atom} style={{ objectFit: "cover", margin: "auto", }} />
+            </div>
             {this.state.decks.map(deck =>
               <div className="deck deckHome">
+                <div className="circlePic">
+                  <img className="picOnDeck" src={this.state.pictureUrl} alt={this.state.alt} />
+                </div>
                 <Link to={`/details/${deck._id}`} className="bubble"> {deck.title} </Link>
               </div>
             )}
@@ -52,7 +59,6 @@ class Home extends Component {
           </div>
         </div>
 
-
         <div className="iconCategories">
           <img src={Sport} style={{ width: "7vh" }} />
         </div>
@@ -60,11 +66,8 @@ class Home extends Component {
           <div className="scrollFlex">
             <div className="deck deck2 deckHome"><img src={Sport} style={{ width: "14vh", backgroundSize: "cover", margin: "auto", }} /></div>
             <div className="deck deck2 deckHome"></div>
-
           </div>
         </div>
-
-
       </div>
     );
   }
@@ -75,8 +78,16 @@ class Home extends Component {
         this.setState({
           decks: decks
         })
+        // api.getUsers()
+        //   .then(user => {
+        //     this.setState({
+        //       pictureUrls: user.pictureUrl
+        //     })
+        //   })
       })
   }
+
+
 
 }
 

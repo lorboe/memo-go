@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import api from '../../api'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export default class Profile extends Component {
   constructor(props) {
@@ -61,11 +61,11 @@ export default class Profile extends Component {
     })
     let file = e.target.files[0]
     api.addPicture(file)
-    .then(data => {
-      this.setState({
-        pictureUrl: data.pictureUrl
+      .then(data => {
+        this.setState({
+          pictureUrl: data.pictureUrl
+        })
       })
-    })
   }
   render() {
     // If there is 
@@ -92,8 +92,8 @@ export default class Profile extends Component {
           <input type="password" name="newPassword" value={this.state.newPassword} onChange={this.handleChange} />
           <br /> */}
 
-          <input type="file" onChange={this.handleFileChange} className="selectBox"/> <br />
-          {this.state.pictureUrl && <img src={this.state.pictureUrl} style={{height: 200}} alt={this.state.alt}/>}
+          <input type="file" onChange={this.handleFileChange} className="selectBox" /> <br />
+          {this.state.pictureUrl && <img src={this.state.pictureUrl} style={{ height: 200 }} alt={this.state.alt} />}
           <br />
 
 
@@ -104,15 +104,17 @@ export default class Profile extends Component {
         {this.state.message && <div className="info">
           {this.state.message}
         </div>}
-       <div>
-         Decks:
+        <div>
+          Decks:
          {this.state.decks.map(deck => (
-           <div>
-             {/* {deck._id} */}
-           <Link to={`/details/${deck._id}`}> {deck.title} </Link>
-           </div>
-         ))}
-       </div>
+            <div className="flexBasic">
+              <div className="flexRow">
+                {/* {deck._id} */}
+                <Link id="cardContainer" to={`/details/${deck._id}`}> {deck.title} </Link>
+              </div>
+            </div>
+          ))}
+        </div>
 
       </div>
     );

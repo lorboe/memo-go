@@ -29,15 +29,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Dosis', sans-serif;
-  
-  @media only screen and (min-width: 800px) {
-    body {
-        display: flex;
-        justify-content: center;
-        margin:auto;
-        background: whitesmoke;
-    }
-  }
+  background: rgb(233, 240, 253);
 }
 
 
@@ -135,8 +127,6 @@ header{
   border-radius: 7px;
   text-align: center;
   align-content: center;
-  // background: radial-gradient(top, rgba(9, 252, 252, .3), darkcyan);
-  // box-shadow: 0px 15px 20px -10px gray;
   box-shadow: 2px 2px 6px rgba(0,0,0,.1), 4px 6px 0 -1px #fff, 6px 7px 6px rgba(0,0,0,.1), 10px 11px 0 -1px #fff, 12px 12px 6px rgba(0,0,0,.1);
   
   &:before {
@@ -190,16 +180,44 @@ header{
 }
 
 .content{
-  margin: 12vh;
-  padding: 10vh;
-  border-radius: 7px;
-  background: white;
-  box-shadow: 2px 2px 20px silver;
+  margin-top: 12vh;
+}
+@media screen and (min-width: 600px) {
+  .content{
+    flex-basis: 750px;
+    margin-top:0;
+    margin: 12vh;
+    padding: 10vh;
+    border-radius: 7px;
+    background: white;
+    box-shadow: 2px 2px 20px silver;
+  }
+}
+
+.circlePic {
+  margin: -85px 0 0 -15px;
+  
+}
+
+.picOnDeck {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  border: 2px solid papayawhip;
+  box-shadow: 0 2px 3px 0 silver;
+  border-radius: 50px;
+  // background: #0668CF;
+  object-fit: cover;
 }
 
 .deckHome {
   margin: 2vh;
+  padding: 5px;
+  display: inline-grid;
+  // flex-direction: column-reverse;
+  // align-items: flex-end;
 }
+
 
 .flex{
   display: flex;
@@ -211,9 +229,9 @@ header{
   flex-direction: row;
 }
 
-.flexShadow{
-  box-shadow: 0 3px 3px 0 silver;
-}
+// .flexShadow{
+//   box-shadow: 0 3px 3px 0 silver;
+// }
 
 .flexBasic {
   display: flex;
