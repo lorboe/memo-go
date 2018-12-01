@@ -57,8 +57,8 @@ class App extends Component {
               </Link>}
           </nav>
         </div>
-        <div style={{marginTop:"9vh"}}></div>
-        {/* <div className="fixed">
+        <div className="content">
+          {/* <div className="fixed">
           <header>
             <div>
               <div className="flexBasic">
@@ -70,30 +70,31 @@ class App extends Component {
             </div>
             <NavLink to="/cards">Cards</NavLink>
             {/* <NavLink to="/add-card">Add card</NavLink> */}
-            {/* {!api.isLoggedIn() && <NavLink to="/signup">Signup</NavLink>}
+          {/* {!api.isLoggedIn() && <NavLink to="/signup">Signup</NavLink>}
             {!api.isLoggedIn() && <NavLink to="/login">Login</NavLink>}
             {api.isLoggedIn() && <Link to="/" onClick={(e) => this.handleLogoutClick(e)}>Logout</Link>}
             <NavLink to="/secret">Secret</NavLink>
           </header> */}
-        {/* </div> */}
-        
-        <Switch>
-          <Route path="/" exact component={Home} />
-          {/* <Route path="/decks" component={Decks} /> */}
-          <Route path="/add-deck" component={AddDeck} />
-          <Route path="/details/:deckId/" component={DeckDetail}/>
-          {/* <Route path="/details/:deckId/add-card" component={AddCard}/> */}
-          <Route path="/edit-deck/:id" component={EditDeck} />
-          <Route path="/cards" component={Cards} />
-          {/* <Route path="/add-card" component={AddCard} /> */}
-          <Route path="/edit-card/:id" component={EditCard} />
-          <Route path="/signup" component={Signup} />
-          <Route path="/login" component={Login} />
-          <Route path="/profile" component={Profile} />
-          <Route path="/secret" component={Secret} />
-          <Route render={() => <h2>404</h2>} />
-        </Switch>
+          {/* </div> */}
+
+          <Switch>
+            <Route path="/" exact component={Home} />
+            {/* <Route path="/decks" component={Decks} /> */}
+            <Route path="/add-deck" component={AddDeck} />
+            <Route path="/details/:deckId/" component={DeckDetail} />
+            {/* <Route path="/details/:deckId/add-card" component={AddCard}/> */}
+            <Route path="/edit-deck/:id" component={EditDeck} />
+            <Route path="/cards" component={Cards} />
+            {/* <Route path="/add-card" component={AddCard} /> */}
+            <Route path="/edit-card/:id" component={EditCard} />
+            <Route path="/signup" component={Signup} />
+            <Route path="/login" component={Login} />
+            <Route path="/profile" component={Profile} />
+            <Route path="/secret" component={Secret} />
+            <Route render={() => <h2>404</h2>} />
+          </Switch>
         </div>
+      </div>
       // </div>
     );
   }

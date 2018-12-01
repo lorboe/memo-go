@@ -1,6 +1,7 @@
 body {
   margin: 0;
   padding: 0;
+<<<<<<< HEAD
   font-family: 'Concert One', cursive; }
   @media only screen and (min-width: 800px) {
     body body {
@@ -8,6 +9,10 @@ body {
       justify-content: center;
       margin: auto;
       background: whitesmoke; } }
+=======
+  font-family: 'Dosis', sans-serif;
+  background: #e9f0fd; }
+>>>>>>> d6b27e747b987cc084d9142a56d66c3aace4f58d
 
 nav {
   width: 100%;
@@ -119,14 +124,34 @@ header {
     margin: auto; }
 
 .content {
-  margin: 12vh;
-  padding: 10vh;
-  border-radius: 7px;
-  background: white;
-  box-shadow: 2px 2px 20px silver; }
+  margin-top: 12vh; }
+
+@media screen and (min-width: 600px) {
+  .content {
+    flex-basis: 750px;
+    margin-top: 0;
+    margin: 12vh;
+    padding: 10vh;
+    border-radius: 7px;
+    background: white;
+    box-shadow: 2px 2px 20px silver; } }
+
+.circlePic {
+  margin: -85px 0 0 -15px; }
+
+.picOnDeck {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  border: 2px solid papayawhip;
+  box-shadow: 0 2px 3px 0 silver;
+  border-radius: 50px;
+  object-fit: cover; }
 
 .deckHome {
-  margin: 2vh; }
+  margin: 2vh;
+  padding: 5px;
+  display: inline-grid; }
 
 .flex {
   display: flex;
@@ -135,9 +160,6 @@ header {
 .flexRow {
   display: flex;
   flex-direction: row; }
-
-.flexShadow {
-  box-shadow: 0 3px 3px 0 silver; }
 
 .flexBasic {
   display: flex;
