@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Dosis', sans-serif; }
+  font-family: 'Concert One', cursive; }
   @media only screen and (min-width: 800px) {
     body body {
       display: flex;
@@ -72,10 +72,10 @@ header {
   display: flex;
   margin: auto;
   flex-shrink: 0;
-  width: 20vh;
-  height: 23vh;
+  width: 145px;
+  height: 155px;
   border: 1px solid silver;
-  border-radius: 7px;
+  border-radius: 12%;
   text-align: center;
   align-content: center;
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1), 4px 6px 0 -1px #fff, 6px 7px 6px rgba(0, 0, 0, 0.1), 10px 11px 0 -1px #fff, 12px 12px 6px rgba(0, 0, 0, 0.1); }
@@ -119,14 +119,34 @@ header {
     margin: auto; }
 
 .content {
-  margin: 12vh;
-  padding: 10vh;
-  border-radius: 7px;
-  background: white;
-  box-shadow: 2px 2px 20px silver; }
+  margin-top: 12vh; }
+
+@media screen and (min-width: 600px) {
+  .content {
+    flex-basis: 750px;
+    margin-top: 0;
+    margin: 12vh;
+    padding: 10vh;
+    border-radius: 7px;
+    background: white;
+    box-shadow: 2px 2px 20px silver; } }
+
+.circlePic {
+  margin: -85px 0 0 -15px; }
+
+.picOnDeck {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  border: 2px solid papayawhip;
+  box-shadow: 0 2px 3px 0 silver;
+  border-radius: 50px;
+  object-fit: cover; }
 
 .deckHome {
-  margin: 2vh; }
+  margin: 2vh;
+  padding: 5px;
+  display: inline-grid; }
 
 .flex {
   display: flex;
@@ -135,9 +155,6 @@ header {
 .flexRow {
   display: flex;
   flex-direction: row; }
-
-.flexShadow {
-  box-shadow: 0 3px 3px 0 silver; }
 
 .flexBasic {
   display: flex;

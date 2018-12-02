@@ -46,8 +46,6 @@ tableContent.push(
          </div>
  )}
 
-
-
     return (
       <div>
       <input
@@ -69,6 +67,12 @@ tableContent.push(
         this.setState({
           decks: decks,
         })
+        // api.getUsers()
+        //   .then(user => {
+        //     this.setState({
+        //       pictureUrls: user.pictureUrl
+        //     })
+        //   })
       })
   }
   }
