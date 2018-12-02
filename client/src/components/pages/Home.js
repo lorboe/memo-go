@@ -10,73 +10,62 @@ class Home extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      decks: [],
-      pictureUrls: []
+      decks:[],
+      search: ""
     }
   }
 
+  handleSearch = (newSearch) =>{
+    this.setState({
+      search:newSearch
+    })
+    }
+
   render() {
+    let sortedDecks= this.state.decks.sort((a,b) => a.category > b.category ? 1: -1 ).filter(deck => deck.title.toUpperCase().includes(this.state.search.toUpperCase())) 
+    let tableContent = [];
+    for (let i = 0; i < sortedDecks.length; i++) {
+      if(i===0 || sortedDecks[i].category !== sortedDecks[i-1].category) {
+        tableContent.push(
+        <div key={"c-"+i} className="iconCategories">
+          <img src={Atom} style={{ width: "7vh" }} />
+          {sortedDecks[i].category}
+        </div>
+        )}
+tableContent.push(
+
+        <div className="flexRow flexShadow">
+          <div className="scrollFlex">
+            <div>
+            <div className="deck deckHome">
+            <Link to={`/details/${sortedDecks[i]._id}`}>{sortedDecks[i].title}</Link>
+            <img style={{height:"30px", width:"30px"}} src={sortedDecks[i]._owner.pictureUrl} alt="pictures" />
+            </div>
+            </div>
+          </div>
+         </div>
+ )}
+
     return (
       <div>
-        {/* <div className="Home">
-          <h2>Home</h2>
-        </div>
-        <div className="flexRow">
-          <div className="">
-            <div className="deck deckHome"></div>
+      <input
+      name="searchbar"
+      type="text"
+      placeholder="Search"
+      value={this.state.search}
+      onChange={e => this.handleSearch(e.target.value)}
+    />
 
-          </div>
-        </div>
-        <hr /> */}
-
-        <div className="iconCategories">
-          <img src={Atom} style={{ width: "7vh" }} />
-        </div>
-        <div className="flexRow flexShadow">
-          <div className="scrollFlex">
-            <div className="deck deckHome">
-              <img src={Atom} style={{ objectFit: "cover", margin: "auto", }} />
-            </div>
-            {this.state.decks.map(deck =>
-              <div className="deck deckHome">
-                <div className="circlePic">
-                  <img className="picOnDeck" src={this.state.pictureUrl} alt={this.state.alt} />
-                </div>
-                <Link to={`/details/${deck._id}`} className="bubble"> {deck.title} </Link>
-              </div>
-            )}
-          </div>
-        </div>
-
-
-        <div className="iconCategories">
-          <img src={Food} style={{ width: "7vh" }} />
-        </div>
-        <div className="flexRow flexShadow">
-          <div className="scrollFlex">
-            <div className="deck deck1 deckHome"><img src={Food} style={{ width: "14vh", backgroundSize: "cover", margin: "auto", }} /></div>
-            <div className="deck deck1 deckHome"></div>
-          </div>
-        </div>
-
-        <div className="iconCategories">
-          <img src={Sport} style={{ width: "7vh" }} />
-        </div>
-        <div className="flexRow flexShadow">
-          <div className="scrollFlex">
-            <div className="deck deck2 deckHome"><img src={Sport} style={{ width: "14vh", backgroundSize: "cover", margin: "auto", }} /></div>
-            <div className="deck deck2 deckHome"></div>
-          </div>
-        </div>
+      {tableContent}    
       </div>
-    );
-  }
+     ) }
+     
 
   componentDidMount() {
     api.getDecks()
       .then(decks => {
         this.setState({
-          decks: decks
+          decks: decks,
         })
         // api.getUsers()
         //   .then(user => {
@@ -86,9 +75,6 @@ class Home extends Component {
         //   })
       })
   }
-
-
-
-}
+  }
 
 export default Home;

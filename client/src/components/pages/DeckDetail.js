@@ -59,7 +59,7 @@ class DeckDetail extends Component {
     if (!this.state.deck)
       return <div>Loading...</div>
     return (
-      <div>
+      <div className="flexWrap">
         <div className="deckInfo">
           Title: {this.state.deck.title} <br />
           Category: {this.state.deck.category}

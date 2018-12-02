@@ -1,13 +1,9 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Concert One', cursive; }
-  @media only screen and (min-width: 800px) {
-    body body {
-      display: flex;
-      justify-content: center;
-      margin: auto;
-      background: whitesmoke; } }
+  font-family: 'Concert One', cursive;
+  color: #3c3c3c;
+  height: 100%; }
 
 nav {
   width: 100%;
@@ -27,6 +23,21 @@ nav {
 
 .info.info-danger {
   background-color: #e73f3f; }
+
+button {
+  margin: 20px;
+  padding: 8px 18px;
+  border-radius: 10px;
+  display: inline-block;
+  border: 2px solid #0668CF;
+  font-size: 2vh;
+  font-family: "Concert One", cursive;
+  background: transparent;
+  color: #0668CF;
+  box-shadow: inset 0px 1px 2px 0 silver; }
+  button:hover {
+    cursor: pointer;
+    box-shadow: 0px 1px 2px 0 silver; }
 
 .prfl {
   margin: auto;
@@ -83,15 +94,19 @@ header {
     color: gray;
     display: flex; }
 
-.selectBox {
+select, input {
   box-sizing: border-box;
   resize: none;
   border: none;
-  border-bottom: 2px solid gray;
-  width: 100%;
+  border-bottom: 2px solid silver;
+  width: 90%;
+  font-family: "Concert One", cursive;
+  color: #3c3c3c;
   font-size: 100%;
   line-height: 2;
-  margin-bottom: 3vh; }
+  margin-bottom: 3vh;
+  align-items: center;
+  justify-content: center; }
 
 .deck1 {
   background: linear-gradient(to bottom right, rgba(118, 252, 9, 0.3), #208b00); }
@@ -121,7 +136,7 @@ header {
 .content {
   margin-top: 12vh; }
 
-@media screen and (min-width: 600px) {
+@media only screen and (min-width: 800px) {
   .content {
     flex-basis: 750px;
     margin-top: 0;
@@ -148,7 +163,7 @@ header {
   padding: 5px;
   display: inline-grid; }
 
-.flex {
+.flexWrap {
   display: flex;
   flex-wrap: wrap; }
 
@@ -175,9 +190,21 @@ nav nav:after {
   content: "";
   border-bottom: 2px solid white; }
 
+.picProfile {
+  border-radius: 12px; }
+
 .flex1 {
   flex: 1; }
 
 .iconCategories {
   margin: 20px;
   text-align: left; }
+
+.footer {
+  display: flex;
+  bottom: 0;
+  width: 100%;
+  height: 20vh;
+  margin: 10vh 0 5px 0;
+  align-items: center;
+  justify-content: center; }

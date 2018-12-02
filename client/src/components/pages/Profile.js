@@ -29,6 +29,7 @@ export default class Profile extends Component {
   handleSubmit(e) {
     e.preventDefault()
     let body = {
+      // user: this.state.user,
       email: this.state.email,
       pictureUrl: this.state.pictureUrl,
     }
@@ -74,13 +75,12 @@ export default class Profile extends Component {
     }
     return (
 
-
-      <div className="Profile">
-        <h2>Profile</h2>
-
-
-        <form onSubmit={(e) => this.handleSubmit(e)}>
-          {/* Email:
+      <div>
+        <div className="Profile">
+          <h2>Profile</h2>
+          {/* <div className="flex"></div> */}
+          <form className="flexRow" onSubmit={(e) => this.handleSubmit(e)}>
+            {/* Email:
           <input type="text" name="email" value={this.state.email} onChange={this.handleChange} />
           <br />
 
@@ -91,32 +91,35 @@ export default class Profile extends Component {
           New Password:
           <input type="password" name="newPassword" value={this.state.newPassword} onChange={this.handleChange} />
           <br /> */}
+            <div>
+              {this.state.pictureUrl && <img className="picProfile flex1" src={this.state.pictureUrl} style={{ height: 160 }} alt={this.state.alt} />}
+            </div>
+            {/* <p>
+              {this.state.user}
+            </p> */}
+            <div>
+              <button type="submit">Save profile</button>
+            </div>
+            <div>
+              <input type="file" onChange={this.handleFileChange} placeholder="Choose File" />
+            </div><br />
+          </form>
+          {/* If we have this.state.message, display the message  */}
+          {this.state.message && <div className="info">
+            {this.state.message}
+          </div>}
 
-          <input type="file" onChange={this.handleFileChange} className="selectBox" /> <br />
-          {this.state.pictureUrl && <img src={this.state.pictureUrl} style={{ height: 200 }} alt={this.state.alt} />}
-          <br />
-
-
-          <button className="info" type="submit">Save profile</button>
-        </form>
-
-        {/* If we have this.state.message, display the message  */}
-        {this.state.message && <div className="info">
-          {this.state.message}
-        </div>}
-        <div>
           Decks:
          {this.state.decks.map(deck => (
             <div className="flexBasic">
               <div className="flexRow">
                 {/* {deck._id} */}
-                <Link id="cardContainer" to={`/details/${deck._id}`}> {deck.title} </Link>
+                <Link className="deck" to={`/details/${deck._id}`}> {deck.title} </Link>
               </div>
             </div>
           ))}
         </div>
-
-      </div>
+      </div >
     );
   }
   componentDidMount() {

@@ -34,7 +34,7 @@ class Login extends Component {
       <div className="Login">
         <h2>Login</h2>
         Don't have your account? <Link to="/signup">Signup</Link>
-        <div className="flex">
+        <div className="flexWrap">
           <div className="flexBasic">
             <form>
               <input className="selectBox" type="text" value={this.state.email} onChange={(e) => this.handleInputChange("email", e)} placeholder="Email" />
