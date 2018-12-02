@@ -7,7 +7,7 @@ import EditDeck from './pages/EditDeck';
 import Cards from './pages/Cards';
 import AddCard from './pages/AddCard';
 import EditCard from './pages/EditCard';
-import Secret from './pages/Secret';
+// import Secret from './pages/Secret';
 import Profile from './pages/Profile';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
@@ -23,12 +23,13 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      decks: []
+      decks: [],
+     
     }
     // api.loadUser();
   }
 
-  handleLogoutClick(e) {
+ handleLogoutClick(e) {
     api.logout()
   }
 
@@ -55,6 +56,7 @@ class App extends Component {
               <Link to="/login" className="navIcon">
                 <img src={ProfileIcon} />
               </Link>}
+
           </nav>
         </div>
         <div style={{marginTop:"9vh"}}></div>
@@ -78,7 +80,7 @@ class App extends Component {
         {/* </div> */}
         
         <Switch>
-          <Route path="/" exact component={Home} />
+          <Route path="/" exact component={Home}/>
           {/* <Route path="/decks" component={Decks} /> */}
           <Route path="/add-deck" component={AddDeck} />
           <Route path="/details/:deckId/" component={DeckDetail}/>
@@ -90,13 +92,16 @@ class App extends Component {
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
           <Route path="/profile" component={Profile} />
-          <Route path="/secret" component={Secret} />
+          {/* <Route path="/secret" component={Secret} /> */}
           <Route render={() => <h2>404</h2>} />
         </Switch>
         </div>
       // </div>
     );
   }
+
+
+
 }
 
 export default App;

@@ -11,6 +11,8 @@ class Home extends Component {
     super(props)
     this.state = {
       decks:[],
+      // owners: [],
+      // ownerPics: [],
       search: ""
     }
   }
@@ -27,29 +29,28 @@ class Home extends Component {
     for (let i = 0; i < sortedDecks.length; i++) {
       if(i===0 || sortedDecks[i].category !== sortedDecks[i-1].category) {
         tableContent.push(
-        <div key={"c-"+i} className="iconCategories">
-          <img src={Atom} style={{ width: "7vh" }} />
-          {sortedDecks[i].category}
-        </div>
-        )}
-tableContent.push(
+            <thead >
+            <tr key={"c-"+i}>
+              <th>{sortedDecks[i].category}</th>
+            </tr>
+            </thead>
+        )
+      }
 
-        <div className="flexRow flexShadow">
-          <div className="scrollFlex">
-            <div>
-            <div className="deck deckHome">
-            <Link to={`/details/${sortedDecks[i]._id}`}>{sortedDecks[i].title}</Link>
-            <img style={{height:"30px", width:"30px"}} src={sortedDecks[i]._owner.pictureUrl} alt="pictures" />
-            </div>
-            </div>
-          </div>
-         </div>
- )}
+      tableContent.push(
+            <tbody>
+            <tr key={"p-"+i}>
+              <td> <img  style={{height:"30px", width:"30px"}}  src={sortedDecks[i]._owner.pictureUrl} alt="ownerImage" /></td>
+              <td><Link to={`/details/${sortedDecks[i]._id}`} >{sortedDecks[i].title}</Link></td> 
+            </tr>
+            </tbody>
+      )
+    }
 
-
-
+  
     return (
-      <div>
+<div>
+
       <input
       name="searchbar"
       type="text"
@@ -58,8 +59,12 @@ tableContent.push(
       onChange={e => this.handleSearch(e.target.value)}
     />
 
-      {tableContent}    
-      </div>
+            <div>
+            <table>
+            {tableContent}
+            </table>
+            </div>
+</div>
      ) }
      
 
@@ -71,6 +76,6 @@ tableContent.push(
         })
       })
   }
-  }
+}
 
 export default Home;
