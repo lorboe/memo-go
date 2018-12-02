@@ -1,7 +1,6 @@
 body {
   margin: 0;
   padding: 0;
-<<<<<<< HEAD
   font-family: 'Concert One', cursive; }
   @media only screen and (min-width: 800px) {
     body body {
@@ -9,10 +8,6 @@ body {
       justify-content: center;
       margin: auto;
       background: whitesmoke; } }
-=======
-  font-family: 'Dosis', sans-serif;
-  background: #e9f0fd; }
->>>>>>> d6b27e747b987cc084d9142a56d66c3aace4f58d
 
 nav {
   width: 100%;
