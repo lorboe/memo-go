@@ -24,12 +24,12 @@ class AddDeck extends Component {
 
   handleClick(e) {
     e.preventDefault()
-    console.log(this.state.title, this.state.description,this.state.visibility,this.state.difficulty)
+    console.log(this.state.title, this.state.description, this.state.visibility, this.state.difficulty)
     let data = {
       title: this.state.title,
       category: this.state.category,
       visibility: this.state.visibility,
-      difficulty:this.state.difficulty,
+      difficulty: this.state.difficulty,
       description: this.state.description,
     }
     api.postDecks(data)
@@ -39,7 +39,7 @@ class AddDeck extends Component {
           title: "",
           category: "",
           visibility: '',
-          difficulty: "" ,
+          difficulty: "",
           description: "",
           message: `Your deck '${this.state.title}' has been created`
         })
@@ -55,7 +55,7 @@ class AddDeck extends Component {
     return (
       <div className="AddDeck">
         <h2>Create deck</h2>
-        <div className="flex">
+        <div className="flexWrap">
           <div className="deck deckHome"></div>
           <div className="flexBasic">
             <form className="test">

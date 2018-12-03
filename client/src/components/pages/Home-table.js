@@ -10,63 +10,64 @@ class Home extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      decks:[],
+      decks: [],
       // owners: [],
       // ownerPics: [],
       search: ""
     }
   }
 
-  handleSearch = (newSearch) =>{
+  handleSearch = (newSearch) => {
     this.setState({
-      search:newSearch
+      search: newSearch
     })
-    }
+  }
 
   render() {
-    let sortedDecks= this.state.decks.sort((a,b) => a.category > b.category ? 1: -1 ).filter(deck => deck.title.toUpperCase().includes(this.state.search.toUpperCase())) 
+    let sortedDecks = this.state.decks.sort((a, b) => a.category > b.category ? 1 : -1).filter(deck => deck.title.toUpperCase().includes(this.state.search.toUpperCase()))
     let tableContent = [];
     for (let i = 0; i < sortedDecks.length; i++) {
-      if(i===0 || sortedDecks[i].category !== sortedDecks[i-1].category) {
+      if (i === 0 || sortedDecks[i].category !== sortedDecks[i - 1].category) {
         tableContent.push(
-            <thead >
-            <tr key={"c-"+i}>
+          <thead >
+            <tr key={"c-" + i}>
               <th>{sortedDecks[i].category}</th>
             </tr>
-            </thead>
+          </thead>
         )
       }
 
       tableContent.push(
-            <tbody>
-            <tr key={"p-"+i}>
-              <td> <img  style={{height:"30px", width:"30px"}}  src={sortedDecks[i]._owner.pictureUrl} alt="ownerImage" /></td>
-              <td><Link to={`/details/${sortedDecks[i]._id}`} >{sortedDecks[i].title}</Link></td> 
-            </tr>
-            </tbody>
+        <tbody>
+          <tr key={"p-" + i}>
+            <td> <img style={{ height: "30px", width: "30px" }} src={sortedDecks[i]._owner.pictureUrl} alt="ownerImage" /></td>
+            <td><Link to={`/details/${sortedDecks[i]._id}`} >{sortedDecks[i].title}</Link></td>
+          </tr>
+        </tbody>
       )
     }
 
-  
+
     return (
-<div>
+      <div>
 
-      <input
-      name="searchbar"
-      type="text"
-      placeholder="Search"
-      value={this.state.search}
-      onChange={e => this.handleSearch(e.target.value)}
-    />
+        <input
+          name="searchbar"
+          type="text"
+          placeholder="Search"
+          value={this.state.search}
+          onChange={e => this.handleSearch(e.target.value)}
+        />
 
-            <div>
-            <table>
+        <div>
+          <table>
             {tableContent}
-            </table>
-            </div>
-</div>
-     ) }
-     
+          </table>
+        </div>
+      </div>
+    )
+  }
+
 
   componentDidMount() {
     api.getDecks()

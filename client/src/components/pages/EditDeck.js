@@ -46,7 +46,7 @@ class EditDeck extends Component {
     return (
       <div className="EditDeck">
         <h3>Create Deck</h3>
-        <div className="flex">
+        <div className="flexWrap">
           <div className="deck"></div>
           <div>
             <form>

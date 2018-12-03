@@ -100,6 +100,7 @@ class App extends Component {
             <Route render={() => <h2>404</h2>} />
           </Switch>
         </div>
+        <div className="footer">FOOTER</div>
       </div>
       // </div>
     );

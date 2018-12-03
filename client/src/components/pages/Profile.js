@@ -33,6 +33,7 @@ export default class Profile extends Component {
   handleSubmit(e) {
     e.preventDefault()
     let body = {
+      // user: this.state.user,
       email: this.state.email,
       pictureUrl: this.state.pictureUrl,
     }
@@ -99,13 +100,12 @@ export default class Profile extends Component {
             <div className="flexBasic">
               <div className="flexRow">
                 {/* {deck._id} */}
-                <Link id="cardContainer" to={`/details/${deck._id}`}> {deck.title} </Link>
+                <Link className="deck" to={`/details/${deck._id}`}> {deck.title} </Link>
               </div>
             </div>
           ))}
         </div>
-
-      </div>
+      </div >
     );
   }
   componentDidMount() {

@@ -50,31 +50,37 @@ class AddCard extends Component {
       .catch(err => this.setState({ message: err.toString() }))
   }
 
-  
 
-  
-  render() {   
+
+
+  render() {
     let card = this.state
     return (
       <div className="AddCard">
         <h2>New card</h2>
-        <form>
-          Question: <input type="text" value={this.state.question} onChange={(e) => { this.handleInputChange("question", e) }} /> <br />
-          Answers: <input type="text" value={this.state.answers} onChange={(e) => { this.handleInputChange("answers", e) }} /> <br />
-          <br />
-          Difficulty:
-          <select onChange={(e) => { this.handleInputChange("difficulty", e) }} value={this.state.difficulty}>
-            <option value="beginner">beginner</option>
-            <option value="advanced-beginner">advanced-beginner</option>
-            <option value="experienced">experienced</option>
-            <option value="expert">expert</option>
-          </select>
-          {/* Difficulty: <textarea value={this.state.difficulty} cols="30" rows="10" onChange={(e) => { this.handleInputChange("difficulty", e) }} ></textarea> <br /> */}
-          <button onClick={(e) => this.handleClick(e)}>Create card</button>
-        </form>
-        {this.state.message && <div className="info">
-          {this.state.message}
-        </div>}
+        <div className="flexWrap"></div>
+        <div id="cardContainer"></div>
+        <div className="flexBasic">
+          <form className="flexWrap">
+            {/* Question:  */}
+            <input type="text" value={this.state.question} onChange={(e) => { this.handleInputChange("question", e) }} placeholder="Question"/> <br />
+            {/* Answers: */}
+            <input type="text" value={this.state.answers} onChange={(e) => { this.handleInputChange("answers", e) }} placeholder="Answer"/> <br />
+            <br />
+            Difficulty:
+          <select onChange={(e) => { this.handleInputChange("difficulty", e) }} value={this.state.difficulty} placeholder="Difficulty">
+              <option value="beginner">beginner</option>
+              <option value="advanced-beginner">advanced-beginner</option>
+              <option value="experienced">experienced</option>
+              <option value="expert">expert</option>
+            </select>
+            {/* Difficulty: <textarea value={this.state.difficulty} cols="30" rows="10" onChange={(e) => { this.handleInputChange("difficulty", e) }} ></textarea> <br /> */}
+            <button style={{margin: "auto"}}onClick={(e) => this.handleClick(e)}>Create card</button>
+          </form>
+          {this.state.message && <div className="info">
+            {this.state.message}
+          </div>}
+        </div>
       </div>
     );
   }
