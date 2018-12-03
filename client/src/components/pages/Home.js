@@ -3,7 +3,6 @@ import Atom from "../../images/original/science-icon_25410.png";
 import Food from "../../images/original/Food-icon_379338.png";
 import Sport from "../../images/original/Sport_icon_289620.svg";
 import { Link } from 'react-router-dom'
-// import DeckDetail from './pages/DeckDetail';
 import api from '../../api'
 
 class Home extends Component {
@@ -26,14 +25,15 @@ class Home extends Component {
     let tableContent = [];
     for (let i = 0; i < sortedDecks.length; i++) {
       if(i===0 || sortedDecks[i].category !== sortedDecks[i-1].category) {
+       
         tableContent.push(
         <div key={"c-"+i} className="iconCategories">
           <img src={Atom} style={{ width: "7vh" }} />
           {sortedDecks[i].category}
         </div>
         )}
+        if(sortedDecks[i].visibility === "public") {
 tableContent.push(
-
         <div className="flexRow flexShadow">
           <div className="scrollFlex">
             <div>
@@ -44,7 +44,9 @@ tableContent.push(
             </div>
           </div>
          </div>
- )}
+)}
+}
+
 
     return (
       <div>
@@ -67,12 +69,7 @@ tableContent.push(
         this.setState({
           decks: decks,
         })
-        // api.getUsers()
-        //   .then(user => {
-        //     this.setState({
-        //       pictureUrls: user.pictureUrl
-        //     })
-        //   })
+  
       })
   }
   }

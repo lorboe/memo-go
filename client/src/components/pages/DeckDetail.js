@@ -9,18 +9,18 @@ class DeckDetail extends Component {
     this.state = {
       deck: null,
       // cards: [],
-      isFormVisible: false
+      isFormVisible: true
     };
   }
    
   handleClick() {
-    if (this.state.isFormVisible === true)
+    if (this.state.isFormVisible === false)
       this.setState({
-      isFormVisible: false
+      isFormVisible: true
       })
     else 
       this.setState({
-        isFormVisible:true
+        isFormVisible:false
       })
   }
 
@@ -81,7 +81,7 @@ class DeckDetail extends Component {
             New card
           </button>
            
-          {this.state.isFormVisible && <AddCard 
+          {!!this.state.isFormVisible && <AddCard 
             deckId={this.props.match.params.deckId} 
             onAdd={this.handleAdd} /> }
           
