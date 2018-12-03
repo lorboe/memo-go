@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import api from "../../api";
 import { Link, Route } from "react-router-dom";
 import AddCard from './AddCard'
+import SettingsIcon from '../../images/original/Settings.svg';
+import Bin from '../../images/original/Bin.svg';
 
 class DeckDetail extends Component {
   constructor(props) {
@@ -9,18 +11,18 @@ class DeckDetail extends Component {
     this.state = {
       deck: null,
       // cards: [],
-      isFormVisible: false
+      isFormVisible: true
     };
   }
 
   handleClick() {
-    if (this.state.isFormVisible === true)
+    if (this.state.isFormVisible === false)
       this.setState({
-        isFormVisible: false
+        isFormVisible: true
       })
     else
       this.setState({
-        isFormVisible: true
+        isFormVisible: false
       })
   }
 
@@ -60,49 +62,58 @@ class DeckDetail extends Component {
       return <div>Loading...</div>
     return (
       <div>
-      <div className="flexWrap">
-        <div className="deck deckHome">
-          Title: {this.state.deck.title} <br />
+        <div className="flexWrap justCenter">
+          <div className="flexBasic">
+            <div className="deck deckHome">
+              {this.state.deck.title}
+            </div>
+            <div className="deckInfo">
+              Category: {this.state.deck.category}
+              <br />
+              Difficulty: {this.state.deck.difficulty}
+              <br />
+              Is this deck public?{" "}
+              {this.state.deck.visibility === "private" ? "No" : "Yes"}
+              <br />
+              {/* Id: {this.state.deck._id} */}
+            </div>
+          </div>
+          <button className={this.state.isFormVisible ? "shown" : "hidden"} onClick={() => this.handleClick()} >
+            New card
+          </button>
+          {!!this.state.isFormVisible && <AddCard
+            deckId={this.props.match.params.deckId}
+            onAdd={this.handleAdd} />}
         </div>
-        <div className="deckInfo">
-          Category: {this.state.deck.category}
-          <br />
-          Difficulty: {this.state.deck.difficulty}
-          <br />
-          Is this deck public?{" "}
-          {this.state.deck.visibility === "private" ? "No" : "Yes"}
-          <br />
-          Id: {this.state.deck._id}
-        </div>
-      </div>
 
-       {/* {this.state.message && <div className="info">
+        {/* {this.state.message && <div className="info">
           {this.state.message}
         </div>} */}
 
-    <div className="flexWrap">
-      <div className="cardLinks">
-
-        <button className={this.state.isFormVisible ? "shown" : "hidden"} onClick={() => this.handleClick()} >
-          New card
-          </button>
-
-        {this.state.isFormVisible && <AddCard
-          deckId={this.props.match.params.deckId}
-          onAdd={this.handleAdd} />}
+        <div className="flexWrap justCenter">
+          <div className="cardLinks justCenter">
 
 
-        {this.state.deck && this.state.deck.cards.map((card, _id) => (
-          <div key={card._id}>
-            <div style={{ fontWeight: "bold" }}>{card.question}</div>
-            <div>{card.answers}</div>
-            {api.isLoggedIn() && <button onClick={() => this.handleEdit(card._id)}>Edit</button>}
-            {api.isLoggedIn() && <button onClick={() => this.handleDelete(card._id)}>Delete</button>}
+
+
+            <hr />
+            {/* <div id="cardContainer"></div> */}
+            {this.state.deck && this.state.deck.cards.map((card, _id) => (
+              <div key={card._id} className="flexWrap justCenter">
+                <div style={{ fontWeight: "bold" }} id="cardContainer">{card.question}</div>
+                <div id="cardContainer">{card.answers}</div>
+                {api.isLoggedIn() && <button onClick={() => this.handleEdit(card._id)}>
+                  <i class="fas fa-cog"></i>
+                </button>}
+
+                {api.isLoggedIn() && <button onClick={() => this.handleDelete(card._id)}>
+                  <i class="fas fa-trash"></i>
+                </button>}
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
       </div>
-    </div>
-    </div>
     );
   }
   componentDidMount() {

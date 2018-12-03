@@ -178,7 +178,7 @@ header{
   margin: auto;
   flex-shrink: 0;
   width: 145px;
-  height: 155px;
+  height: 175px;
   border: 1px solid silver;
   border-radius: 12%;
   text-align: center;
@@ -193,16 +193,23 @@ header{
   }
 }
 
-select, input {
+.deckInfo {
+  margin-top: 4vh;
+  margin-left: 3vh
+}
+
+select, input, textarea{
   box-sizing: border-box;
   resize: none;
   border: none;
+  border-left: 1px solid silver;
   border-bottom: 2px solid silver;
+  border-radius: 7px;
   width: 90%;
   font-family: $font;
   color: $fontColor;
   font-size: 100%;
-  line-height: 2;
+  line-height: 1;
   margin-bottom: 3vh;
   align-items: center;
   justify-content: center;
@@ -219,7 +226,7 @@ select, input {
 
 #cardContainer {
     display: flex;
-    margin: auto;
+    // margin: auto;
     align-content: center;
     text-align: center;
     margin: 20px;
@@ -232,7 +239,7 @@ select, input {
     box-shadow: 0px 15px 20px -10px gray;
     
     &:before{
-      content: "CARD";
+      content: "";
       color: gray;
       display: flex;
       margin: auto;
@@ -262,8 +269,6 @@ select, input {
 .circlePic {
   margin: -85px 0 0 -15px; 
 }
-
-
 
 .picOnDeck {
   width: 36px;
@@ -295,9 +300,11 @@ select, input {
   flex-direction: row;
 }
 
-// .flexShadow{
-//   box-shadow: 0 3px 3px 0 silver;
-// }
+.justCenter{
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: left;
+}
 
 .flexBasic {
   display: flex;
@@ -344,8 +351,7 @@ nav {
 }
 
 .picProfile {
-  border-radius: 12px;
-
+  border-radius: 50%;
 }
 
 .flex1{
@@ -355,7 +361,6 @@ nav {
 .iconCategories {
   margin: 20px;
   text-align: left;
-
 }
 
 .footer {

@@ -9,6 +9,8 @@ import AddCard from './pages/AddCard';
 import EditCard from './pages/EditCard';
 // import Secret from './pages/Secret';
 import Profile from './pages/Profile';
+import EditProfile from './pages/EditProfile';
+
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import api from '../api';
@@ -92,7 +94,9 @@ class App extends Component {
             <Route path="/edit-card/:id" component={EditCard} />
             <Route path="/signup" component={Signup} />
             <Route path="/login" component={Login} />
-            <Route path="/profile" component={Profile} />
+            <Route  path="/profile" exact component={Profile} />
+            <Route path="/profile/edit" component={EditProfile} />
+
             {/* <Route path="/secret" component={Secret} /> */}
             <Route render={() => <h2>404</h2>} />
           </Switch>

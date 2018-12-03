@@ -63,27 +63,27 @@ class AddDeck extends Component {
               <input className="selectBox" type="text" value={this.state.title} onChange={(e) => { this.handleInputChange("title", e) }} placeholder="Title of your deck" />
               <br />
               {/* Category: */}
-              <select className="selectBox" onChange={(e) => { this.handleInputChange("category", e) }}>
-                <option value={this.state.category}>web development</option>
-                <option value={this.state.category}>languages</option>
-                <option value={this.state.category}>business</option>
-                <option value={this.state.category}>other</option>
+          <select className="selectBox" onChange={(e) => { this.handleInputChange("category", e) }} value={this.state.category}>
+                <option value="web developmenet"> web development</option>
+                <option value="languages">languages</option>
+                <option value="business">business</option>
+                <option value="other">other</option>
               </select>
               <br />
               {/* Card: <input type="number" value={this.state.card} onChange={(e) => { this.handleInputChange("card", e) }} /> <br /> */}
               {/* Visibility: */}
-              <select className="selectBox" onChange={(e) => { this.handleInputChange("visibility", e) }}>
-                <option value={this.state.visibility}>public</option>
-                <option value={this.state.visibility}>private</option>
+          <select className="selectBox" onChange={(e) => { this.handleInputChange("visibility", e) }} value={this.state.visibility}>
+                <option value="public">public</option>
+                <option value="private">private</option>
               </select>
               <br />
               {/* Difficulty: */}
-              <select className="selectBox" onChange={(e) => { this.handleInputChange("difficulty", e) }}>
-                <option value={this.state.difficulty}>beginner</option>
-                <option value={this.state.difficulty}>advanced-beginner</option>
-                <option value={this.state.difficulty}>experienced</option>
-                <option value={this.state.difficulty}>expert</option>
-              </select>
+            <select className="selectBox" onChange={(e) => { this.handleInputChange("difficulty", e) }} value={this.state.difficulty}>
+            <option value="beginner">beginner</option>
+            <option value="advanced-beginner">advanced-beginner</option>
+            <option value="experienced">experienced</option>
+            <option value="expert">expert</option>
+          </select>
               <br />
               {/* Description:  */}
               <textarea className="selectBox" value={this.state.description} cols="30" rows="2" onChange={(e) => { this.handleInputChange("description", e) }} ></textarea> <br />
