@@ -114,7 +114,7 @@ export default class Profile extends Component {
             <div className="flexBasic">
               <div className="flexRow">
                 {/* {deck._id} */}
-                <Link className="deck" to={`/details/${deck._id}`}> {deck.title} </Link>
+                <Link className="deck deckHome" to={`/details/${deck._id}`}> {deck.title} </Link>
               </div>
             </div>
           ))}

@@ -12,44 +12,44 @@ class DeckDetail extends Component {
       isFormVisible: false
     };
   }
-   
+
   handleClick() {
     if (this.state.isFormVisible === true)
       this.setState({
-      isFormVisible: false
+        isFormVisible: false
       })
-    else 
+    else
       this.setState({
-        isFormVisible:true
+        isFormVisible: true
       })
   }
 
   handleDelete(idClicked) {
     api.deleteCard(idClicked)
-    .then(data => {
-      console.log('Delete', data)
-      this.setState({
-        // The new cards are the ones where their _id are diffrent from idClicked
-        deck: {
-          ...this.state.deck,
-          cards: this.state.deck.cards.filter(card => card._id !== idClicked)
-        }        
+      .then(data => {
+        console.log('Delete', data)
+        this.setState({
+          // The new cards are the ones where their _id are diffrent from idClicked
+          deck: {
+            ...this.state.deck,
+            cards: this.state.deck.cards.filter(card => card._id !== idClicked)
+          }
+        })
       })
-    })
-    .catch(err => {
-      console.log("ERROR", err);
-    })
+      .catch(err => {
+        console.log("ERROR", err);
+      })
   }
   handleEdit(idClicked) {
     // Redirects the user to '/edit-card/'+idClicked
-    this.props.history.push('/edit-card/'+idClicked)
+    this.props.history.push('/edit-card/' + idClicked)
   }
 
   handleAdd = (card) => {
     this.setState({
       deck: {
         ...this.state.deck,
-        cards: [...this.state.deck.cards,card]
+        cards: [...this.state.deck.cards, card]
       }
     })
   }
@@ -59,9 +59,12 @@ class DeckDetail extends Component {
     if (!this.state.deck)
       return <div>Loading...</div>
     return (
+      <div>
       <div className="flexWrap">
-        <div className="deckInfo">
+        <div className="deck deckHome">
           Title: {this.state.deck.title} <br />
+        </div>
+        <div className="deckInfo">
           Category: {this.state.deck.category}
           <br />
           Difficulty: {this.state.deck.difficulty}
@@ -71,31 +74,35 @@ class DeckDetail extends Component {
           <br />
           Id: {this.state.deck._id}
         </div>
+      </div>
 
-        {/* {this.state.message && <div className="info">
+       {/* {this.state.message && <div className="info">
           {this.state.message}
         </div>} */}
-        <div className="cardLinks">
-       
-          <button className={this.state.isFormVisible ? "shown" : "hidden"} onClick={() => this.handleClick()} >
-            New card
-          </button>
-           
-          {this.state.isFormVisible && <AddCard 
-            deckId={this.props.match.params.deckId} 
-            onAdd={this.handleAdd} /> }
-          
 
-          {this.state.deck && this.state.deck.cards.map((card, _id) => (
-            <div key={card._id}>
-            <div style={{fontWeight:"bold"}}>{card.question}</div>
+    <div className="flexWrap">
+      <div className="cardLinks">
+
+        <button className={this.state.isFormVisible ? "shown" : "hidden"} onClick={() => this.handleClick()} >
+          New card
+          </button>
+
+        {this.state.isFormVisible && <AddCard
+          deckId={this.props.match.params.deckId}
+          onAdd={this.handleAdd} />}
+
+
+        {this.state.deck && this.state.deck.cards.map((card, _id) => (
+          <div key={card._id}>
+            <div style={{ fontWeight: "bold" }}>{card.question}</div>
             <div>{card.answers}</div>
             {api.isLoggedIn() && <button onClick={() => this.handleEdit(card._id)}>Edit</button>}
             {api.isLoggedIn() && <button onClick={() => this.handleDelete(card._id)}>Delete</button>}
-            </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
+    </div>
+    </div>
     );
   }
   componentDidMount() {

@@ -38,9 +38,9 @@ class Home extends Component {
       }
 
       tableContent.push(
-        <tbody>
+        <tbody className="scrollFlex">
           <tr key={"p-" + i}>
-            <td> <img style={{ height: "30px", width: "30px" }} src={sortedDecks[i]._owner.pictureUrl} alt="ownerImage" /></td>
+            <td><Link to={`/profile/${user._id}`} ><img className="picOneDeck" style={{ height: "30px", width: "30px" }} src={sortedDecks[i]._owner.pictureUrl} alt="ownerImage" /></Link></td>
             <td><Link to={`/details/${sortedDecks[i]._id}`} >{sortedDecks[i].title}</Link></td>
           </tr>
         </tbody>
@@ -76,6 +76,12 @@ class Home extends Component {
           decks: decks,
         })
       })
+    // api.getUsers()
+    // .then(User => {
+    //   this.setState({
+    //     users: users,
+    //   })
+    // })
   }
 }
 

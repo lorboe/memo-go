@@ -63,9 +63,9 @@ class AddCard extends Component {
         <div className="flexBasic">
           <form className="flexWrap">
             {/* Question:  */}
-            <input type="text" value={this.state.question} onChange={(e) => { this.handleInputChange("question", e) }} placeholder="Question"/> <br />
+            <input type="text" value={this.state.question} onChange={(e) => { this.handleInputChange("question", e) }} placeholder="Question" /> <br />
             {/* Answers: */}
-            <input type="text" value={this.state.answers} onChange={(e) => { this.handleInputChange("answers", e) }} placeholder="Answer"/> <br />
+            <input type="text" value={this.state.answers} onChange={(e) => { this.handleInputChange("answers", e) }} placeholder="Answer" /> <br />
             <br />
             Difficulty:
           <select onChange={(e) => { this.handleInputChange("difficulty", e) }} value={this.state.difficulty} placeholder="Difficulty">
@@ -75,7 +75,7 @@ class AddCard extends Component {
               <option value="expert">expert</option>
             </select>
             {/* Difficulty: <textarea value={this.state.difficulty} cols="30" rows="10" onChange={(e) => { this.handleInputChange("difficulty", e) }} ></textarea> <br /> */}
-            <button style={{margin: "auto"}}onClick={(e) => this.handleClick(e)}>Create card</button>
+            <button style={{ margin: "auto" }} onClick={(e) => this.handleClick(e)}>Create card</button>
           </form>
           {this.state.message && <div className="info">
             {this.state.message}

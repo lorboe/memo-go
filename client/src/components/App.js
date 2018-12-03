@@ -58,6 +58,7 @@ class App extends Component {
               </Link>}
 
           </nav>
+          <div className="navbar2"></div>
         </div>
         <div className="content">
           {/* <div className="fixed">
