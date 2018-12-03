@@ -149,12 +149,6 @@ deleteCard(id) {
       .catch(errHandler)
   },
   
-  // getUsers() {
-  //   return service
-  //     .get('/users')
-  //     .then(res => res.data)
-  //     .catch(errHandler)
-  // },
 
   editProfile(body) {
     return service

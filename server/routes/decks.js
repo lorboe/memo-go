@@ -24,7 +24,7 @@ router.get('/', (req, res, next) => {
 router.get('/:id', checkId('id'), (req, res, next) => {
   let id = req.params.id
   Promise.all([
-    Deck.findById(id).lean(),
+    Deck.findById(id).lean().populate('_owner'),
     Card.find({_deck: id}),
     User.findById(req.user._id)
   ])
@@ -36,23 +36,38 @@ router.get('/:id', checkId('id'), (req, res, next) => {
         user
       })
     })
+  
 })
 
 // Route to update a deck
 router.put('/:deckId', isLoggedIn, checkId('deckId'), (req, res, next) => {
   let id = req.params.deckId
-  Deck.findByIdAndUpdate(id, {
+  let newDeck= null
+    Deck.findByIdAndUpdate(id, {
     title: req.body.title,
     category: req.body.category,
+    difficulty: req.body.difficulty,
+    visibility: req.body.visibility,
     description: req.body.description,
-  })
-    .then(deckDoc => {
-      res.json({
-        success: !!deckDoc // true only if a deck was found
+  }, {new: true}) 
+  .then(result => {
+   newDeck = result
+    return  Promise.all([
+      Deck.findById(id).lean().populate('_owner'),
+      Card.find({_deck: id}),
+      User.findById(req.user._id)
+    ])
+      .then(([deckDoc,cardDocs,userDocs]) => {
+        deckDoc.cards = cardDocs
+        user = userDocs
+        res.json({
+          deckDoc,
+          user
+        })
       })
     })
-    .catch(err => next(err))
-})
+  .catch(err => next(err))
+  })
 
 // Route to add a name
 router.post('/', isLoggedIn, (req, res, next) => {
