@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import api from '../../api'
 import { Link } from 'react-router-dom'
+import SettingsIcon from '/Users/GG/Documents/SofDev/Ironhack/w8/Project_3/learning-app/client/src/images/white/Settings.svg';
 
 
 export default class Profile extends Component {
@@ -19,7 +20,7 @@ export default class Profile extends Component {
     }
   }
 
- 
+
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value
@@ -72,7 +73,7 @@ export default class Profile extends Component {
         })
       })
   }
-  
+
   handleLogoutClick(e) {
     api.logout()
   }
@@ -84,17 +85,17 @@ export default class Profile extends Component {
     return (
 
 
+
       <div className="Profile">
-
-       {api.isLoggedIn() && <Link to="/" onClick={(e) => this.handleLogoutClick(e)}>Logout</Link>}
-
         <h2>Profile</h2>
 
-
-        <img style={{width: "150px", height: "150px"}}src={this.state.pictureUrl} alt="profile picture"/>
-
-        <Link to={`/profile/edit`}> Edit profile </Link>
-
+        <img className="picProfile" src={this.state.pictureUrl} alt="profile picture" />
+        <div>
+          {api.isLoggedIn() && <Link to="/" onClick={(e) => this.handleLogoutClick(e)}><i className="fas fa-sign-out-alt"></i></Link>}
+          <botton className="info">
+            <Link to={`/profile/edit`}> <img src={SettingsIcon} style={{height: "30px"}}/> </Link>
+          </botton>
+        </div>
 
 
         {/* If we have this.state.message, display the message  */}

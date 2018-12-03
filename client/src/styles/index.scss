@@ -3,6 +3,7 @@
 $primary: papayawhip;
 $fontColor: rgb(60, 60, 60);
 $default: #0668CF;
+$defaultLight: rgb(88, 173, 199);
 $hoverBtn: rgb(79, 144, 213);
 $font: 'Concert One', cursive;
 
@@ -119,14 +120,13 @@ button {
   list-style: none;
   a{
     text-decoration: none;
-    color:silver;
+    color:gray;
   }
 }
 
 header{
   padding: 10px;
 }
-
 
 // --------------------
 // Style for Home component
@@ -171,6 +171,7 @@ header{
       overflow-x: auto;
     }
 }
+
 // DECK
 
 .deck {
@@ -179,7 +180,7 @@ header{
   flex-shrink: 0;
   width: 145px;
   height: 175px;
-  border: 1px solid silver;
+  border: 1px solid rgb(224, 224, 224);
   border-radius: 12%;
   text-align: center;
   align-content: center;
@@ -190,6 +191,13 @@ header{
     color: gray;
     display: flex;
     // margin: auto;
+  }
+}
+
+@media (max-width: 800px) {
+  .deck {
+    width: 125px;
+    height: 155px;
   }
 }
 
@@ -216,14 +224,6 @@ select, input, textarea{
 
 }
 
-
-.deck1{
-  background: linear-gradient(to bottom right, rgba(118, 252, 9, 0.3), rgb(32, 139, 0));
-}
-.deck2{
-  background: linear-gradient(to bottom right, rgba(203, 9, 252, 0.3), rgb(72, 0, 139));
-}
-
 #cardContainer {
     display: flex;
     // margin: auto;
@@ -231,29 +231,25 @@ select, input, textarea{
     text-align: center;
     margin: 20px;
     width: 20vh;
-    border: 1px solid gray;
+    border: 0.5px solid silver;
     border-radius: 7px;
     height: 30vh;
     display: flex;
     background: white;
     box-shadow: 0px 15px 20px -10px gray;
-    
-    &:before{
-      content: "";
-      color: gray;
-      display: flex;
-      margin: auto;
-    }
+}
 
+.cardTitle {
+  display: flex;
+  margin: auto;
 }
 
 .content{
   margin-top: 12vh;
-
 }
-
 @media only screen and (min-width: 800px) {
   .content {
+    font-size: 19px;
      flex-basis: 750px;
      margin-top:0;
      margin: 12vh;
@@ -288,12 +284,15 @@ select, input, textarea{
   display: inline-grid;
 }
 
-
 .flexWrap{
   display: flex;
   flex-wrap: wrap;
 }
 
+.editProfPic{
+  justify-content: center;
+  align-items: flex-end;
+}
 
 .flexRow{
   display: flex;
@@ -319,6 +318,10 @@ select, input, textarea{
   img{
     width: 7vh;
   }
+}
+
+img{
+  color: $default;
 }
 
 nav{
@@ -352,6 +355,17 @@ nav {
 
 .picProfile {
   border-radius: 50%;
+  width: 150px;
+  height: 150px;
+}
+
+.spc{
+  margin-top: 10vh;
+}
+
+i{
+  font-size: 3vh;
+  color: $default;
 }
 
 .flex1{
@@ -372,112 +386,3 @@ nav {
   align-items: center;
   justify-content: center;
 }
-
-
-// OPTION MENU -- just a test
-
-// .custom-select-wrapper {
-//   position: relative;
-//   display: inline-block;
-//   user-select: none;
-// }
-//   .custom-select-wrapper select {
-//     display: none;
-//   }
-//   .custom-select {
-//     position: relative;
-//     display: inline-block;
-//   }
-//     .custom-select-trigger {
-//       position: relative;
-//       display: block;
-//       width: 130px;
-//       padding: 0 84px 0 22px;
-//       font-size: 22px;
-//       font-weight: 300;
-//       color: #fff;
-//       line-height: 60px;
-//       background: #5c9cd8;
-//       border-radius: 4px;
-//       cursor: pointer;
-//     }
-//       .custom-select-trigger:after {
-//         position: absolute;
-//         display: block;
-//         content: '';
-//         width: 10px; height: 10px;
-//         top: 50%; right: 25px;
-//         margin-top: -3px;
-//         border-bottom: 1px solid #fff;
-//         border-right: 1px solid #fff;
-//         transform: rotate(45deg) translateY(-50%);
-//         transition: all .4s ease-in-out;
-//         transform-origin: 50% 0;
-//       }
-//       .custom-select.opened .custom-select-trigger:after {
-//         margin-top: 3px;
-//         transform: rotate(-135deg) translateY(-50%);
-//       }
-//   .custom-options {
-//     position: absolute;
-//     display: block;
-//     top: 100%; left: 0; right: 0;
-//     min-width: 100%;
-//     margin: 15px 0;
-//     border: 1px solid #b5b5b5;
-//     border-radius: 4px;
-//     box-sizing: border-box;
-//     box-shadow: 0 2px 1px rgba(0,0,0,.07);
-//     background: #fff;
-//     transition: all .4s ease-in-out;
-    
-//     opacity: 0;
-//     visibility: hidden;
-//     pointer-events: none;
-//     transform: translateY(-15px);
-//   }
-//   .custom-select.opened .custom-options {
-//     opacity: 1;
-//     visibility: visible;
-//     pointer-events: all;
-//     transform: translateY(0);
-//   }
-//     .custom-options:before {
-//       position: absolute;
-//       display: block;
-//       content: '';
-//       bottom: 100%; right: 25px;
-//       width: 7px; height: 7px;
-//       margin-bottom: -4px;
-//       border-top: 1px solid #b5b5b5;
-//       border-left: 1px solid #b5b5b5;
-//       background: #fff;
-//       transform: rotate(45deg);
-//       transition: all .4s ease-in-out;
-//     }
-//     .option-hover:before {
-//       background: #f9f9f9;
-//     }
-//     .custom-option {
-//       position: relative;
-//       display: block;
-//       padding: 0 22px;
-//       border-bottom: 1px solid #b5b5b5;
-//       font-size: 18px;
-//       font-weight: 600;
-//       color: #b5b5b5;
-//       line-height: 47px;
-//       cursor: pointer;
-//       transition: all .4s ease-in-out;
-//     }
-//     .custom-option:first-of-type {
-//       border-radius: 4px 4px 0 0;
-//     }
-//     .custom-option:last-of-type {
-//       border-bottom: 0;
-//       border-radius: 0 0 4px 4px;
-//     }
-//     .custom-option:hover,
-//     .custom-option.selection {
-//       background: #f9f9f9;
-//     }

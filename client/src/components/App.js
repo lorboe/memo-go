@@ -16,7 +16,7 @@ import DeckDetail from './pages/DeckDetail';
 import HomeIcon from '../../src/images/original/Home-icon-66_2180674.svg';
 // import SearchIcon from '../../src/images/Search_icon.svg';
 import PlusIcon from '../../src/images/original/plus-icon-79_2180657.svg';
-import ProfileIcon from '../../src/images/original/Profile-icon-74_2180663.svg';
+import ProfileIcon from '../../src/images/white/Profile-icon.svg';
 // import DeckIcon from '../../src/images/Deck-icon_3525389.svg';
 
 class App extends Component {

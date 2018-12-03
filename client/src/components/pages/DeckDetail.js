@@ -2,15 +2,15 @@ import React, { Component } from "react";
 import api from "../../api";
 import { Link, Route } from "react-router-dom";
 import AddCard from './AddCard'
-import SettingsIcon from '../../images/original/Settings.svg';
-import Bin from '../../images/original/Bin.svg';
+// import SettingsIcon from '../../images/original/Settings.svg';
+// import Bin from '../../images/original/Bin.svg';
 
 class DeckDetail extends Component {
   constructor(props) {
     super(props);
     this.state = {
       deck: null,
-      owner: null,  
+      owner: null,
       isFormVisible: true
     };
   }
@@ -59,10 +59,10 @@ class DeckDetail extends Component {
 
 
   render() {
-    if (!this.state.deck && !this.state.owner) 
+    if (!this.state.deck && !this.state.owner)
       return <div>Loading...</div>
-      console.log('state Owner: '+ this.state.owner._id)
-      console.log('deck Owner: '+ this.state.deck._owner)
+    console.log('state Owner: ' + this.state.owner._id)
+    console.log('deck Owner: ' + this.state.deck._owner)
     return (
       <div>
         <div className="flexWrap justCenter">
@@ -81,48 +81,53 @@ class DeckDetail extends Component {
               {/* Id: {this.state.deck._id} */}
             </div>
           </div>
-         
-         
+
+
         </div>
 
         <div className="cardLinks">
-       
-      
-        {this.state.deck._owner === this.state.owner._id  && 
-        <button  onClick={() => this.handleClick()} >
-        New card
-        </button> }
 
-       {this.state.deck._owner === this.state.owner._id  && !!this.state.isFormVisible &&
-       <div>
-          <AddCard 
-            deckId={this.props.match.params.deckId} 
-         onAdd={this.handleAdd} />  
-         </div>}
+
+          {this.state.deck._owner === this.state.owner._id &&
+            <button onClick={() => this.handleClick()} >
+              New card
+        </button>}
+
+          {this.state.deck._owner === this.state.owner._id && !!this.state.isFormVisible &&
+            <div>
+              <AddCard
+                deckId={this.props.match.params.deckId}
+                onAdd={this.handleAdd} />
+            </div>}
 
         </div>
-      
-     
 
         <div className="flexWrap justCenter">
           <div className="cardLinks justCenter">
-
-
-
 
             <hr />
             {/* <div id="cardContainer"></div> */}
             {this.state.deck && this.state.deck.cards.map((card, _id) => (
               <div key={card._id} className="flexWrap justCenter">
-                <div style={{ fontWeight: "bold" }} id="cardContainer">{card.question}</div>
-                <div id="cardContainer">{card.answers}</div>
-                {api.isLoggedIn() && <button onClick={() => this.handleEdit(card._id)}>
-                  <i class="fas fa-cog"></i>
-                </button>}
+                <div style={{ fontWeight: "bold" }} id="cardContainer">
+                  <div className="cardTitle">
+                    {card.question}
+                  </div>
+                </div>
+                <div id="cardContainer">
+                  <div className="cardTitle">
+                    {card.answers}
+                  </div>
+                </div>
+                <div>
+                  {api.isLoggedIn() && <button onClick={() => this.handleEdit(card._id)}>
+                    <i className="fas fa-cog"></i>
+                  </button>}
 
-                {api.isLoggedIn() && <button onClick={() => this.handleDelete(card._id)}>
-                  <i class="fas fa-trash"></i>
-                </button>}
+                  {api.isLoggedIn() && <button onClick={() => this.handleDelete(card._id)}>
+                    <i className="fas fa-trash"></i>
+                  </button>}
+                </div>
               </div>
             ))}
           </div>
@@ -131,8 +136,8 @@ class DeckDetail extends Component {
     );
   }
   componentDidMount() {
-   let id = this.props.match.params.deckId;
-    api.getDeckDetail(id).then(data=> {
+    let id = this.props.match.params.deckId;
+    api.getDeckDetail(id).then(data => {
       this.setState({
         deck: data.deckDoc,
         owner: data.user

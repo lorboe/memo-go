@@ -50,11 +50,11 @@ export default class EditProfile extends Component {
         }, 3000)
       })
     api.addPicture(this.state.file)
-    .then(data => {
-      this.setState({
-        user: {...this.state.user, pictureUrl: data.pictureUrl}
+      .then(data => {
+        this.setState({
+          user: { ...this.state.user, pictureUrl: data.pictureUrl }
+        })
       })
-    })
   }
   handleFileChange = e => {
     this.setState({
@@ -77,43 +77,43 @@ export default class EditProfile extends Component {
 
 
       <div className="Profile">
-        <h2>Profile</h2>
+        {/* <h2>Profile</h2> */}
 
 
         <form onSubmit={(e) => this.handleSubmit(e)}>
-        <input type="file" onChange={this.handleFileChange} className="selectBox" /> <br />
-          {this.state.pictureUrl && <img src={this.state.pictureUrl} style={{ height: 200 }} alt={this.state.alt} />}
-          <br />     <br />
-
-
-        Change your username: 
-        <br/> 
-          New username:
-          <input type="text" name="name" value={this.state.name} onChange={this.handleChange} />
-          <br /> <br />
-
-
-        Update youre email address: 
-        <br/> 
-          New e-mail:
-          <input type="text" name="email" value={this.state.email} onChange={this.handleChange} />
-          <br /> <br />
-
-
-        Would you like to change your password?
-        <br/>
-
-          Current Password:
-          <input type="password" name="currentPassword" value={this.state.currentPassword} onChange={this.handleChange} />
+          <div className="flexWrap editProfPic">
+            <div style={{ margin: "20px" }}>
+              {this.state.pictureUrl && <img className="picProfile" src={this.state.pictureUrl} alt={this.state.alt} />}
+            </div>
+            <div style={{ margin: "20px" }}>
+              <input type="file" onChange={this.handleFileChange} className="selectBox" />
+            </div>
+          </div>
           <br />
 
-          New Password:
-          <input type="password" name="newPassword" value={this.state.newPassword} onChange={this.handleChange} />
-          <br />
+          <div className="flexWrap justCenter spc">
+              <br />
+              <div>
+                Edit username:
+              </div>
+              <br />
+              <input type="text" name="name" value={this.state.name} onChange={this.handleChange} placeholder="New Username"/>
+              <br />
+                Edit e-mail:
 
-         
+              <input type="text" name="email" value={this.state.email} onChange={this.handleChange} />
+              <br />
 
-          <button className="info" type="submit">Update details</button>
+              <br />
+              <input type="password" name="currentPassword" value={this.state.currentPassword} onChange={this.handleChange} placeholder="Current Password"/>
+              <br />
+              
+              <input type="password" name="newPassword" value={this.state.newPassword} onChange={this.handleChange} placeholder="New Password"/>
+              <br />
+          </div>
+
+          <button type="submit"><i className="far fa-check-circle"></i>Update</button><span></span>
+          <button type="delete"><i className="fas fa-trash"></i>Delete</button>
         </form>
 
         {/* If we have this.state.message, display the message  */}

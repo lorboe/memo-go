@@ -37,10 +37,22 @@ class Signup extends Component {
     return (
       <div className="Signup">
         <h2>Signup</h2>
-        <form>
-          Email: <input type="text" value={this.state.email} onChange={(e) => this.handleInputChange("email", e)} /> <br />
-          Name: <input type="text" value={this.state.name} onChange={(e) => this.handleInputChange("name", e)} /> <br />
-          Password: <input type="password" value={this.state.password} onChange={(e) => this.handleInputChange("password", e)} /> <br />
+        <form className="spc">
+          <div>
+          Email:
+          </div>
+          <br/> 
+          <input type="text" value={this.state.email} onChange={(e) => this.handleInputChange("email", e)} placeholder="Email"/> <br />
+          <div>
+          Name:
+          </div>
+          <br/> 
+          <input type="text" value={this.state.name} onChange={(e) => this.handleInputChange("name", e)} placeholder="Name"/> <br />
+          <div>
+          Password: 
+          </div>
+          <br/> 
+          <input type="password" value={this.state.password} onChange={(e) => this.handleInputChange("password", e)} placeholder="password"/> <br />
           <button onClick={(e) => this.handleClick(e)}>Signup</button>
         </form>
         {this.state.message && <div className="info info-danger">

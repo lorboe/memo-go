@@ -45,7 +45,7 @@ button {
   list-style: none; }
   .prfl a {
     text-decoration: none;
-    color: silver; }
+    color: gray; }
 
 header {
   padding: 10px; }
@@ -85,7 +85,7 @@ header {
   flex-shrink: 0;
   width: 145px;
   height: 175px;
-  border: 1px solid silver;
+  border: 1px solid #e0e0e0;
   border-radius: 12%;
   text-align: center;
   align-content: center;
@@ -93,6 +93,11 @@ header {
   .deck:before {
     color: gray;
     display: flex; }
+
+@media (max-width: 800px) {
+  .deck {
+    width: 125px;
+    height: 155px; } }
 
 .deckInfo {
   margin-top: 4vh;
@@ -114,35 +119,29 @@ select, input, textarea {
   align-items: center;
   justify-content: center; }
 
-.deck1 {
-  background: linear-gradient(to bottom right, rgba(118, 252, 9, 0.3), #208b00); }
-
-.deck2 {
-  background: linear-gradient(to bottom right, rgba(203, 9, 252, 0.3), #48008b); }
-
 #cardContainer {
   display: flex;
   align-content: center;
   text-align: center;
   margin: 20px;
   width: 20vh;
-  border: 1px solid gray;
+  border: 0.5px solid silver;
   border-radius: 7px;
   height: 30vh;
   display: flex;
   background: white;
   box-shadow: 0px 15px 20px -10px gray; }
-  #cardContainer:before {
-    content: "";
-    color: gray;
-    display: flex;
-    margin: auto; }
+
+.cardTitle {
+  display: flex;
+  margin: auto; }
 
 .content {
   margin-top: 12vh; }
 
 @media only screen and (min-width: 800px) {
   .content {
+    font-size: 19px;
     flex-basis: 750px;
     margin-top: 0;
     margin: 12vh;
@@ -176,6 +175,10 @@ select, input, textarea {
   display: flex;
   flex-wrap: wrap; }
 
+.editProfPic {
+  justify-content: center;
+  align-items: flex-end; }
+
 .flexRow {
   display: flex;
   flex-direction: row; }
@@ -196,6 +199,9 @@ select, input, textarea {
   flex: 1; }
   .navIcon img {
     width: 7vh; }
+
+img {
+  color: #0668CF; }
 
 nav img:hover {
   width: 7.4vh; }
@@ -220,7 +226,16 @@ nav {
     display: none; } }
 
 .picProfile {
-  border-radius: 50%; }
+  border-radius: 50%;
+  width: 150px;
+  height: 150px; }
+
+.spc {
+  margin-top: 10vh; }
+
+i {
+  font-size: 3vh;
+  color: #0668CF; }
 
 .flex1 {
   flex: 1; }

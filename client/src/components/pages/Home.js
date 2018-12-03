@@ -36,12 +36,12 @@ class Home extends Component {
 tableContent.push(
         <div className="flexRow flexShadow">
           <div className="scrollFlex">
-            <div>
+            
               <div className="deck deckHome">
-                <img className="picOnDeck" style={{ height: "30px", width: "30px" }} src={sortedDecks[i]._owner.pictureUrl} alt="pictures" />
+                <img className="picOnDeck" src={sortedDecks[i]._owner.pictureUrl} alt="pictures" />
                 <Link to={`/details/${sortedDecks[i]._id}`}>{sortedDecks[i].title}</Link>
               </div>
-            </div>
+            
           </div>
          </div>
 )}
