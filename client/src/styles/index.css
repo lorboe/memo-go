@@ -84,7 +84,7 @@ header {
   margin: auto;
   flex-shrink: 0;
   width: 145px;
-  height: 155px;
+  height: 175px;
   border: 1px solid silver;
   border-radius: 12%;
   text-align: center;
@@ -94,16 +94,22 @@ header {
     color: gray;
     display: flex; }
 
-select, input {
+.deckInfo {
+  margin-top: 4vh;
+  margin-left: 3vh; }
+
+select, input, textarea {
   box-sizing: border-box;
   resize: none;
   border: none;
+  border-left: 1px solid silver;
   border-bottom: 2px solid silver;
+  border-radius: 7px;
   width: 90%;
   font-family: "Concert One", cursive;
   color: #3c3c3c;
   font-size: 100%;
-  line-height: 2;
+  line-height: 1;
   margin-bottom: 3vh;
   align-items: center;
   justify-content: center; }
@@ -116,7 +122,6 @@ select, input {
 
 #cardContainer {
   display: flex;
-  margin: auto;
   align-content: center;
   text-align: center;
   margin: 20px;
@@ -128,7 +133,7 @@ select, input {
   background: white;
   box-shadow: 0px 15px 20px -10px gray; }
   #cardContainer:before {
-    content: "CARD";
+    content: "";
     color: gray;
     display: flex;
     margin: auto; }
@@ -144,7 +149,9 @@ select, input {
     padding: 10vh;
     border-radius: 7px;
     background: white;
-    box-shadow: 2px 2px 20px silver; } }
+    box-shadow: 0px 1px 2px silver;
+    position: relative;
+    z-index: 3; } }
 
 .circlePic {
   margin: -85px 0 0 -15px; }
@@ -156,6 +163,8 @@ select, input {
   border: 2px solid papayawhip;
   box-shadow: 0 2px 3px 0 silver;
   border-radius: 50px;
+  margin-top: -80px;
+  margin-left: -14px;
   object-fit: cover; }
 
 .deckHome {
@@ -170,6 +179,11 @@ select, input {
 .flexRow {
   display: flex;
   flex-direction: row; }
+
+.justCenter {
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: left; }
 
 .flexBasic {
   display: flex;
@@ -190,8 +204,23 @@ nav nav:after {
   content: "";
   border-bottom: 2px solid white; }
 
+nav {
+  z-index: 4; }
+
+.navbar2 {
+  width: 100%;
+  height: 28vh;
+  background: #0668CF;
+  position: fixed;
+  z-index: 1;
+  top: 0; }
+
+@media only screen and (max-width: 800px) {
+  .navbar2 {
+    display: none; } }
+
 .picProfile {
-  border-radius: 12px; }
+  border-radius: 50%; }
 
 .flex1 {
   flex: 1; }

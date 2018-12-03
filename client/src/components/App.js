@@ -58,6 +58,7 @@ class App extends Component {
               </Link>}
 
           </nav>
+          <div className="navbar2"></div>
         </div>
         <div className="content">
           {/* <div className="fixed">
@@ -87,7 +88,6 @@ class App extends Component {
             {/* <Route path="/details/:deckId/add-card" component={AddCard}/> */}
             <Route path="/edit-deck/:id" component={EditDeck} />
             <Route path="/cards" component={Cards} />
-            {/* <Route path="/add-card" component={AddCard} /> */}
             <Route path="/edit-card/:id" component={EditCard} />
             <Route path="/signup" component={Signup} />
             <Route path="/login" component={Login} />
