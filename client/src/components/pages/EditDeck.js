@@ -45,22 +45,22 @@ class EditDeck extends Component {
               /> */}
               <br/><br/>
            Title: <br/>
-           <input type="text" value={this.props.title} onChange={(e) => { this.handleInputChange("title", e) }} />
+           <input type="text" value={this.state.title} onChange={(e) => { this.handleInputChange("title", e) }} />
            
-          Category:<select className="selectBox" onChange={(e) => { this.handleInputChange("category", e) }} value={this.props.category}>
+          Category:<select className="selectBox" onChange={(e) => { this.handleInputChange("category", e) }} value={this.state.category}>
                 <option value="web developmenet"> web development</option>
                 <option value="languages">languages</option>
                 <option value="business">business</option>
                 <option value="other">other</option>
               </select>
            
-          Difficulty:<select className="selectBox" onChange={(e) => { this.handleInputChange("difficulty", e) }} value={this.props.difficulty}>
+          Difficulty:<select className="selectBox" onChange={(e) => { this.handleInputChange("difficulty", e) }} value={this.state.difficulty}>
                 <option value="beginner">beginner</option>
                 <option value="advanced-beginner">advanced-beginner</option>
                 <option value="experienced">experienced</option>
                 <option value="expert">expert</option>
             </select>
-          Visibility: <select className="selectBox" onChange={(e) => { this.handleInputChange("visibility", e) }} value={this.props.visibility}>
+          Visibility: <select className="selectBox" onChange={(e) => { this.handleInputChange("visibility", e) }} value={this.state.visibility}>
                 <option value="public">public</option>
                 <option value="private">private</option>
             </select>

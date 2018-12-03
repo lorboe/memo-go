@@ -33,7 +33,8 @@ class Home extends Component {
         </div>
         )}
         if(sortedDecks[i].visibility === "public") {
-tableContent.push(
+          
+        tableContent.push(
         <div className="flexRow flexShadow">
           <div className="scrollFlex">
             <div>
