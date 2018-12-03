@@ -8,11 +8,11 @@ class DeckDetail extends Component {
     super(props);
     this.state = {
       deck: null,
-      // cards: [],
+      owner: null,  
       isFormVisible: true
     };
   }
-   
+
   handleClick() {
     if (this.state.isFormVisible === false)
       this.setState({
@@ -23,6 +23,7 @@ class DeckDetail extends Component {
         isFormVisible:false
       })
   }
+
 
   handleDelete(idClicked) {
     api.deleteCard(idClicked)
@@ -56,8 +57,10 @@ class DeckDetail extends Component {
 
 
   render() {
-    if (!this.state.deck)
+    if (!this.state.deck && !this.state.owner) 
       return <div>Loading...</div>
+      console.log('state Owner: '+ this.state.owner._id)
+      console.log('deck Owner: '+ this.state.deck._owner)
     return (
       <div className="flexWrap">
         <div className="deckInfo">
@@ -77,14 +80,22 @@ class DeckDetail extends Component {
         </div>} */}
         <div className="cardLinks">
        
-          <button className={this.state.isFormVisible ? "shown" : "hidden"} onClick={() => this.handleClick()} >
-            New card
-          </button>
-           
-          {!!this.state.isFormVisible && <AddCard 
-            deckId={this.props.match.params.deckId} 
-            onAdd={this.handleAdd} /> }
           
+        {this.state.deck._owner === this.state.owner._id  && 
+        <button  onClick={() => this.handleClick()} >
+        New card
+        </button> }
+
+       {this.state.deck._owner === this.state.owner._id  && !!this.state.isFormVisible &&
+       <div>
+          <AddCard 
+            deckId={this.props.match.params.deckId} 
+         onAdd={this.handleAdd} />  
+         </div>}
+
+
+      
+     
 
           {this.state.deck && this.state.deck.cards.map((card, _id) => (
             <div key={card._id}>
@@ -99,13 +110,13 @@ class DeckDetail extends Component {
     );
   }
   componentDidMount() {
-    let id = this.props.match.params.deckId;
-    api.getDeckDetail(id).then(deck => {
+   let id = this.props.match.params.deckId;
+    api.getDeckDetail(id).then(data=> {
       this.setState({
-        deck: deck,
-        // cards: deck.cards
+        deck: data.deckDoc,
+        owner: data.user
       });
-    });
+    })
   }
 }
 

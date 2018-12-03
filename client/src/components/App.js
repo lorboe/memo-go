@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Link, NavLink, Switch } from 'react-router-dom';
 import Home from './pages/Home';
-// import Decks from './pages/Decks';
 import AddDeck from './pages/AddDeck';
 import EditDeck from './pages/EditDeck';
 import Cards from './pages/Cards';
@@ -10,7 +9,6 @@ import EditCard from './pages/EditCard';
 // import Secret from './pages/Secret';
 import Profile from './pages/Profile';
 import EditProfile from './pages/EditProfile';
-
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import api from '../api';

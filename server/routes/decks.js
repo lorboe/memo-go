@@ -26,10 +26,15 @@ router.get('/:id', checkId('id'), (req, res, next) => {
   Promise.all([
     Deck.findById(id).lean(),
     Card.find({_deck: id}),
+    User.findById(req.user._id)
   ])
-    .then(([deckDoc,cardDocs]) => {
+    .then(([deckDoc,cardDocs,userDocs]) => {
       deckDoc.cards = cardDocs
-      res.json(deckDoc)
+      user = userDocs
+      res.json({
+        deckDoc,
+        user
+      })
     })
 })
 
@@ -39,8 +44,6 @@ router.put('/:deckId', isLoggedIn, checkId('deckId'), (req, res, next) => {
   Deck.findByIdAndUpdate(id, {
     title: req.body.title,
     category: req.body.category,
-    // cards: req.body.cards,
-    // likes: req.body.likes,
     description: req.body.description,
   })
     .then(deckDoc => {

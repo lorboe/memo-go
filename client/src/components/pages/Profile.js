@@ -72,6 +72,10 @@ export default class Profile extends Component {
         })
       })
   }
+  
+  handleLogoutClick(e) {
+    api.logout()
+  }
   render() {
     // If there is 
     if (!this.state.email) {
@@ -81,6 +85,9 @@ export default class Profile extends Component {
 
 
       <div className="Profile">
+
+       {api.isLoggedIn() && <Link to="/" onClick={(e) => this.handleLogoutClick(e)}>Logout</Link>}
+
         <h2>Profile</h2>
 
 
