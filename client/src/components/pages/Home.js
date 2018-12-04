@@ -5,6 +5,7 @@ import Sport from "../../images/original/Sport_icon_289620.svg";
 import { Link } from 'react-router-dom'
 import api from '../../api'
 
+
 class Home extends Component {
   constructor(props) {
     super(props)
@@ -24,28 +25,32 @@ class Home extends Component {
     let sortedDecks = this.state.decks.sort((a, b) => a.category > b.category ? 1 : -1).filter(deck => deck.title.toUpperCase().includes(this.state.search.toUpperCase()))
     let tableContent = [];
     for (let i = 0; i < sortedDecks.length; i++) {
-      if(i===0 || sortedDecks[i].category !== sortedDecks[i-1].category) {
-       
+      if (i === 0 || sortedDecks[i].category !== sortedDecks[i - 1].category) {
+
         tableContent.push(
-        <div key={"c-"+i} className="iconCategories">
-          <img src={Atom} style={{ width: "7vh" }} />
-          {sortedDecks[i].category}
-        </div>
-        )}
-        if(sortedDecks[i].visibility === "public") {
-tableContent.push(
-        <div className="flexRow flexShadow">
-          <div className="scrollFlex">
-            
-              <div className="deck deckHome">
-                <img className="picOnDeck" src={sortedDecks[i]._owner.pictureUrl} alt="pictures" />
-                <Link to={`/details/${sortedDecks[i]._id}`}>{sortedDecks[i].title}</Link>
-              </div>
-            
+          <div key={"c-" + i} className="iconCategories">
+            <img src={Atom} style={{ width: "7vh" }} />
+            {sortedDecks[i].category}
           </div>
-         </div>
-)}
-}
+        )
+        console.log("line 36 - DECKS is: ",this.state.decks)
+      }
+      if (sortedDecks[i].visibility === "public") {
+let userId = sortedDecks[i]._id
+        tableContent.push(
+          <div className="flexRow flexShadow">
+            <div className="scrollFlex">
+
+              <div className="deck deckHome">
+                <Link to={`/public-profile/${sortedDecks[i]._owner._id}`}><img className="picOnDeck" src={sortedDecks[i]._owner.pictureUrl} alt="pictures" /></Link>
+                <Link to={`/details/${userId}`}>{sortedDecks[i].title}</Link>
+              </div>
+
+            </div>
+          </div>
+        )
+      }
+    }
 
 
     return (
@@ -58,7 +63,7 @@ tableContent.push(
           onChange={e => this.handleSearch(e.target.value)}
         />
         {/* <div className="scrollFlex"> */}
-          {tableContent}
+        {tableContent}
         {/* </div> */}
       </div>
     )
@@ -71,7 +76,7 @@ tableContent.push(
         this.setState({
           decks: decks,
         })
-  
+
       })
   }
 }

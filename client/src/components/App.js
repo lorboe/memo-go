@@ -16,20 +16,21 @@ import DeckDetail from './pages/DeckDetail';
 import HomeIcon from '../../src/images/original/Home-icon-66_2180674.svg';
 // import SearchIcon from '../../src/images/Search_icon.svg';
 import PlusIcon from '../../src/images/original/plus-icon-79_2180657.svg';
-import ProfileIcon from '../../src/images/white/Profile-icon.svg';
+import ProfileIcon from '../../src/images/original/Profile-icon-74_2180663.svg';
 // import DeckIcon from '../../src/images/Deck-icon_3525389.svg';
+import PublicProfile from './pages/PublicProfile'
 
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
       decks: [],
-     
+
     }
     // api.loadUser();
   }
 
- handleLogoutClick(e) {
+  handleLogoutClick(e) {
     api.logout()
   }
 
@@ -39,9 +40,13 @@ class App extends Component {
         <div id="navbar">
           <nav className="flexRow">
             <NavLink to="/" exact className="navIcon">
+              <div className="iconCenter">
+                <i className="fab fa-accusoft" style={{ color: "white" }}></i>
+              </div>
+            </NavLink>
+            <NavLink to="/" exact className="navIcon">
               <img src={HomeIcon} />
             </NavLink>
-
             {/* <NavLink to="/decks" className="navIcon">
               <img src={DeckIcon} />
             </NavLink> */}
@@ -51,10 +56,14 @@ class App extends Component {
             </NavLink>
 
             {api.isLoggedIn() ? <Link to="/profile" className="navIcon">
-              <img src={ProfileIcon} />
+              <div className="justCenter">
+                <i class="fas fa-user"></i>
+              </div>
             </Link> :
               <Link to="/login" className="navIcon">
-                <img src={ProfileIcon} />
+                <div className="justCenter">
+                  <i class="fas fa-user"></i>
+                </div>
               </Link>}
 
           </nav>
@@ -82,18 +91,22 @@ class App extends Component {
 
           <Switch>
             <Route path="/" exact component={Home} />
-            {/* <Route path="/decks" component={Decks} /> */}
             <Route path="/add-deck" component={AddDeck} />
             <Route path="/details/:deckId/" component={DeckDetail} />
-            {/* <Route path="/details/:deckId/add-card" component={AddCard}/> */}
             <Route path="/edit-deck/:id" component={EditDeck} />
             <Route path="/cards" component={Cards} />
             <Route path="/edit-card/:id" component={EditCard} />
             <Route path="/signup" component={Signup} />
             <Route path="/login" component={Login} />
-            <Route  path="/profile" exact component={Profile} />
+            <Route path="/profile" exact component={Profile} />
             <Route path="/profile/edit" component={EditProfile} />
 
+         
+            <Route path="/public-profile/:userId" component={PublicProfile} />
+
+
+            {/* <Route path="/decks" component={Decks} /> */}
+            {/* <Route path="/details/:deckId/add-card" component={AddCard}/> */}
             {/* <Route path="/secret" component={Secret} /> */}
             <Route render={() => <h2>404</h2>} />
           </Switch>

@@ -2,7 +2,8 @@
 // Definition of variables
 $primary: papayawhip;
 $fontColor: rgb(60, 60, 60);
-$default: #0668CF;
+// $default: #0668CF;
+$default: #21A6AF;
 $defaultLight: rgb(88, 173, 199);
 $hoverBtn: rgb(79, 144, 213);
 $font: 'Concert One', cursive;
@@ -206,6 +207,10 @@ header{
   margin-left: 3vh
 }
 
+.deckDetail {
+  align-self: flex-end;
+}
+
 select, input, textarea{
   box-sizing: border-box;
   resize: none;
@@ -225,15 +230,13 @@ select, input, textarea{
 }
 
 #cardContainer {
-    display: flex;
-    // margin: auto;
     align-content: center;
     text-align: center;
     margin: 20px;
     width: 20vh;
+    height: 27vh;
     border: 0.5px solid silver;
-    border-radius: 7px;
-    height: 30vh;
+    border-radius: 12%;
     display: flex;
     background: white;
     box-shadow: 0px 15px 20px -10px gray;
@@ -316,22 +319,30 @@ select, input, textarea{
 .navIcon {
   flex: 1;
   img{
-    width: 7vh;
+    width: 8vh;
   }
-}
-
-img{
-  color: $default;
+  i{
+    width: 8vh;
+    color: white;
+  } 
 }
 
 nav{
   img:hover{
-    width: 7.4vh;
+    width: 8.4vh;
   }
-  nav:after{
+  i:hover{
+    width: 8.4vh;
+  }
+  i:after{
     content:"";
     border-bottom: 2px solid white;
   }
+}
+
+.iconCenter{
+  display: flex;
+  margin: auto;
 }
 
 nav {
@@ -386,3 +397,4 @@ i{
   align-items: center;
   justify-content: center;
 }
+

@@ -8,9 +8,11 @@ class EditDeck extends Component {
     this.state = {
       title: "",
       category: "",
-      cards: [],
-      description: "",
-      message: null
+      difficulty: "",
+      visibility: "",
+      // description: "",
+      message: null,
+      pictureUrl: ""
     }
   }
 
@@ -22,65 +24,65 @@ class EditDeck extends Component {
 
   handleClick(e) {
     e.preventDefault()
-    let data = {
+    let dataFromForm = {
       title: this.state.title,
       category: this.state.category,
-      cards: this.state.cards,
-      description: this.state.description,
+      difficulty: this.state.difficulty,
+      visibility: this.state.visibility,
     }
-    api.updateDeck(this.props.match.params.id, data)
-      .then(result => {
-        console.log('SUCCESS!')
-        this.setState({
-          message: `Your deck '${this.state.title}' has been updated`
-        })
-        setTimeout(() => {
-          this.setState({
-            message: null
-          })
-        }, 2000)
-      })
-      .catch(err => this.setState({ message: err.toString() }))
+        this.props.onSubmitDeckChanges(dataFromForm)
+        // this.props.handleEditDeck(data)
   }
+
   render() {
     return (
       <div className="EditDeck">
-        <h3>Create Deck</h3>
-        <div className="flexWrap">
-          <div className="deck"></div>
-          <div>
             <form>
-              Title: <input type="text" value={this.state.title} onChange={(e) => { this.handleInputChange("title", e) }} />
-              <br />
-              Category: <input type="text" value={this.state.category} onChange={(e) => { this.handleInputChange("category", e) }} />
-              <br />
-              {/* Cards: <input type="number" value={this.state.cards} onChange={(e) => { this.handleInputChange("cards", e) }} /> <br /> */}
-              {/* Description: <textarea value={this.state.description} cols="30" rows="10" onChange={(e) => { this.handleInputChange("description", e) }} ></textarea> <br />
-            <button onClick={(e) => this.handleClick(e)}>Update deck</button> */}
-            </form>
-            {this.state.message && <div className="info">
-              {this.state.message}
-            </div>}
-          </div>
-        </div>
-        <hr />
-        <div id="cardContainer">
-          <div className="card">
-          </div>
-        </div>
+              {/* <img
+                style={{ width: "150px", height: "150px" }}
+                src={this.props.pictureUrl}
+                alt="owner picture"
+              /> */}
+              <br/><br/>
+           Title: <br/>
+           <input type="text" value={this.state.title} onChange={(e) => { this.handleInputChange("title", e) }} />
+           
+          Category:<select className="selectBox" onChange={(e) => { this.handleInputChange("category", e) }} value={this.state.category}>
+                <option value="web developmenet"> web development</option>
+                <option value="languages">languages</option>
+                <option value="business">business</option>
+                <option value="other">other</option>
+              </select>
+           
+          Difficulty:<select className="selectBox" onChange={(e) => { this.handleInputChange("difficulty", e) }} value={this.state.difficulty}>
+                <option value="beginner">beginner</option>
+                <option value="advanced-beginner">advanced-beginner</option>
+                <option value="experienced">experienced</option>
+                <option value="expert">expert</option>
+            </select>
+          Visibility: <select className="selectBox" onChange={(e) => { this.handleInputChange("visibility", e) }} value={this.state.visibility}>
+                <option value="public">public</option>
+                <option value="private">private</option>
+            </select>
+            <button onClick={(e) => this.handleClick(e)}>Save Changes</button>
+          </form>
+          
+        </div>      
+      
 
-      </div>
+  
     );
   }
   componentDidMount() {
-    let id = this.props.match.params.id
+    let id = this.props.deckId
     api.getDeckDetail(id)
-      .then(deck => {
+      .then(data => {
         this.setState({
-          title: deck.title,
-          category: deck.category,
-          cards: deck.cards,
-          description: deck.description,
+          title: data.deckDoc.title,
+          category: data.deckDoc.category,
+          difficulty: data.deckDoc.difficulty,
+          visibility: data.deckDoc.visibility,
+          pictureUrl: data.deckDoc._owner.pictureUrl
         })
       })
   }

@@ -8,7 +8,7 @@ body {
 nav {
   width: 100%;
   height: 8vh;
-  background: #0668CF;
+  background: #21A6AF;
   position: fixed;
   top: 0; }
 
@@ -17,7 +17,7 @@ nav {
   padding: 10px 20px;
   border-radius: 10px;
   display: inline-block;
-  background-color: #0668CF;
+  background-color: #21A6AF;
   font-size: 2.4vh;
   color: white; }
 
@@ -29,11 +29,11 @@ button {
   padding: 8px 18px;
   border-radius: 10px;
   display: inline-block;
-  border: 2px solid #0668CF;
+  border: 2px solid #21A6AF;
   font-size: 2vh;
   font-family: "Concert One", cursive;
   background: transparent;
-  color: #0668CF;
+  color: #21A6AF;
   box-shadow: inset 0px 1px 2px 0 silver; }
   button:hover {
     cursor: pointer;
@@ -103,6 +103,9 @@ header {
   margin-top: 4vh;
   margin-left: 3vh; }
 
+.deckDetail {
+  align-self: flex-end; }
+
 select, input, textarea {
   box-sizing: border-box;
   resize: none;
@@ -120,14 +123,13 @@ select, input, textarea {
   justify-content: center; }
 
 #cardContainer {
-  display: flex;
   align-content: center;
   text-align: center;
   margin: 20px;
   width: 20vh;
+  height: 27vh;
   border: 0.5px solid silver;
-  border-radius: 7px;
-  height: 30vh;
+  border-radius: 12%;
   display: flex;
   background: white;
   box-shadow: 0px 15px 20px -10px gray; }
@@ -198,17 +200,24 @@ select, input, textarea {
 .navIcon {
   flex: 1; }
   .navIcon img {
-    width: 7vh; }
-
-img {
-  color: #0668CF; }
+    width: 8vh; }
+  .navIcon i {
+    width: 8vh;
+    color: white; }
 
 nav img:hover {
-  width: 7.4vh; }
+  width: 8.4vh; }
 
-nav nav:after {
+nav i:hover {
+  width: 8.4vh; }
+
+nav i:after {
   content: "";
   border-bottom: 2px solid white; }
+
+.iconCenter {
+  display: flex;
+  margin: auto; }
 
 nav {
   z-index: 4; }
@@ -216,7 +225,7 @@ nav {
 .navbar2 {
   width: 100%;
   height: 28vh;
-  background: #0668CF;
+  background: #21A6AF;
   position: fixed;
   z-index: 1;
   top: 0; }
@@ -235,7 +244,7 @@ nav {
 
 i {
   font-size: 3vh;
-  color: #0668CF; }
+  color: #21A6AF; }
 
 .flex1 {
   flex: 1; }

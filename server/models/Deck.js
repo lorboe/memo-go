@@ -33,7 +33,16 @@ const deckSchema = new mongoose.Schema({
    _owner: { 
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
-  }
+  },
+
+  likes: [
+    {
+      user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+      }
+    }
+  ]
 });
 
 const Deck = mongoose.model('Deck', deckSchema);

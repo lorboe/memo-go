@@ -26,15 +26,9 @@ class DeckDetail extends Component {
     })
   }
 
-  addRateHard() {
+  addRate() {
     this.setState({
       rateHard: this.state.rateHard + 1
-    })
-  }
-
-  addRateEasy() {
-    this.setState({
-      rateEasy: this.state.rateEasy + 1
     })
   }
 
@@ -118,9 +112,10 @@ class DeckDetail extends Component {
 
     return (
       <div>
+
         {!this.state.isDeckEditFormVisible &&
           <div className="flexWrap justCenter">
-            <div className="flexRow">
+            <div className="flexBasic">
               <div className="deck deckHome">
                 <img className="picOnDeck"
                   // style={{ width: "150px", height: "150px" }}
@@ -129,29 +124,22 @@ class DeckDetail extends Component {
                 />
                 {this.state.deck.title}
               </div>
-              <div className="deckDetail">
-                <div className="deckInfo">
-                  Category: {this.state.deck.category}
-                  <br />
-                  Difficulty: {this.state.deck.difficulty}
-                  <br />
-                  Is this deck public?{" "}
-                  {this.state.deck.visibility === "private" ? "No" : "Yes"}
-                  <br />
-                </div>
-                <div className="justCenter">
-                  <button onClick={() => this.addRateHard()} style={{ border: "transparent", boxShadow: "none", margin:"auto" }}>
-                    <i style={{ marginRight: "5px" }} className="far fa-frown-open"></i>{this.state.rateHard}
-                  </button>
 
-                  <button onClick={() => this.addRateEasy()} style={{ border: "transparent", boxShadow: "none", margin:"auto" }}>
-                    <i style={{ marginRight: "5px" }} className="far fa-smile-beam"></i>{this.state.rateEasy}
-                  </button>
+              <button onClick={() => this.addRate()}>
+                <i class="far fa-star"></i>{this.state.rate}
+              </button>
 
-                  <button onClick={() => this.addLikes()} style={{ border: "transparent", boxShadow: "none", margin:"auto" }}>
-                    <i style={{ marginRight: "5px" }} className="far fa-thumbs-up"></i>{this.state.nbOfLikes}
-                  </button>
-                </div>
+              <button onClick={() => this.addLikes()}>
+                <i class="far fa-thumbs-up"></i>{this.state.nbOfLikes}
+              </button>
+              <div className="deckInfo">
+                Category: {this.state.deck.category}
+                <br />
+                Difficulty: {this.state.deck.difficulty}
+                <br />
+                Is this deck public?{" "}
+                {this.state.deck.visibility === "private" ? "No" : "Yes"}
+                <br />
               </div>
             </div>
           </div>}

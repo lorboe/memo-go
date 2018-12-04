@@ -53,11 +53,11 @@ class EditCard extends Component {
         <div className="flexWrap">
           <div className="deck deckHome"></div>
           <div className="flexBasic">
-            <form className="test">
-              {/* Question: */}
-              <input type="text" value={this.state.question} onChange={(e) => { this.handleInputChange("question", e) }} placeholder="Question" /> <br />
-              {/* Answers: */}
-              <input type="text" value={this.state.answers} onChange={(e) => { this.handleInputChange("answers", e) }} placeholder="Answer" /> <br />
+            <form>
+            
+              <input className="iconCenter" type="text" value={this.state.question} onChange={(e) => { this.handleInputChange("question", e) }} placeholder="Question" /> <br />
+            
+              <input className="iconCenter" type="text" value={this.state.answers} onChange={(e) => { this.handleInputChange("answers", e) }} placeholder="Answer" /> <br />
               Visibility:
           <select onChange={(e) => { this.handleInputChange("visibility", e) }}>
                 <option value={this.state.visibility}>public</option>

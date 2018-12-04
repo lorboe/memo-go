@@ -116,6 +116,7 @@ updateCard(id, body) {
 //     .then(res => res.data)
 //     .catch(errHandler)
 // },
+
 postCards(data, deckId) {
   console.log('DECKID',deckId)
   return service
@@ -149,12 +150,6 @@ deleteCard(id) {
       .catch(errHandler)
   },
   
-  // getUsers() {
-  //   return service
-  //     .get('/users')
-  //     .then(res => res.data)
-  //     .catch(errHandler)
-  // },
 
   editProfile(body) {
     return service
@@ -176,6 +171,30 @@ deleteCard(id) {
       .catch(errHandler)
   },
 
+//   getLoggedInUserSync() {
+//     return JSON.parse(localStorage.getItem("user"));
+//   },
+
+//  getFollowing() {
+//     return service
+//       .get("/users/following")
+//       .then(res => res.data)
+//       .catch(errHandler);
+//   },
+
+//   getFollowers() {
+//     return service
+//       .get("/users/followers")
+//       .then(res => res.data)
+//       .catch(errHandler);
+//   },
+
+//   postFollowStatus(id) {
+//     return service
+//       .post(`/users/${id}/follow`)
+//       .then(res => res.data)
+//       .catch(errHandler);
+//   },
 
 
   // addPicture(file) {

@@ -9,6 +9,7 @@ export default class Profile extends Component {
     super(props)
     this.state = {
       // user: null,
+      name: null,
       email: null,
       currentPassword: null,
       newPassword: null,
@@ -34,6 +35,7 @@ export default class Profile extends Component {
   handleSubmit(e) {
     e.preventDefault()
     let body = {
+      name: this.state.name,
       // user: this.state.user,
       email: this.state.email,
       pictureUrl: this.state.pictureUrl,
@@ -73,6 +75,18 @@ export default class Profile extends Component {
         })
       })
   }
+  
+  handleFileChange = e => {
+    this.setState({
+      name: null
+    })
+    let name = e.target.name
+      .then(data => {
+        this.setState({
+          name: name
+        })
+      })
+  }
 
   handleLogoutClick(e) {
     api.logout()
@@ -87,7 +101,7 @@ export default class Profile extends Component {
 
 
       <div className="Profile">
-        <h2>Profile</h2>
+        <h2>{this.state.name}</h2>
 
         <img className="picProfile" src={this.state.pictureUrl} alt="profile picture" />
         <div>
@@ -120,6 +134,7 @@ export default class Profile extends Component {
     api.getProfile()
       .then((data) => {
         this.setState({
+          user: data.user,
           email: data.user.email,
           pictureUrl: data.user.pictureUrl,
           decks: data.decks
