@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import api from "../../api";
-import { Link, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 import AddCard from "./AddCard";
-import SettingsIcon from "../../images/original/Settings.svg";
 import EditDeck from "./EditDeck";
 
 class DeckDetail extends Component {
@@ -50,8 +49,8 @@ class DeckDetail extends Component {
   }
 
   handleEditDeckChanges(dataFromForm) {
-    this.handleEditDeckClick()
-    this.handleEditDeck(dataFromForm)
+    this.handleEditDeckClick();
+    this.handleEditDeck(dataFromForm);
   }
   handleEditDeckClick() {
     if (this.state.isDeckEditFormVisible === true)
@@ -65,17 +64,15 @@ class DeckDetail extends Component {
   }
 
   handleEditDeck(dataFromForm) {
-    api.updateDeck(this.state.deck._id, dataFromForm)
-      .then(data => {
-        console.log('SUCCESS!', data)
-        this.setState({
-          deck: data.deckDoc,
-          currUser: data.user,
-          message: `Your deck '${this.state.title}' has been updated`
-        })
-      })
+    api.updateDeck(this.state.deck._id, dataFromForm).then(data => {
+      console.log("SUCCESS!", data);
+      this.setState({
+        deck: data.deckDoc,
+        currUser: data.user,
+        message: `Your deck '${this.state.title}' has been updated`
+      });
+    });
   }
-
 
   handleDelete(idClicked) {
     api
@@ -101,9 +98,6 @@ class DeckDetail extends Component {
     this.props.history.push("/edit-card/" + idClicked);
   }
 
-  //EDITING DECKS
-
-
   handleAdd = card => {
     this.setState({
       deck: {
@@ -115,15 +109,18 @@ class DeckDetail extends Component {
 
   render() {
     if (!this.state.deck && !this.state.currUser) return <div>Loading...</div>;
+    let deckId=this.state.deck._id
 
     return (
       <div>
-        {!this.state.isDeckEditFormVisible &&
+        
+        <button><Link to={`/${deckId}/learn`}>Learn</Link></button>
+        {!this.state.isDeckEditFormVisible && (
           <div className="flexWrap justCenter">
-            <div className="flexRow">
+            <div className="flexBasic">
               <div className="deck deckHome">
-                <img className="picOnDeck"
-                  // style={{ width: "150px", height: "150px" }}
+                <img
+                  style={{ width: "150px", height: "150px" }}
                   src={this.state.deck._owner.pictureUrl}
                   alt="owner picture"
                 />
@@ -154,10 +151,12 @@ class DeckDetail extends Component {
                 </div>
               </div>
             </div>
-          </div>}
+          </div>
+          )
+        }
 
         <div>
-          {this.state.deck._owner._id === this.state.currUser._id && (
+          {this.state.currUser && this.state.deck._owner._id === this.state.currUser._id && (
             <button
               onClick={() =>
                 this.handleEditDeckClick()
@@ -168,24 +167,25 @@ class DeckDetail extends Component {
             </button>
           )}
 
-          {this.state.deck._owner._id === this.state.currUser._id &&
+          {this.state.currUser && this.state.deck._owner._id === this.state.currUser._id &&
             !!this.state.isDeckEditFormVisible && (
               <div>
                 <EditDeck
                   deckId={this.props.match.params.deckId}
-                  onSubmitDeckChanges={(dataFromForm) => this.handleEditDeckChanges(dataFromForm)} />
-
-
+                  onSubmitDeckChanges={dataFromForm =>
+                    this.handleEditDeckChanges(dataFromForm)
+                  }
+                />
               </div>
             )}
         </div>
 
         <div className="cardLinks">
-          {this.state.deck._owner._id === this.state.currUser._id && (
+          {this.state.currUser && this.state.deck._owner._id === this.state.currUser._id && (
             <button onClick={() => this.handleClick()}>New card</button>
           )}
 
-          {this.state.deck._owner._id === this.state.currUser._id &&
+          {this.state.currUser && this.state.deck._owner._id === this.state.currUser._id &&
             !!this.state.isFormVisible && (
               <div>
                 <AddCard
@@ -208,7 +208,7 @@ class DeckDetail extends Component {
                   </div>
                   <div id="cardContainer">{card.answers}</div>
 
-                  {this.state.deck._owner._id === this.state.currUser._id && (
+                    {this.state.currUser && this.state.deck._owner._id === this.state.currUser._id && (
                     <div>
                       {api.isLoggedIn() && (
                         <button onClick={() => this.handleCardEdit(card._id)}>
@@ -233,17 +233,13 @@ class DeckDetail extends Component {
   componentDidMount() {
     let id = this.props.match.params.deckId;
     api.getDeckDetail(id).then(data => {
-      console.log(data)
+      console.log(data);
       this.setState({
         deck: data.deckDoc,
         currUser: data.user
       });
     });
   }
-  componentDidUpdate(prevProps, prevState) {
-    console.log("- DisplayInfo::componentDidUpdate", prevProps, prevState)
-  }
-
 }
 
 export default DeckDetail;

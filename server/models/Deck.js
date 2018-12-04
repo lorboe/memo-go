@@ -24,12 +24,7 @@ const deckSchema = new mongoose.Schema({
     enum:["public", "private"], 
     default: "public"
   },
-    // _cards: [{
-    //  type: Schema.Types.ObjectId, 
-    //  ref: 'Card'
-    // }],
-    // likes:{default: []},
-
+ 
    _owner: { 
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'

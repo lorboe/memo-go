@@ -27,11 +27,8 @@ router.put('/profile', isLoggedIn, (req,res,next) => {
     email: req.body.email,
     // pictureUrl: req.body.pictureUrl, // done by "POST /api/users/pictures"
   }
-  // If the user sends "newPassword" and "currentPassword", check if the "req.body.currentPassword" is correct and sets the new password with "req.body.newPassword"
   if (req.body.newPassword && req.body.currentPassword && req.body.newPassword !== "") {
-    // bcrypt.compareSync compares a clear password with a hass password
     if (!bcrypt.compareSync(req.body.currentPassword, req.user.password)) {
-      // create an error object to send to our error handler with "next()"
       next(new Error("Current password is wrong"))
       return
     }
