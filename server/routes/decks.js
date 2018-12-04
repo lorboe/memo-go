@@ -2,7 +2,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const Deck = require('../models/Deck');
 const Card = require('../models/Card');
-const User = require('../models/User')
 
 // The same as: const checkId = require('../middlewares').checkId
 const { checkId, isLoggedIn } = require('../middlewares')
@@ -13,7 +12,7 @@ const router = express.Router();
 router.get('/', (req, res, next) => {
 
   Deck.find()
-  .populate('_owner') // populate on _owner and only send the username and _id (default)
+  .populate('_owner') 
     .then(decks => {
       res.json(decks);
     })
@@ -26,14 +25,12 @@ router.get('/:id', checkId('id'), (req, res, next) => {
   Promise.all([
     Deck.findById(id).lean().populate('_owner'),
     Card.find({_deck: id}),
-    User.findById(req.user._id)
   ])
-    .then(([deckDoc,cardDocs,userDocs]) => {
+    .then(([deckDoc,cardDocs]) => {
       deckDoc.cards = cardDocs
-      user = userDocs
       res.json({
         deckDoc,
-        user
+        user: req.user
       })
     })
   
@@ -55,14 +52,13 @@ router.put('/:deckId', isLoggedIn, checkId('deckId'), (req, res, next) => {
     return  Promise.all([
       Deck.findById(id).lean().populate('_owner'),
       Card.find({_deck: id}),
-      User.findById(req.user._id)
     ])
       .then(([deckDoc,cardDocs,userDocs]) => {
         deckDoc.cards = cardDocs
         user = userDocs
         res.json({
           deckDoc,
-          user
+          user:req.user
         })
       })
     })

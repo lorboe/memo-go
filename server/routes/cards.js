@@ -11,7 +11,7 @@ const router = express.Router();
 // Route to get all countries
 router.get('/', (req, res, next) => {
   Card.find()
-  .populate('_owner', 'name') // populate on _owner and only send the name and _id (default)
+  .populate('_deck') 
     .then(cards => {
       res.json(cards);
     })
@@ -81,10 +81,8 @@ router.delete('/:id', isLoggedIn, checkId('id'), (req, res, next) => {
     .then(cardDoc => {
       console.log("DEBUG cardDoc", cardDoc)
       res.json({
-        // !!myVariable converts truthy to true and falsy to false
         success: !!cardDoc,
         card: cardDoc,
-        // message: "This is just a test!"
       })
     })
     .catch(err => next(err))
