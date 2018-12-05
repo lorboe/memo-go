@@ -124,14 +124,15 @@ updateCard(id, body) {
 //     .catch(errHandler)
 // },
 copyCards(cardId, deckId) {
+   console.log('DECKID',deckId)
+   console.log('CARDID',cardId)
   return service
   .post(`/cards/${deckId}/copy-card/${cardId}`)
   .then(res => res.data)
-  .then(errHandler)
+  .catch(errHandler)
 },
 
 postCards(data, deckId) {
-  console.log('DECKID',deckId)
   return service
     .post(`/cards/${deckId}`, data)
     .then(res => res.data)

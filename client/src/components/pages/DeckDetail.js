@@ -244,8 +244,9 @@ class DeckDetail extends Component {
 
                     {api.isLoggedIn() && this.state.indexCopyCard === i && 
                   <SelectDeck
-                  cardId={this.state.idCopyCard}>
-
+                  cardId={this.state.idCopyCard}
+                  history={this.props.history}
+                  deckId ={this.props.match.params.deckId}>
                   </SelectDeck>
                       }
                 </div>

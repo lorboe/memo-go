@@ -7,7 +7,8 @@ export default class PublicProfile extends Component {
         super(props)
         this.state = {
             decks: [],
-            search: ""
+            search: "",
+            pictureUrl:""
         }
     }
 
@@ -16,6 +17,7 @@ export default class PublicProfile extends Component {
             .then(data => {
                 this.setState({
                     decks: data.decks,
+                    pictureUrl: data.decks[0]._owner.pictureUrl
                 })
 
             })

@@ -44,20 +44,28 @@ class App extends Component {
               <img src={HomeIcon} />
             </NavLink>
 
-            <NavLink to="/add-deck" className="navIcon">
+            {api.isLoggedIn() ? 
+            <NavLink 
+            to="/add-deck" 
+            className="navIcon">
               <img src={PlusIcon} />
-            </NavLink>
+            </NavLink> :
+             <NavLink 
+             to="/login" 
+             className="navIcon" >
+             <img src={PlusIcon} />
+            </NavLink>}
 
-            {api.isLoggedIn() ? <Link to="/profile" className="navIcon">
+            {api.isLoggedIn() ? <NavLink to="/profile" className="navIcon">
               <div className="center">
                 <img src={Heard} />
               </div>
-            </Link> :
-              <Link to="/login" className="navIcon">
+            </NavLink> :
+              <NavLink to="/login" className="navIcon">
                 <div className="center">
                   <i class="fas fa-user"></i>
                 </div>
-              </Link>}
+              </NavLink>}
 
           </nav>
           <div className="navbar2"></div>
