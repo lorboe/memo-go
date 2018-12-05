@@ -91,7 +91,7 @@ export default class EditProfile extends Component {
           </div>
           <br />
 
-          <div className="flexWrap justCenter spc">
+          <div className="flexWrap centerLeft spc">
               <br />
               <div>
                 Edit username:

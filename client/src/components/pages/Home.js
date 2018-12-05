@@ -29,30 +29,33 @@ class Home extends Component {
 
         tableContent.push(
           <div key={"c-" + i} className="iconCategories">
-            <img src={Atom} style={{ width: "7vh" }} />
-            {sortedDecks[i].category}
+            {/* <img src={Atom} style={{ width: "7vh" }} /> */}
+            <h3>
+              {sortedDecks[i].category}
+            </h3>
           </div>
         )
-        console.log("line 36 - DECKS is: ",this.state.decks)
+        console.log("line 36 - DECKS is: ", this.state.decks)
       }
       if (sortedDecks[i].visibility === "public") {
-let userId = sortedDecks[i]._id
+        let userId = sortedDecks[i]._id
         tableContent.push(
-          <div className="flexRow flexShadow">
-            <div className="scrollFlex">
 
-              <div className="deck deckHome">
-                <Link to={`/public-profile/${sortedDecks[i]._owner._id}`}><img className="picOnDeck" src={sortedDecks[i]._owner.pictureUrl} alt="pictures" /></Link>
-                <Link to={`/details/${userId}`}>{sortedDecks[i].title}</Link>
-              </div>
 
-            </div>
+          <div className="deck deckHome">
+            {/* <div className="flexRow flexShadow"> */}
+            {/* <div className="scrollFlex"> */}
+            <Link to={`/public-profile/${sortedDecks[i]._owner._id}`}><img className="picOnDeck" src={sortedDecks[i]._owner.pictureUrl} alt="pictures" /></Link>
+            <Link to={`/details/${userId}`}>{sortedDecks[i].title}</Link>
+            {/* </div> */}
+
+            {/* </div> */}
           </div>
         )
       }
     }
 
-
+    this.state.decks.map(e => console.log("line 55 data for each card", e))
     return (
       <div>
         <input
@@ -62,9 +65,11 @@ let userId = sortedDecks[i]._id
           value={this.state.search}
           onChange={e => this.handleSearch(e.target.value)}
         />
+
         {/* <div className="scrollFlex"> */}
         {tableContent}
         {/* </div> */}
+
       </div>
     )
   }

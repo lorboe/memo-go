@@ -109,25 +109,22 @@ class DeckDetail extends Component {
 
   render() {
     if (!this.state.deck && !this.state.currUser) return <div>Loading...</div>;
-    let deckId=this.state.deck._id
+    let deckId = this.state.deck._id
 
     return (
       <div>
-        
-        <button><Link to={`/${deckId}/learn`}>Learn</Link></button>
+
         {!this.state.isDeckEditFormVisible && (
-          <div className="flexWrap justCenter">
-            <div className="flexBasic">
+          <div className="flexWrap centerLeft" style={{ marginBottom: "5vh" }}>
+            <div className="flexWrap">
               <div className="deck deckHome">
-                <img
-                  style={{ width: "150px", height: "150px" }}
-                  src={this.state.deck._owner.pictureUrl}
-                  alt="owner picture"
-                />
+                <img className="picOnDeck" src={this.state.deck._owner.pictureUrl} alt="owner picture" />
                 {this.state.deck.title}
               </div>
               <div className="deckDetail">
                 <div className="deckInfo">
+                  <button><Link to={`/${deckId}/learn`}><i class="fas fa-graduation-cap"></i></Link></button>
+                  <br />
                   Category: {this.state.deck.category}
                   <br />
                   Difficulty: {this.state.deck.difficulty}
@@ -136,23 +133,22 @@ class DeckDetail extends Component {
                   {this.state.deck.visibility === "private" ? "No" : "Yes"}
                   <br />
                 </div>
-                <div className="justCenter">
-                  <button onClick={() => this.addRateHard()} style={{ border: "transparent", boxShadow: "none", margin:"auto" }}>
-                    <i style={{ marginRight: "5px" }} className="far fa-frown-open"></i>{this.state.rateHard}
+                <div className="centerLeft">
+                  <button onClick={() => this.addRateHard()} style={{ border: "transparent", boxShadow: "none", margin: "auto" }}>
+                    <i style={{ marginRight: "5px" }} className="far fa-grin-beam-sweat"></i>{this.state.rateHard}
                   </button>
 
-                  <button onClick={() => this.addRateEasy()} style={{ border: "transparent", boxShadow: "none", margin:"auto" }}>
+                  <button onClick={() => this.addRateEasy()} style={{ border: "transparent", boxShadow: "none", margin: "auto" }}>
                     <i style={{ marginRight: "5px" }} className="far fa-smile-beam"></i>{this.state.rateEasy}
                   </button>
-
-                  <button onClick={() => this.addLikes()} style={{ border: "transparent", boxShadow: "none", margin:"auto" }}>
+                  <button onClick={() => this.addLikes()} style={{ border: "transparent", boxShadow: "none", margin: "auto" }}>
                     <i style={{ marginRight: "5px" }} className="far fa-thumbs-up"></i>{this.state.nbOfLikes}
                   </button>
                 </div>
               </div>
             </div>
           </div>
-          )
+        )
         }
 
         <div>
@@ -196,19 +192,25 @@ class DeckDetail extends Component {
             )}
         </div>
 
-        <div className="flexWrap justCenter">
-          <div className="cardLinks justCenter">
+        <div className="flexWrap centerLeft">
+          <div className="cardLinks center">
             <hr />
             {/* <div id="cardContainer"></div> */}
             {this.state.deck &&
               this.state.deck.cards.map((card, _id) => (
-                <div key={card._id} className="flexWrap justCenter">
+                <div key={card._id} className="flexWrap center">
                   <div style={{ fontWeight: "bold" }} id="cardContainer">
-                    {card.question}
+                    <div className="cardTitle">
+                      {card.question}
+                    </div>
                   </div>
-                  <div id="cardContainer">{card.answers}</div>
+                  <div id="cardContainer">
+                    <div className="cardTitle">
+                      {card.answers}
+                    </div>
+                  </div>
 
-                    {this.state.currUser && this.state.deck._owner._id === this.state.currUser._id && (
+                  {this.state.currUser && this.state.deck._owner._id === this.state.currUser._id && (
                     <div>
                       {api.isLoggedIn() && (
                         <button onClick={() => this.handleCardEdit(card._id)}>

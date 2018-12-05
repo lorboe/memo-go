@@ -15,7 +15,9 @@ import DeckDetail from './pages/DeckDetail';
 import HomeIcon from '../../src/images/original/Home-icon-66_2180674.svg';
 import PlusIcon from '../../src/images/original/plus-icon-79_2180657.svg';
 import ProfileIcon from '../../src/images/original/Profile-icon-74_2180663.svg';
+import Heard from '../../src/images/original/Heart.png';
 import PublicProfile from './pages/PublicProfile'
+
 
 class App extends Component {
   constructor(props) {
@@ -33,8 +35,8 @@ class App extends Component {
         <div id="navbar">
           <nav className="flexRow">
             <NavLink to="/" exact className="navIcon">
-              <div className="iconCenter">
-                <i className="fab fa-accusoft" style={{ color: "white" }}></i>
+              <div className="center">
+                <i className="fas fa-layer-group" style={{ color: "white" }}></i>
               </div>
             </NavLink>
             <NavLink to="/" exact className="navIcon">
@@ -46,12 +48,12 @@ class App extends Component {
             </NavLink>
 
             {api.isLoggedIn() ? <Link to="/profile" className="navIcon">
-              <div className="justCenter">
-                <i class="fas fa-user"></i>
+              <div className="center">
+                <img src={Heard} />
               </div>
             </Link> :
               <Link to="/login" className="navIcon">
-                <div className="justCenter">
+                <div className="center">
                   <i class="fas fa-user"></i>
                 </div>
               </Link>}

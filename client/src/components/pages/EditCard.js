@@ -52,7 +52,7 @@ class EditCard extends Component {
         <h2>Edit cards</h2>
         <div className="flexWrap">
           <div className="deck deckHome"></div>
-          <div className="flexBasic">
+          <div className="flexWrap center">
             <form>
             
               <input className="iconCenter" type="text" value={this.state.question} onChange={(e) => { this.handleInputChange("question", e) }} placeholder="Question" /> <br />
