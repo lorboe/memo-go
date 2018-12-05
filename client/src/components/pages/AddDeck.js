@@ -55,10 +55,10 @@ class AddDeck extends Component {
     return (
       <div className="AddDeck">
         <h2>Create deck</h2>
-        <div className="flexWrap">
+        <div className="flexWrap center">
           <div className="deck deckHome"></div>
           <div className="flexBasic">
-            <form className="test">
+            <form className="center">
               {/* Title: */}
               <input className="selectBox" type="text" value={this.state.title} onChange={(e) => { this.handleInputChange("title", e) }} placeholder="Title of your deck" />
               <br />

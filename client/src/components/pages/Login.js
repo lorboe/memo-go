@@ -37,7 +37,7 @@ class Login extends Component {
         <div className="flexWrap editProfPic">
           <div className="flexBasic">
             <form>
-              <div className="justCenter">
+              <div className="center">
                 <div>
                   <input className="selectBox" type="text" value={this.state.email} onChange={(e) => this.handleInputChange("email", e)} placeholder="Email" />
                 </div>

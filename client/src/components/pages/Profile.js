@@ -75,7 +75,7 @@ export default class Profile extends Component {
         })
       })
   }
-  
+
   handleFileChange = e => {
     this.setState({
       name: null
@@ -107,7 +107,7 @@ export default class Profile extends Component {
         <div>
           {api.isLoggedIn() && <Link to="/" onClick={(e) => this.handleLogoutClick(e)}><i className="fas fa-sign-out-alt"></i></Link>}
           <botton className="info">
-            <Link to={`/profile/edit`}> <img src={SettingsIcon} style={{height: "30px"}}/> </Link>
+            <Link to={`/profile/edit`}> <img src={SettingsIcon} style={{ height: "30px" }} /> </Link>
           </botton>
         </div>
 
@@ -116,18 +116,13 @@ export default class Profile extends Component {
         {this.state.message && <div className="info">
           {this.state.message}
         </div>}
-        <div>
-          Decks:
-         {this.state.decks.map(deck => (
-            <div className="flexBasic">
-              <div className="flexRow">
-                {/* {deck._id} */}
-                <Link className="deck deckHome" to={`/details/${deck._id}`}> {deck.title} </Link>
-              </div>
-            </div>
+        <h2>Your decks:</h2>
+        <div className="scrollFlex">
+          {this.state.decks.map(deck => (
+            <Link className="deck deckHome" to={`/details/${deck._id}`}> {deck.title} </Link>
           ))}
         </div>
-      </div >
+      </div>  
     );
   }
   componentDidMount() {

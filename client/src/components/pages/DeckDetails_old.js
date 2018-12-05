@@ -114,7 +114,7 @@ class DeckDetail extends Component {
       <div>
 
         {!this.state.isDeckEditFormVisible &&
-          <div className="flexWrap justCenter">
+          <div className="flexWrap centerLeft">
             <div className="flexBasic">
               <div className="deck deckHome">
                 <img className="picOnDeck"
@@ -184,13 +184,13 @@ class DeckDetail extends Component {
             )}
         </div>
 
-        <div className="flexWrap justCenter">
-          <div className="cardLinks justCenter">
+        <div className="flexWrap centerLeft">
+          <div className="cardLinks centerLeft">
             <hr />
             {/* <div id="cardContainer"></div> */}
             {this.state.deck &&
               this.state.deck.cards.map((card, _id) => (
-                <div key={card._id} className="flexWrap justCenter">
+                <div key={card._id} className="flexWrap centerLeft">
                   <div style={{ fontWeight: "bold" }} id="cardContainer">
                     {card.question}
                   </div>
