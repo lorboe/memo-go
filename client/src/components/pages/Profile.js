@@ -102,7 +102,7 @@ export default class Profile extends Component {
         console.log("Delete", deck);
         this.setState({
           // The new cards are the ones where their _id are diffrent from idClicked
-           decks: this.state.deck.filter(deck => deck._id !== idClicked)
+           decks: this.state.decks.filter(deck => deck._id !== idClicked)
           
         });
       })
@@ -159,7 +159,7 @@ export default class Profile extends Component {
           {this.state.decks.filter(deck => deck.title.toUpperCase().includes(this.state.search.toUpperCase())).map((deck,i) => (
            <div>
            <Link key={i} className="deck deckHome" to={`/details/${deck._id}`}> {deck.title} </Link>
-           {api.isLoggedIn() && <button onClick={() => this.handleDelete(i)}>Delete</button>}
+           {api.isLoggedIn() && <button onClick={() => this.handleDelete(deck._id)}>Delete</button>}
            </div>
           ))}
         </div>
