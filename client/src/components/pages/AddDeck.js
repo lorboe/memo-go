@@ -40,20 +40,20 @@ class AddDeck extends Component {
        <Redirect to={`/details/${deck._id}`}/>
 
         console.log("DECKid", deck._id);
-        // this.setState({
-        //   title: this.state.title,
-        //   category: this.state.category,
-        //   visibility: this.state.visibility,
-        //   difficulty: this.state.difficulty,
-        //   description: this.state.description,
-        //   message: `Your deck '${this.state.title}' has been created`
-        // })
+        this.setState({
+          title: this.state.title,
+          category: this.state.category,
+          visibility: this.state.visibility,
+          difficulty: this.state.difficulty,
+          description: this.state.description,
+          message: `Your deck '${this.state.title}' has been created`
+        })
        
-        // setTimeout(() => {
-        //   this.setState({
-        //     message: null
-        //   })
-        // }, 2000)
+        setTimeout(() => {
+          this.setState({
+            message: null
+          })
+        }, 2000)
       })
       .catch(err => this.setState({ message: err.toString() }))
 
