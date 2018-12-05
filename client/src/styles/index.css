@@ -14,10 +14,10 @@ nav {
 
 .info {
   margin: 20px;
-  padding: 10px 20px;
+  padding: 5px 15px;
   border-radius: 10px;
   display: inline-block;
-  background-color: #21A6AF;
+  border: 2.4px #21A6AF;
   font-size: 2.4vh;
   color: white; }
 
@@ -50,8 +50,8 @@ button {
 header {
   padding: 10px; }
 
-.Home p {
-  font-size: 1.2em; }
+p {
+  color: #21A6AF; }
 
 .Secret .result {
   font-size: 1.2em; }
@@ -225,6 +225,7 @@ nav i:after {
   margin: auto; }
 
 nav {
+  padding: 10px;
   z-index: 4; }
 
 .navbar2 {

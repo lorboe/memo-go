@@ -37,10 +37,10 @@ nav{
 
 .info{
   margin: 20px;
-  padding: 10px 20px;
+  padding: 5px 15px;
   border-radius: 10px;
   display: inline-block;
-  background-color: $default;
+  border: 2.4px $default;
   font-size: 2.4vh;
   color: white;
 }
@@ -131,11 +131,9 @@ header{
 
 // --------------------
 // Style for Home component
-.Home {
-  p {
-    font-size: 1.2em;
+p {
+    color: #21A6AF;
   }
-}
 
 // --------------------
 // Style for Secret component
@@ -352,6 +350,7 @@ nav{
 }
 
 nav {
+  padding: 10px;
   z-index: 4;
 }
 

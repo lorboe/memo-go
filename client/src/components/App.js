@@ -13,10 +13,11 @@ import Signup from './pages/Signup';
 import api from '../api';
 import DeckDetail from './pages/DeckDetail';
 import HomeIcon from '../../src/images/original/Home-icon-66_2180674.svg';
-import PlusIcon from '../../src/images/original/plus-icon-79_2180657.svg';
+import PlusIcon from '../../src/images/original/plus.svg';
 import ProfileIcon from '../../src/images/original/Profile-icon-74_2180663.svg';
 import Heard from '../../src/images/original/Heart.png';
 import PublicProfile from './pages/PublicProfile'
+import BrainLogo from '/Users/GG/Documents/SofDev/Ironhack/w8/Project_3/learning-app/client/src/images/brain.svg'
 
 
 class App extends Component {
@@ -36,12 +37,12 @@ class App extends Component {
           <nav className="flexRow">
             <NavLink to="/" exact className="navIcon">
               <div className="center">
-                <i className="fas fa-layer-group" style={{ color: "white" }}></i>
+                <img src={BrainLogo} style={{ color: "white" }} />
               </div>
             </NavLink>
-            <NavLink to="/" exact className="navIcon">
+            {/* <NavLink to="/" exact className="navIcon">
               <img src={HomeIcon} />
-            </NavLink>
+            </NavLink> */}
 
             <NavLink to="/add-deck" className="navIcon">
               <img src={PlusIcon} />
@@ -49,7 +50,7 @@ class App extends Component {
 
             {api.isLoggedIn() ? <Link to="/profile" className="navIcon">
               <div className="center">
-                <img src={Heard} />
+                <img src={ProfileIcon} />
               </div>
             </Link> :
               <Link to="/login" className="navIcon">
