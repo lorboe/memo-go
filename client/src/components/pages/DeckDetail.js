@@ -193,7 +193,7 @@ class DeckDetail extends Component {
 
         <div className="cardLinks">
           {this.state.currUser && this.state.deck._owner._id === this.state.currUser._id && (
-            <button onClick={() => this.handleClick()}>New card</button>
+            <button onClick={() => this.handleClick()}> {this.state.isFormVisibile ? "Hide" : "New Card" } </button>
           )}
 
           {this.state.currUser && this.state.deck._owner._id === this.state.currUser._id &&

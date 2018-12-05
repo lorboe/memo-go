@@ -8,7 +8,6 @@ class AddCard extends Component {
     this.state = {
       question: "",
       answers: [],
-      visibility: "public",
       difficulty: "beginner",
       message: null,
       // const {deckId} = props.location.state
@@ -49,8 +48,6 @@ class AddCard extends Component {
       })
       .catch(err => this.setState({ message: err.toString() }))
   }
-
-
 
 
   render() {
