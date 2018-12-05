@@ -15,14 +15,19 @@ nav {
 .info {
   margin: 20px;
   padding: 5px 15px;
-  border-radius: 10px;
   display: inline-block;
-  border: 2.4px #21A6AF;
   font-size: 2.4vh;
-  color: white; }
+  color: #21A6AF; }
 
 .info.info-danger {
   background-color: #e73f3f; }
+
+.searchBar {
+  height: 6vh; }
+
+@media only screen and (max-width: 800px) {
+  .searchBar {
+    margin-top: 5vh; } }
 
 button {
   margin: 20px;
@@ -51,6 +56,7 @@ header {
   padding: 10px; }
 
 p {
+  font-size: 2.4vh;
   color: #21A6AF; }
 
 .Secret .result {
@@ -110,8 +116,8 @@ select, input, textarea {
   box-sizing: border-box;
   resize: none;
   border: none;
-  border-left: 1px solid silver;
-  border-bottom: 2px solid silver;
+  border-left: 1px solid #24ceb6;
+  border-bottom: 2px solid #24ceb6;
   border-radius: 7px;
   width: 90%;
   font-family: "Concert One", cursive;
@@ -120,7 +126,8 @@ select, input, textarea {
   line-height: 1;
   margin-bottom: 3vh;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  background: linear-gradient(to bottom right, white, #1cfff721); }
 
 #cardContainer {
   display: flex;

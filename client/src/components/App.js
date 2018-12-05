@@ -15,8 +15,8 @@ import DeckDetail from './pages/DeckDetail';
 import SelectDeck from './pages/SelectDeck'
 import HomeIcon from '../../src/images/original/Home-icon-66_2180674.svg';
 import PlusIcon from '../../src/images/original/plus.svg';
-import ProfileIcon from '../../src/images/original/Profile-icon-74_2180663.svg';
-import Heard from '../../src/images/original/Heart.png';
+import ProfileIcon from '/Users/GG/Documents/SofDev/Ironhack/w8/Project_3/learning-app/client/src/images/original/Profile_icon.svg';
+import Heard from '../../src/images/original/Heart.svg';
 import PublicProfile from './pages/PublicProfile'
 import BrainLogo from '/Users/GG/Documents/SofDev/Ironhack/w8/Project_3/learning-app/client/src/images/brain.svg'
 

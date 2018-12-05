@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import api from '../../api'
 import { Link } from 'react-router-dom'
-import SettingsIcon from '/Users/GG/Documents/SofDev/Ironhack/w8/Project_3/learning-app/client/src/images/original/Settings2.svg';
+import EditIcon from '/Users/GG/Documents/SofDev/Ironhack/w8/Project_3/learning-app/client/src/images/original/pencil.svg';
 
 
 export default class Profile extends Component {
@@ -103,15 +103,16 @@ export default class Profile extends Component {
       <div className="Profile">
         <div className="flexWrap">
           <div className="flexBasic">
-          <img className="picProfile" src={this.state.pictureUrl} alt="profile picture" />
+            <img className="picProfile" src={this.state.pictureUrl} alt="profile picture" />
             <h2>{this.state.name}ProfileName</h2>
           </div>
-            <div>
-              {api.isLoggedIn() && <Link to="/" onClick={(e) => this.handleLogoutClick(e)}> <p>Logout</p> </Link>}
-              <botton className="info">
-                <Link to={`/profile/edit`}> <img src={SettingsIcon} style={{ height: "30px" }} /> </Link>
-              </botton>
-            </div>
+          <div>
+            {api.isLoggedIn() && <Link to="/" onClick={(e) => this.handleLogoutClick(e)}> <p>Logout</p> </Link>}
+            <botton className="info">
+              Edit
+                <Link to={`/profile/edit`}> <img src={EditIcon} style={{ height: "30px" }} /></Link>
+            </botton>
+          </div>
         </div>
 
         {/* If we have this.state.message, display the message  */}
