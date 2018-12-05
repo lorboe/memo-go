@@ -72,9 +72,9 @@ let userId = sortedDecks[i]._id
 
   componentDidMount() {
     api.getDecks()
-      .then(decks => {
+      .then(data => {
         this.setState({
-          decks: decks,
+          decks: data.decks,
         })
 
       })

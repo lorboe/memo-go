@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import api from '../../api'
 import { Link } from 'react-router-dom'
-import SettingsIcon from '/Users/GG/Documents/SofDev/Ironhack/w8/Project_3/learning-app/client/src/images/white/Settings.svg';
+import SettingsIcon from '../../images/white/Settings.svg';
 
 
 export default class Profile extends Component {

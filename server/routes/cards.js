@@ -44,6 +44,35 @@ router.put('/:cardId', isLoggedIn, checkId('cardId'), (req, res, next) => {
     .catch(err => next(err))
 })
 
+router.post("/:deckId/copy-card/:cardId", isLoggedIn, (req,res, next) => {
+  Promise.all ([
+  Card.findById(req.params.cardId),
+  Deck.findById(req.params.deckId)
+  ])
+  .then(([card, deck]) => {
+  let newCard = {
+  question:card.question,
+  answers: card.answers,
+  _deck: deck._id
+  }
+  console.log("Newcard: " + newCard)
+  console.log("Question: " + card.question)
+  console.log("Answers:" + card.answers)
+  console.log("_deck: " + deck._id)
+  return Card.create(newCard)
+          .then(card => {
+            res.json({
+              success: true,
+              card
+            });
+          })
+  }
+  )
+    
+    
+  })
+ 
+
 // Route to add a card
 // router.post('/', isLoggedIn, (req, res, next) => {
 //   let { question, answers, visibility, difficulty } = req.body

@@ -120,4 +120,12 @@ router.post(
   }
 );
 
+router.get("/my-decks", isLoggedIn, (req,res,next) => {
+  Deck.find({_owner: req.user._id})
+    .then(decks => {
+      res.json(decks);
+    })
+    .catch(err => next(err))
+})
+
 module.exports = router;

@@ -13,9 +13,9 @@ export default class PublicProfile extends Component {
 
     componentDidMount() {
         api.getDecks()
-            .then(decks => {
+            .then(data => {
                 this.setState({
-                    decks: decks,
+                    decks: data.decks,
                 })
 
             })
