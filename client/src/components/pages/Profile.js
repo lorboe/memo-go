@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import api from '../../api'
 import { Link } from 'react-router-dom'
 import SettingsIcon from '../../..//src/images/original/Settings2.svg';
+import { Card } from 'reactstrap';
 
 
 export default class Profile extends Component {
@@ -93,6 +94,28 @@ export default class Profile extends Component {
       })
   }
 
+
+  handleDelete(idClicked) {
+    api
+      .deleteDeck(idClicked)
+      .then(deck => {
+        console.log("Delete", deck);
+        this.setState({
+          // The new cards are the ones where their _id are diffrent from idClicked
+           decks: this.state.deck.filter(deck => deck._id !== idClicked)
+          
+        });
+      })
+      .catch(err => {
+        console.log("ERROR", err);
+      });
+  }
+
+
+
+
+
+
   handleLogoutClick(e) {
     api.logout()
   }
@@ -133,8 +156,11 @@ export default class Profile extends Component {
         </div>}
         <h2>Your decks:</h2>
         <div className="scrollFlex">
-          {this.state.decks.filter(deck => deck.title.toUpperCase().includes(this.state.search.toUpperCase())).map(deck => (
-            <Link className="deck deckHome" to={`/details/${deck._id}`}> {deck.title} </Link>
+          {this.state.decks.filter(deck => deck.title.toUpperCase().includes(this.state.search.toUpperCase())).map((deck,i) => (
+           <div>
+           <Link key={i} className="deck deckHome" to={`/details/${deck._id}`}> {deck.title} </Link>
+           {api.isLoggedIn() && <button onClick={() => this.handleDelete(i)}>Delete</button>}
+           </div>
           ))}
         </div>
       </div>

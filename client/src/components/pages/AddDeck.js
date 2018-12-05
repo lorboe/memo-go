@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import api from '../../api';
 import BrainLogo from '../../../src/images/brain.svg'
-
+import {Redirect} from 'react-router-dom'
 
 class AddDeck extends Component {
   constructor(props) {
@@ -33,24 +33,30 @@ class AddDeck extends Component {
       difficulty: this.state.difficulty,
       description: this.state.description,
     }
+
     api.postDecks(data)
-      .then(result => {
-        console.log('SUCCESS!')
-        this.setState({
-          title: "",
-          category: "",
-          visibility: '',
-          difficulty: "",
-          description: "",
-          message: `Your deck '${this.state.title}' has been created`
-        })
-        setTimeout(() => {
-          this.setState({
-            message: null
-          })
-        }, 2000)
+      .then(deck => {
+        console.log('SUCCESS!', deck);
+       <Redirect to={`/details/${deck._id}`}/>
+
+        console.log("DECKid", deck._id);
+        // this.setState({
+        //   title: this.state.title,
+        //   category: this.state.category,
+        //   visibility: this.state.visibility,
+        //   difficulty: this.state.difficulty,
+        //   description: this.state.description,
+        //   message: `Your deck '${this.state.title}' has been created`
+        // })
+       
+        // setTimeout(() => {
+        //   this.setState({
+        //     message: null
+        //   })
+        // }, 2000)
       })
       .catch(err => this.setState({ message: err.toString() }))
+
   }
   render() {
     return (
