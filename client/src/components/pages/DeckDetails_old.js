@@ -126,11 +126,11 @@ class DeckDetail extends Component {
               </div>
 
               <button onClick={() => this.addRate()}>
-                <i class="far fa-star"></i>{this.state.rate}
+                <i className="far fa-star"></i>{this.state.rate}
               </button>
 
               <button onClick={() => this.addLikes()}>
-                <i class="far fa-thumbs-up"></i>{this.state.nbOfLikes}
+                <i className="far fa-thumbs-up"></i>{this.state.nbOfLikes}
               </button>
               <div className="deckInfo">
                 Category: {this.state.deck.category}
@@ -228,9 +228,7 @@ class DeckDetail extends Component {
       });
     });
   }
-  componentDidUpdate(prevProps, prevState) {
-    console.log("- DisplayInfo::componentDidUpdate", prevProps, prevState)
-  }
+
 
 }
 

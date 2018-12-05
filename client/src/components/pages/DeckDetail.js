@@ -3,6 +3,7 @@ import api from "../../api";
 import { Link } from "react-router-dom";
 import AddCard from "./AddCard";
 import EditDeck from "./EditDeck";
+import SelectDeck from './SelectDeck'
 
 class DeckDetail extends Component {
   constructor(props) {
@@ -12,6 +13,9 @@ class DeckDetail extends Component {
       currUser: null,
       isFormVisible: false,
       isDeckEditFormVisible: false,
+      // isCopyCardVisibile: false,
+      indexCopyCard: null,
+      idCopyCard: null,
       nbOfLikes: 0,
       rateHard: 0,
       rateEasy: 0,
@@ -107,6 +111,17 @@ class DeckDetail extends Component {
     });
   };
 
+  handleCopyCard(index, idCard) {
+    console.log(idCard)
+    let isTheSameIndex = index === this.state.indexCopyCard
+    this.setState({
+      // isCopyCardVisibile: !this.state.isCopyCardVisibile,
+      indexCopyCard: isTheSameIndex ? null : index,
+      idCopyCard: idCard
+    })
+  }
+
+  
   render() {
     if (!this.state.deck && !this.state.currUser) return <div>Loading...</div>;
     let deckId = this.state.deck._id
@@ -197,7 +212,7 @@ class DeckDetail extends Component {
             <hr />
             {/* <div id="cardContainer"></div> */}
             {this.state.deck &&
-              this.state.deck.cards.map((card, _id) => (
+              this.state.deck.cards.map((card, i) => (
                 <div key={card._id} className="flexWrap center">
                   <div style={{ fontWeight: "bold" }} id="cardContainer">
                     <div className="cardTitle">
@@ -210,21 +225,30 @@ class DeckDetail extends Component {
                     </div>
                   </div>
 
-                  {this.state.currUser && this.state.deck._owner._id === this.state.currUser._id && (
+                    {api.isLoggedIn() && this.state.currUser && this.state.deck._owner._id === this.state.currUser._id && (
                     <div>
-                      {api.isLoggedIn() && (
                         <button onClick={() => this.handleCardEdit(card._id)}>
                           <i className="fas fa-cog" />
                         </button>
-                      )}
-
-                      {api.isLoggedIn() && (
+    
                         <button onClick={() => this.handleDelete(card._id)}>
                           <i className="fas fa-trash" />
                         </button>
-                      )}
-                    </div>
-                  )}
+
+                    </div>)}
+                 
+
+                    {api.isLoggedIn() &&  <button onClick={() => this.handleCopyCard(i, card._id)}>
+                        <i className="fas fa-clone"></i> 
+                        </button>}
+
+                    {api.isLoggedIn() && this.state.indexCopyCard === i && 
+                  <SelectDeck
+                  cardId={this.state.idCopyCard}
+                  history={this.props.history}
+                  deckId ={this.props.match.params.deckId}>
+                  </SelectDeck>
+                      }
                 </div>
               ))}
           </div>
@@ -238,7 +262,8 @@ class DeckDetail extends Component {
       console.log(data);
       this.setState({
         deck: data.deckDoc,
-        currUser: data.user
+        currUser: data.user,
+        isCopyCardVisibile: false
       });
     });
   }

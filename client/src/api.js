@@ -60,6 +60,13 @@ export default {
       .catch(errHandler)
   },
 
+  getMyDecks() {
+    return service
+      .get('/users/my-decks')
+      .then(res => res.data)
+      .catch(errHandler)
+  },
+
   getDeckDetail(id) {
     return service
       .get('/decks/'+id)
@@ -116,9 +123,16 @@ updateCard(id, body) {
 //     .then(res => res.data)
 //     .catch(errHandler)
 // },
+copyCards(cardId, deckId) {
+   console.log('DECKID',deckId)
+   console.log('CARDID',cardId)
+  return service
+  .post(`/cards/${deckId}/copy-card/${cardId}`)
+  .then(res => res.data)
+  .catch(errHandler)
+},
 
 postCards(data, deckId) {
-  console.log('DECKID',deckId)
   return service
     .post(`/cards/${deckId}`, data)
     .then(res => res.data)

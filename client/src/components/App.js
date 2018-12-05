@@ -12,6 +12,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import api from '../api';
 import DeckDetail from './pages/DeckDetail';
+import SelectDeck from './pages/SelectDeck'
 import HomeIcon from '../../src/images/original/Home-icon-66_2180674.svg';
 import PlusIcon from '../../src/images/original/plus.svg';
 import ProfileIcon from '../../src/images/original/Profile-icon-74_2180663.svg';
@@ -44,20 +45,28 @@ class App extends Component {
               <img src={HomeIcon} />
             </NavLink> */}
 
-            <NavLink to="/add-deck" className="navIcon">
+            {api.isLoggedIn() ? 
+            <NavLink 
+            to="/add-deck" 
+            className="navIcon">
               <img src={PlusIcon} />
-            </NavLink>
+            </NavLink> :
+             <NavLink 
+             to="/login" 
+             className="navIcon" >
+             <img src={PlusIcon} />
+            </NavLink>}
 
-            {api.isLoggedIn() ? <Link to="/profile" className="navIcon">
+            {api.isLoggedIn() ? <NavLink to="/profile" className="navIcon">
               <div className="center">
                 <img src={ProfileIcon} />
               </div>
-            </Link> :
-              <Link to="/login" className="navIcon">
+            </NavLink> :
+              <NavLink to="/login" className="navIcon">
                 <div className="center">
                   <i class="fas fa-user"></i>
                 </div>
-              </Link>}
+              </NavLink>}
 
           </nav>
           <div className="navbar2"></div>
@@ -84,9 +93,10 @@ class App extends Component {
             <Route path="/" exact component={Home} />
             <Route path="/add-deck" component={AddDeck} />
             <Route path="/details/:deckId/" component={DeckDetail} />
-            <Route path="/edit-deck/:id" component={EditDeck} />
             <Route path="/:deckId/learn" component={Learn} />
             <Route path="/cards" component={Cards} />
+            {/* <Route path="/selectDeck/:cardId" component={SelectDeck} /> */}
+
             <Route path="/edit-card/:id" component={EditCard} />
             <Route path="/signup" component={Signup} />
             <Route path="/login" component={Login} />

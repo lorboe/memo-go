@@ -7,15 +7,17 @@ export default class PublicProfile extends Component {
         super(props)
         this.state = {
             decks: [],
-            search: ""
+            search: "",
+            pictureUrl:""
         }
     }
 
     componentDidMount() {
         api.getDecks()
-            .then(decks => {
+            .then(data => {
                 this.setState({
-                    decks: decks,
+                    decks: data.decks,
+                    pictureUrl: data.decks[0]._owner.pictureUrl
                 })
 
             })

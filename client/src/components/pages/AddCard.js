@@ -36,7 +36,7 @@ class AddCard extends Component {
         this.setState({
           question: "",
           answers: "",
-          difficulty:"",
+          difficulty:this.state.difficulty,
           message: `Your card '${this.state.question}' has been created`
         })
         this.props.onAdd(data.card)
