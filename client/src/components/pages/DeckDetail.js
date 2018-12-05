@@ -11,7 +11,7 @@ class DeckDetail extends Component {
     this.state = {
       deck: null,
       currUser: null,
-      isFormVisible: true,
+      isFormVisible: false,
       isDeckEditFormVisible: false,
       // isCopyCardVisibile: false,
       indexCopyCard: null,
