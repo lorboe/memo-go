@@ -72,6 +72,7 @@ class App extends Component {
           <div className="navbar2"></div>
         </div>
         <div className="content">
+       
           {/* <div className="fixed">
           <header>
             <div>

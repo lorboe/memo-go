@@ -8,19 +8,23 @@ export default class Profile extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      // user: null,
       name: null,
       email: null,
-      currentPassword: null,
-      newPassword: null,
+      // currentPassword: null,
+      // newPassword: null,
       pictureUrl: null,
-      alt: null,
       decks: [],
       message: null,
+      search: "",
 
     }
   }
 
+  handleSearch = (newSearch) => {
+    this.setState({
+      search: newSearch
+    })
+  }
 
   handleChange = (e) => {
     this.setState({
@@ -56,12 +60,13 @@ export default class Profile extends Component {
           })
         }, 3000)
       })
+
     // api.addPicture(this.state.file)
     // .then(data => {
     //   this.setState({
     //     user: {...this.state.user, pictureUrl: data.pictureUrl}
-    //   })
-    // })
+    //    })
+    //  })
   }
   handleFileChange = e => {
     this.setState({
@@ -98,13 +103,21 @@ export default class Profile extends Component {
     }
     return (
 
+    <div>
+        <input
+      name="searchbar"
+      type="text"
+      placeholder="Search"
+      value={this.state.search}
+      onChange={e => this.handleSearch(e.target.value)}
+    />
 
 
       <div className="Profile">
         <div className="flexWrap">
           <div className="flexBasic">
           <img className="picProfile" src={this.state.pictureUrl} alt="profile picture" />
-            <h2>{this.state.name}ProfileName</h2>
+            <h2>{this.state.name}</h2>
           </div>
             <div>
               {api.isLoggedIn() && <Link to="/" onClick={(e) => this.handleLogoutClick(e)}> <p>Logout</p> </Link>}
@@ -120,10 +133,11 @@ export default class Profile extends Component {
         </div>}
         <h2>Your decks:</h2>
         <div className="scrollFlex">
-          {this.state.decks.map(deck => (
+          {this.state.decks.filter(deck => deck.title.toUpperCase().includes(this.state.search.toUpperCase())).map(deck => (
             <Link className="deck deckHome" to={`/details/${deck._id}`}> {deck.title} </Link>
           ))}
         </div>
+      </div>
       </div>
     );
   }
@@ -131,7 +145,7 @@ export default class Profile extends Component {
     api.getProfile()
       .then((data) => {
         this.setState({
-          user: data.user,
+          name: data.user.name,
           email: data.user.email,
           pictureUrl: data.user.pictureUrl,
           decks: data.decks
