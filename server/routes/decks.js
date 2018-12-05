@@ -76,14 +76,13 @@ router.post('/', isLoggedIn, (req, res, next) => {
   let _owner = req.user._id
  Deck.create({ title, category, visibility, difficulty, description, _owner })
     .then(deck => {
-      console.log("DECK:" + deck)
       res.json({
-       deck
+        deck
+     })
     })
     .catch(err => next(err))
- 
   });
-})
+
 
 
 router.delete('/:id', isLoggedIn, checkId('id'), (req, res, next) => {

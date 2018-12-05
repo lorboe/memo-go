@@ -2,25 +2,30 @@ import React, { Component } from 'react'
 import api from '../../api'
 import { Link } from 'react-router-dom'
 import EditIcon from '/Users/GG/Documents/SofDev/Ironhack/w8/Project_3/learning-app/client/src/images/original/pencil.svg';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 
 export default class Profile extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      // user: null,
       name: null,
       email: null,
-      currentPassword: null,
-      newPassword: null,
+      // currentPassword: null,
+      // newPassword: null,
       pictureUrl: null,
-      alt: null,
       decks: [],
       message: null,
-
+      search: "",
+      deckIdToDelete: null,
     }
   }
 
+  handleSearch = (newSearch) => {
+    this.setState({
+      search: newSearch
+    })
+  }
 
   handleChange = (e) => {
     this.setState({
@@ -56,12 +61,13 @@ export default class Profile extends Component {
           })
         }, 3000)
       })
+
     // api.addPicture(this.state.file)
     // .then(data => {
     //   this.setState({
     //     user: {...this.state.user, pictureUrl: data.pictureUrl}
-    //   })
-    // })
+    //    })
+    //  })
   }
   handleFileChange = e => {
     this.setState({
@@ -88,6 +94,31 @@ export default class Profile extends Component {
       })
   }
 
+
+  handleDelete(idClicked) {
+    api
+      .deleteDeck(idClicked)
+      .then(deck => {
+        console.log("Delete", deck);
+        this.setState({
+          // The new cards are the ones where their _id are diffrent from idClicked
+          decks: this.state.decks.filter(deck => deck._id !== idClicked),
+          deckIdToDelete: null
+        });
+      })
+      .catch(err => {
+        console.log("ERROR", err);
+      });
+  }
+
+  // deckId can be an id or undefined
+  toggleDeleteModal = (deckId) => {
+    this.setState({
+      deckIdToDelete: deckId
+    })
+  }
+
+
   handleLogoutClick(e) {
     api.logout()
   }
@@ -98,33 +129,54 @@ export default class Profile extends Component {
     }
     return (
 
+      <div>
+        <input
+          className="searchBar"
+          name="searchbar"
+          type="text"
+          placeholder="Search"
+          value={this.state.search}
+          onChange={e => this.handleSearch(e.target.value)}
+        />
 
 
-      <div className="Profile">
-        <div className="flexWrap">
-          <div className="flexBasic">
-            <img className="picProfile" src={this.state.pictureUrl} alt="profile picture" />
-            <h2>{this.state.name}ProfileName</h2>
-          </div>
-          <div>
-            {api.isLoggedIn() && <Link to="/" onClick={(e) => this.handleLogoutClick(e)}> <p>Logout</p> </Link>}
-            <botton className="info">
-              Edit
+        <div className="Profile">
+          <div className="flexWrap">
+            <div className="flexBasic">
+              <img className="picProfile" src={this.state.pictureUrl} alt="profile picture" />
+              <h2>{this.state.name}</h2>
+            </div>
+            <div>
+              {api.isLoggedIn() && <Link to="/" onClick={(e) => this.handleLogoutClick(e)}> <p>Logout</p> </Link>}
+              <botton className="info">
+                Edit
                 <Link to={`/profile/edit`}> <img src={EditIcon} style={{ height: "30px" }} /></Link>
-            </botton>
+              </botton>
+            </div>
+          </div>
+
+          {/* If we have this.state.message, display the message  */}
+          {this.state.message && <div className="info">
+            {this.state.message}
+          </div>}
+          <h2>Your decks:</h2>
+          <div className="scrollFlex">
+            {this.state.decks.filter(deck => deck.title.toUpperCase().includes(this.state.search.toUpperCase())).map((deck, i) => (
+              <div>
+                <Link key={i} className="deck deckHome" to={`/details/${deck._id}`}> {deck.title} </Link>
+                {api.isLoggedIn() && <button onClick={() => this.toggleDeleteModal(deck._id)}>Delete</button>}
+                {/* {api.isLoggedIn() && <button onClick={() => this.handleDelete(deck._id)}>Delete</button>} */}
+              </div>
+            ))}
           </div>
         </div>
-
-        {/* If we have this.state.message, display the message  */}
-        {this.state.message && <div className="info">
-          {this.state.message}
-        </div>}
-        <h2>Your decks:</h2>
-        <div className="scrollFlex">
-          {this.state.decks.map(deck => (
-            <Link className="deck deckHome" to={`/details/${deck._id}`}> {deck.title} </Link>
-          ))}
-        </div>
+        <Modal isOpen={this.state.deckIdToDelete} toggle={() => this.toggleDeleteModal()} size="sm">
+          <ModalHeader toggle={() => this.toggleDeleteModal()}>Are you sure?</ModalHeader>
+          <ModalBody className="center">
+            <Button color="danger" onClick={() => this.handleDelete(this.state.deckIdToDelete)}>Delete</Button>{' '}
+            <Button color="secondary" outline onClick={() => this.toggleDeleteModal()}>Cancel</Button>
+          </ModalBody>
+        </Modal>
       </div>
     );
   }
@@ -132,7 +184,7 @@ export default class Profile extends Component {
     api.getProfile()
       .then((data) => {
         this.setState({
-          user: data.user,
+          name: data.user.name,
           email: data.user.email,
           pictureUrl: data.user.pictureUrl,
           decks: data.decks

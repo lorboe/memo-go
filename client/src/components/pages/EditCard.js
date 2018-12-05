@@ -50,29 +50,31 @@ class EditCard extends Component {
     return (
       <div className="EditCard">
         <h2>Edit cards</h2>
-        <div className="flexWrap">
-          <div className="deck deckHome"></div>
-          <div className="flexWrap center">
-            <form>
-            
+        <div className="flexWrap center">
+          <div id="cardContainer" style={{marginBottom: "10vh"}}></div>
+          <div className="flexBasic" style={{width: "-webkit-fill-available"}}>
+            <form className="center">
               <input className="iconCenter" type="text" value={this.state.question} onChange={(e) => { this.handleInputChange("question", e) }} placeholder="Question" /> <br />
-            
+
               <input className="iconCenter" type="text" value={this.state.answers} onChange={(e) => { this.handleInputChange("answers", e) }} placeholder="Answer" /> <br />
-              Visibility:
-          <select onChange={(e) => { this.handleInputChange("visibility", e) }}>
+              <div>
+                Visibility:
+                </div>
+              <select onChange={(e) => { this.handleInputChange("visibility", e) }}>
                 <option value={this.state.visibility}>public</option>
                 <option value={this.state.visibility}>private</option>
               </select>
-              <br />
-              Difficulty:
-          <select onChange={(e) => { this.handleInputChange("difficulty", e) }}>
+              <div>
+                Difficulty:
+              </div>
+              <select onChange={(e) => { this.handleInputChange("difficulty", e) }}>
                 <option value={this.state.difficulty}>beginner</option>
                 <option value={this.state.difficulty}>advanced-beginner</option>
                 <option value={this.state.difficulty}>experienced</option>
                 <option value={this.state.difficulty}>expert</option>
               </select>
               {/* Difficulty: <textarea value={this.state.difficulty} cols="30" rows="10" onChange={(e) => { this.handleInputChange("difficulty", e) }} ></textarea> <br /> */}
-              <button onClick={(e) => this.handleClick(e)}>Save Changes</button>
+              <button onClick={(e) => this.handleClick(e)}>Save<i style={{marginLeft: "2vh"}} className="fas fa-check"></i></button>
             </form>
             {this.state.message && <div className="info">
               {this.state.message}

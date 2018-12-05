@@ -140,7 +140,11 @@ class DeckDetail extends Component {
               </div>
               <div className="deckDetail">
                 <div className="deckInfo">
-                  <button><Link to={`/${deckId}/learn`}></Link><i style={{ marginRight: "5px" }} class="fas fa-graduation-cap"></i>Practice</button>
+                  <button>
+                    <Link to={`/${deckId}/learn`}>
+                      <i style={{ marginRight: "5px" }} class="fas fa-graduation-cap"></i>Practice
+                    </Link>
+                  </button>
                   <br />
                   Category: {this.state.deck.category}
                   <br />
@@ -196,7 +200,7 @@ class DeckDetail extends Component {
 
         <div className="cardLinks">
           {this.state.currUser && this.state.deck._owner._id === this.state.currUser._id && (
-            <button onClick={() => this.handleClick()}>New card</button>
+            <button onClick={() => this.handleClick()}> {this.state.isFormVisibile ? "Hide" : "New Card" } </button>
           )}
 
           {this.state.currUser && this.state.deck._owner._id === this.state.currUser._id &&

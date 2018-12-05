@@ -12,7 +12,7 @@ $font: 'Concert One', cursive;
 // To install Boostrap:
 // 1) Run in the client folder: $ npm i bootstrap
 // 2) Import bootstrap with the following line
-// @import 'bootstrap/scss/bootstrap';
+@import 'bootstrap/scss/bootstrap';
 // ----------------------------------------
 
 
@@ -227,6 +227,7 @@ select, input, textarea{
   border-bottom: 2px solid #24ceb6;
   border-radius: 7px;
   width: 90%;
+  height: 5vh;
   font-family: $font;
   color: $fontColor;
   font-size: 100%;
@@ -266,7 +267,7 @@ select, input, textarea{
      margin-top:0;
      margin: 12vh;
      padding: 10vh;
-     border-radius: 7px;
+     border-radius: 15px;
      background: white;
      box-shadow: 0px 1px 2px silver;
      position: relative;
@@ -363,6 +364,12 @@ nav{
 nav {
   padding: 10px;
   z-index: 4;
+}
+
+@media only screen and (max-width: 800px) {
+  nav {
+    margin-bottom: 15vh;
+   }
 }
 
 .navbar2 {

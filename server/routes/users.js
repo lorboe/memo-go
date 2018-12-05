@@ -46,6 +46,10 @@ router.put('/profile', isLoggedIn, (req,res,next) => {
 
 // parser.single('picture') => extract from the field 'picture' the file and define req.file (and req.file.url)
 router.post('/pictures', isLoggedIn, parser.single('picture'), (req, res, next) => {
+  let pictureUrl = req.file.url
+  if(!pictureUrl) {
+    res.next()
+  }
   User.findByIdAndUpdate(req.user._id, { pictureUrl: req.file.url })
     .then(() => {
       res.json({

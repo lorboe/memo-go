@@ -8,7 +8,8 @@ export default class PublicProfile extends Component {
         this.state = {
             decks: [],
             search: "",
-            pictureUrl:""
+            pictureUrl:"",
+            name:""
         }
     }
 
@@ -17,13 +18,18 @@ export default class PublicProfile extends Component {
             .then(data => {
                 this.setState({
                     decks: data.decks,
+                    name: data.user.name,
                     pictureUrl: data.decks[0]._owner.pictureUrl
                 })
 
             })
     }
 
-
+    handleSearch = (newSearch) => {
+        this.setState({
+          search: newSearch
+        })
+      }
 
     render() {
         console.log("hello from public profile")
@@ -62,8 +68,15 @@ export default class PublicProfile extends Component {
 
         return (
             <div>
+                 <input
+          name="searchbar"
+          type="text"
+          placeholder="Search"
+          value={this.state.search}
+          onChange={e => this.handleSearch(e.target.value)}
+        />
                 <div className="Profile">
-                    <h2>Public Profile</h2>
+                    <h2>{this.state.name}</h2>
 
                     <img className="picProfile" src={this.state.pictureUrl} alt="profile picture" />
                     <div>

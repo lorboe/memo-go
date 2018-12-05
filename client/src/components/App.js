@@ -18,7 +18,7 @@ import PlusIcon from '../../src/images/original/plus.svg';
 import ProfileIcon from '/Users/GG/Documents/SofDev/Ironhack/w8/Project_3/learning-app/client/src/images/original/Profile_icon.svg';
 import Heard from '../../src/images/original/Heart.svg';
 import PublicProfile from './pages/PublicProfile'
-import BrainLogo from '/Users/GG/Documents/SofDev/Ironhack/w8/Project_3/learning-app/client/src/images/brain.svg'
+import BrainLogo from '../../src/images/brain.svg'
 
 
 class App extends Component {
@@ -72,6 +72,7 @@ class App extends Component {
           <div className="navbar2"></div>
         </div>
         <div className="content">
+       
           {/* <div className="fixed">
           <header>
             <div>
