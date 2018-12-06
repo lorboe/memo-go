@@ -18,7 +18,7 @@ export default class PublicProfile extends Component {
             .then(data => {
                 this.setState({
                     decks: data.decks,
-                    name: data.user.name,
+                    name: data.decks[0]._owner.name,
                     pictureUrl: data.decks[0]._owner.pictureUrl
                 })
 
