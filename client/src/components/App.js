@@ -18,7 +18,7 @@ import PlusIcon from '../../src/images/original/plus.svg';
 import ProfileIcon from '/Users/GG/Documents/SofDev/Ironhack/w8/Project_3/learning-app/client/src/images/original/Profile_icon.svg';
 import Heard from '../../src/images/original/Heart.svg';
 import PublicProfile from './pages/PublicProfile'
-import BrainLogo from '../../src/images/brain.svg'
+import BrainLogo from '../../src/images/brain2.svg'
 
 
 class App extends Component {

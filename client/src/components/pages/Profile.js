@@ -95,7 +95,6 @@ export default class Profile extends Component {
       })
   }
 
-
   handleDelete(idClicked) {
     api
       .deleteDeck(idClicked)
@@ -144,7 +143,9 @@ export default class Profile extends Component {
         <div className="Profile">
           <div className="flexWrap">
             <div className="flexBasic">
-              <img className="picProfile" src={this.state.pictureUrl} alt="profile picture" />
+              <div>
+                <img className="picProfile" src={this.state.pictureUrl} alt="profile picture" />
+              </div>
               <h2>{this.state.name}</h2>
             </div>
             <div>

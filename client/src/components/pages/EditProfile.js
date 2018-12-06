@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import api from '../../api'
 import { Link } from 'react-router-dom'
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 export default class EditProfile extends Component {
   constructor(props) {
@@ -13,7 +14,8 @@ export default class EditProfile extends Component {
       newPassword: null,
       pictureUrl: null,
       alt: null,
-      message: null
+      message: null,
+      profileIdToDelete: null,
     }
   }
   handleChange = (e) => {
@@ -68,6 +70,29 @@ export default class EditProfile extends Component {
         })
       })
   }
+
+  // handleDelete(idClicked) {
+  //   api
+  //     .deleteDeck(idClicked)
+  //     .then(profile => {
+  //       console.log("Delete", profile);
+  //       this.setState({
+  //         // The new cards are the ones where their _id are diffrent from idClicked
+  //         profiles: this.state.profiles.filter(profile => profile._id !== idClicked),
+  //         profileIdToDelete: null
+  //       });
+  //     })
+  //     .catch(err => {
+  //       console.log("ERROR", err);
+  //     });
+  // }
+
+  // toggleDeleteModal = (deckId) => {
+  //   this.setState({
+  //     profileIdToDelete: profileId
+  //   })
+  // }
+
   render() {
     // If there is 
     if (!this.state.email) {
@@ -95,31 +120,36 @@ export default class EditProfile extends Component {
             <div>
               Edit username:
               </div>
-            
+
             <input type="text" name="name" value={this.state.name} onChange={this.handleChange} placeholder="New Username" />
-            
+
             <div>
               Edit e-mail:
                 </div>
             <input type="text" name="email" value={this.state.email} onChange={this.handleChange} />
-           
+
             <input type="password" name="currentPassword" value={this.state.currentPassword} onChange={this.handleChange} placeholder="Current Password" />
-    
+
             <input type="password" name="newPassword" value={this.state.newPassword} onChange={this.handleChange} placeholder="New Password" />
-           
+
           </div>
 
-          <button type="submit"><i className="far fa-check-circle"></i>Update</button><span></span>
-          <button type="delete"><i className="fas fa-trash"></i>Delete</button>
+          <button type="submit"><i className="far fa-check-circle" style={{ marginRight: "1vh" }}></i>Update</button><span></span>
+          <button type="delete"><i className="fas fa-trash" style={{ marginRight: "1vh" }}></i>Delete</button>
+          {/* onClick={() => this.toggleDeleteModal(profile._id)} */}
         </form>
 
         {/* If we have this.state.message, display the message  */}
         {this.state.message && <div className="info">
           {this.state.message}
         </div>}
-        <div>
-
-        </div>
+        {/* <Modal isOpen={this.state.profileIdToDelete} toggle={() => this.toggleDeleteModal()} size="sm">
+          <ModalHeader toggle={() => this.toggleDeleteModal()}>Are you sure?</ModalHeader>
+          <ModalBody className="center">
+            <Button color="danger" onClick={() => this.handleDelete(this.state.profileIdToDelete)}>Delete</Button>{' '}
+            <Button color="secondary" outline onClick={() => this.toggleDeleteModal()}>Cancel</Button>
+          </ModalBody>
+        </Modal> */}
 
       </div>
     );

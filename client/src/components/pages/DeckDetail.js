@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import AddCard from "./AddCard";
 import EditDeck from "./EditDeck";
 import SelectDeck from './SelectDeck'
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import Practice from '../../../src/images/original/Practice.svg'
 
 
@@ -22,6 +23,7 @@ class DeckDetail extends Component {
       rateHard: 0,
       rateEasy: 0,
       // favorite: 0,
+      cardIdToDelete: null,
     };
   }
 
@@ -97,6 +99,13 @@ class DeckDetail extends Component {
         console.log("ERROR", err);
       });
   }
+  
+// cardId can be an id or undefined
+  toggleDeleteModal = (cardId) => {
+    this.setState({
+      cardIdToDelete: cardId
+    })
+  }
 
   //EDITING CARDS
   handleCardEdit(idClicked) {
@@ -123,7 +132,7 @@ class DeckDetail extends Component {
     })
   }
 
-  
+
   render() {
     if (!this.state.deck && !this.state.currUser) return <div>Loading...</div>;
     let deckId = this.state.deck._id
@@ -154,7 +163,7 @@ class DeckDetail extends Component {
                   {this.state.deck.visibility === "private" ? "No" : "Yes"}
                   <br />
                 </div>
-                
+
                 <div className="centerLeft">
                   <button onClick={() => this.addRateHard()} style={{ border: "transparent", boxShadow: "none", margin: "auto" }}>
                     <i style={{ marginRight: "5px" }} className="far fa-grin-beam-sweat"></i>{this.state.rateHard}
@@ -200,7 +209,7 @@ class DeckDetail extends Component {
 
         <div className="cardLinks">
           {this.state.currUser && this.state.deck._owner._id === this.state.currUser._id && (
-            <button onClick={() => this.handleClick()}> {this.state.isFormVisibile ? "Hide" : "New Card" } </button>
+            <button onClick={() => this.handleClick()}> {this.state.isFormVisibile ? "Hide" : "New Card"} </button>
           )}
 
           {this.state.currUser && this.state.deck._owner._id === this.state.currUser._id &&
@@ -217,7 +226,7 @@ class DeckDetail extends Component {
         <div className="flexWrap centerLeft">
           <div className="cardLinks center">
             <hr />
-            
+
             {/* <div id="cardContainer"></div> */}
             {this.state.deck &&
               this.state.deck.cards.map((card, i) => (
@@ -233,32 +242,37 @@ class DeckDetail extends Component {
                     </div>
                   </div>
 
-                    {api.isLoggedIn() && this.state.currUser && this.state.deck._owner._id === this.state.currUser._id && (
+                  {api.isLoggedIn() && this.state.currUser && this.state.deck._owner._id === this.state.currUser._id && (
                     <div>
-                        <button onClick={() => this.handleCardEdit(card._id)}>
-                          <i className="fas fa-cog" />
-                        </button>
-    
-                        <button onClick={() => this.handleDelete(card._id)}>
-                          <i className="fas fa-trash" />
-                        </button>
+                      <button onClick={() => this.handleCardEdit(card._id)}>
+                        <i className="fas fa-cog" />
+                      </button>
 
-                 
+                      <button onClick={() => this.toggleDeleteModal(card._id)}>
+                        <i className="fas fa-trash" />
+                      </button>
 
-                    {api.isLoggedIn() &&  <button onClick={() => this.handleCopyCard(i, card._id)}>
-                        <i className="fas fa-clone"></i> 
-                        </button>}
+                      {api.isLoggedIn() && <button onClick={() => this.handleCopyCard(i, card._id)}>
+                        <i className="fas fa-clone"></i>
+                      </button>}
 
-                    {api.isLoggedIn() && this.state.indexCopyCard === i && 
-                  <SelectDeck
-                  cardId={this.state.idCopyCard}
-                  history={this.props.history}
-                  deckId ={this.props.match.params.deckId}>
-                  </SelectDeck>
+                      {api.isLoggedIn() && this.state.indexCopyCard === i &&
+                        <SelectDeck
+                          cardId={this.state.idCopyCard}
+                          history={this.props.history}
+                          deckId={this.props.match.params.deckId}>
+                        </SelectDeck>
                       }
-                  </div>)}
+                    </div>)}
                 </div>
               ))}
+            <Modal isOpen={this.state.cardIdToDelete} toggle={() => this.toggleDeleteModal()} size="sm">
+              <ModalHeader toggle={() => this.toggleDeleteModal()}>Are you sure?</ModalHeader>
+              <ModalBody className="center">
+                <Button color="danger" onClick={() => this.handleDelete(this.state.cardIdToDelete)}>Delete</Button>{' '}
+                <Button color="secondary" outline onClick={() => this.toggleDeleteModal()}>Cancel</Button>
+              </ModalBody>
+            </Modal>
           </div>
         </div>
       </div>

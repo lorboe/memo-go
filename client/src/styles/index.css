@@ -6483,7 +6483,7 @@ select, input, textarea {
   width: 36px;
   height: 36px;
   display: flex;
-  border: 2px solid papayawhip;
+  border: 1px solid silver;
   box-shadow: 0 2px 3px 0 silver;
   border-radius: 50px;
   margin-top: -80px;
@@ -6527,13 +6527,13 @@ select, input, textarea {
 .navIcon {
   flex: 1; }
   .navIcon img {
-    width: 8vh; }
+    width: 17vh; }
   .navIcon i {
     width: 8vh;
     color: white; }
 
 nav img:hover {
-  width: 8.4vh; }
+  width: 17.4vh; }
 
 nav i:hover {
   width: 8.4vh; }
@@ -6577,7 +6577,8 @@ nav {
 .picProfile {
   border-radius: 50%;
   width: 150px;
-  height: 150px; }
+  height: 150px;
+  object-fit: contain; }
 
 .spc {
   margin-top: 10vh; }

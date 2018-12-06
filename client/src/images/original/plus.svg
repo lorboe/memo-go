@@ -1,5 +1,18 @@
-<?xml version="1.0"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 496 496" style="enable-background:new 0 0 496 496;" xml:space="preserve" width="512px" height="512px"><g><path style="fill:#1BCEB8;" d="M496,248c0,136.8-111.2,248-248,248S0,384.8,0,248S111.2,0,248,0S496,111.2,496,248z" data-original="#1BCEB8"/><path style="fill:#09ADB5;" d="M248,0c136.8,0,248,111.2,248,248S384.8,496,248,496" data-original="#09ADB5"/><path style="fill:#0DBFBA;" d="M72.8,72.8c96.8-96.8,253.6-96.8,350.4,0s96.8,253.6,0,350.4" data-original="#0DBFBA"/><g>
-	<path style="fill:#EEFFFF" d="M352.8,256H143.2c-6.4,0-12-1.6-12-8s5.6-8,12-8h209.6c6.4,0,12,1.6,12,8S359.2,256,352.8,256z" data-original="#EEFFFF" class="active-path"/>
-	<path style="fill:#EEFFFF" d="M248,364c-6.4,0-8-4.8-8-12V143.2c0-6.4,1.6-12,8-12s8,4.8,8,12v209.6C256,359.2,254.4,364,248,364z   " data-original="#EEFFFF" class="active-path"/>
-</g></g> </svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1312px" height="612px" viewBox="0 0 1312 612" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>plus</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="plus">
+            <ellipse id="Oval" fill="#22A6B1" cx="656" cy="306" rx="656" ry="306"></ellipse>
+            <path d="M915,278 C915,419.212903 800.212903,534 659,534 C517.787097,534 403,419.212903 403,278 C403,136.787097 517.787097,22 659,22 C800.212903,22 915,136.787097 915,278 Z" id="Path" fill="#1BCEB8"></path>
+            <path d="M659,22 C800.212903,22 915,136.787097 915,278 C915,419.212903 800.212903,534 659,534" id="Path" fill="#09ADB5"></path>
+            <path d="M478.148387,97.1483871 C578.070968,-2.77419355 739.929032,-2.77419355 839.851613,97.1483871 C939.774194,197.070968 939.774194,358.929032 839.851613,458.851613" id="Path" fill="#0DBFBA"></path>
+            <g id="Group" transform="translate(538.225806, 157.225806)" fill="#EEFFFF">
+                <path d="M228.954839,129.032258 L12.5935484,129.032258 C5.98709677,129.032258 0.206451613,127.380645 0.206451613,120.774194 C0.206451613,114.167742 5.98709677,112.516129 12.5935484,112.516129 L228.954839,112.516129 C235.56129,112.516129 241.341935,114.167742 241.341935,120.774194 C241.341935,127.380645 235.56129,129.032258 228.954839,129.032258 Z" id="Path"></path>
+                <path d="M120.774194,240.516129 C114.167742,240.516129 112.516129,235.56129 112.516129,228.129032 L112.516129,12.5935484 C112.516129,5.98709677 114.167742,0.206451613 120.774194,0.206451613 C127.380645,0.206451613 129.032258,5.16129032 129.032258,12.5935484 L129.032258,228.954839 C129.032258,235.56129 127.380645,240.516129 120.774194,240.516129 Z" id="Path"></path>
+            </g>
+        </g>
+    </g>
+</svg>
