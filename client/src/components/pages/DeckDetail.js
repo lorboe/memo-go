@@ -196,11 +196,11 @@ class DeckDetail extends Component {
 
                 <div className="centerLeft">
                   <button onClick={() => this.addRateHard()} style={{ border: "transparent", boxShadow: "none", margin: "auto" }}>
-                    <i style={{ marginRight: "5px" }} className="far fa-grin-beam-sweat"></i>{this.state.rateHard}
+                    Hard<i style={{ marginRight: "5px" }} className="far fa-grin-beam-sweat"></i>{this.state.rateHard}
                   </button>
 
                   <button onClick={() => this.addRateEasy()} style={{ border: "transparent", boxShadow: "none", margin: "auto" }}>
-                    <i style={{ marginRight: "5px" }} className="far fa-smile-beam"></i>{this.state.rateEasy}
+                    Easy<i style={{ marginRight: "5px" }} className="far fa-smile-beam"></i>{this.state.rateEasy}
                   </button>
                   <button onClick={() => this.addLikes()} style={{ border: "transparent", boxShadow: "none", margin: "auto" }}>
                     <i style={{ marginRight: "5px" }} className="far fa-thumbs-up"></i>{this.state.nbOfLikes}
