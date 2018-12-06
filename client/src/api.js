@@ -88,9 +88,9 @@ export default {
       .catch(errHandler)
   },
 
-  deleteDeck(id) {
+  deleteDeck() {
     return service
-      .delete('/decks/'+id)
+      .delete('/my-account')
       .then(res => res.data)
       .catch(errHandler)
   },

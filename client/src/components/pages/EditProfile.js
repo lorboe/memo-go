@@ -70,9 +70,9 @@ export default class EditProfile extends Component {
       })
   }
 
-  handleDelete(id) {
+  handleDelete() {
    api
-      .deleteProfile(id)
+      .deleteProfile()
       .then(user => {
         console.log("Delete", user);
         api.logout()
