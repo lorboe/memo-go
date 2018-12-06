@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const Deck = require('../models/Deck');
 const Card = require('../models/Card');
+const User = require('../models/User');
 
 // The same as: const checkId = require('../middlewares').checkId
 const { checkId, isLoggedIn } = require('../middlewares')
@@ -98,7 +99,28 @@ router.delete('/:id', isLoggedIn, checkId('id'), (req, res, next) => {
     .catch(err => next(err))
 })
 
-
+router.post("/:deckId/copy-deck/", isLoggedIn, (req,res, next) => {
+  Promise.all ([
+  User.findById(req.user._id),
+  Deck.findById(req.params.deckId)
+  ])
+  .then(([user, deck]) => {
+  let newDeck = {
+  title:deck.title,
+  category: deck.category,
+  difficulty: deck.difficulty,
+  visibility: deck.visibility,
+  _owner: user._id
+  }
+  return Deck.create(newDeck)
+          .then(card => {
+            res.json({
+              success: true,
+              card
+            });
+          })
+  })  
+  })
 
 
 module.exports = router;

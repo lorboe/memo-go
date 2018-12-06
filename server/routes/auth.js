@@ -19,9 +19,10 @@ router.post("/signup", (req, res, next) => {
         res.status(409).json({ message: "The email already exists" })
         return
       }
+      const pictureUrl = "https://res.cloudinary.com/sam-ironhack-projects/image/upload/v1544103629/pear/iconfinder_ninja_479478.png"
       const salt = bcrypt.genSaltSync(bcryptSalt)
       const hashPass = bcrypt.hashSync(password, salt)
-      const newUser = new User({ email, password: hashPass, name })
+      const newUser = new User({ email, password: hashPass, name, pictureUrl })
       return newUser.save()
     })
     .then(userSaved => {

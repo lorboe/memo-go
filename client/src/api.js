@@ -95,6 +95,13 @@ export default {
       .catch(errHandler)
   },
 
+  copyDeck(deckId) {
+   return service
+   .post(`/decks/${deckId}/copy-deck`)
+   .then(res => res.data)
+   .catch(errHandler)
+ },
+
 //CARDS CALLS
 getCards() {
   return service

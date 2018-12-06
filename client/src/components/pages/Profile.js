@@ -125,6 +125,7 @@ export default class Profile extends Component {
   render() {
     // If there is 
     if (!this.state.email) {
+      // this.props.history.push(`/login/`)
       return <div><h2>Profile</h2><p>Loading...</p></div>
     }
     return (

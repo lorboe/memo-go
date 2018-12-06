@@ -22,6 +22,7 @@ class DeckDetail extends Component {
       nbOfLikes: 0,
       rateHard: 0,
       rateEasy: 0,
+      message: null,
       // favorite: 0,
       cardIdToDelete: null,
     };
@@ -132,6 +133,29 @@ class DeckDetail extends Component {
     })
   }
 
+  handleSelectDeck() {
+    this.setState({
+      indexCopyCard: null,
+    })
+  }
+
+  handleCopyDeck(id) {
+  api.copyDeck(id).then(result => {
+    console.log("SUCCESS!", result)
+    this.setState({
+      message: "You have succesfully copied your deck",
+    })
+    setTimeout(() => {
+      this.setState({
+        message: null
+      })
+    }, 1000)
+   
+  })
+  .catch(err => this.setState({ message: err.toString() }))
+}
+
+
 
   render() {
     if (!this.state.deck && !this.state.currUser) return <div>Loading...</div>;
@@ -139,14 +163,22 @@ class DeckDetail extends Component {
 
     return (
       <div>
-
         {!this.state.isDeckEditFormVisible && (
           <div className="flexWrap centerLeft" style={{ marginBottom: "5vh" }}>
             <div className="flexWrap">
               <div className="deck deckHome">
                 <img className="picOnDeck" src={this.state.deck._owner.pictureUrl} alt="owner picture" />
                 {this.state.deck.title}
+<br/>
+                    {api.isLoggedIn() &&  <i onClick={() => this.handleCopyDeck(this.state.deck._id)}
+                    className="fas fa-clone" ></i> }
+                      
               </div>
+              {this.state.message && <div className="info">
+                {this.state.message}</div>}
+
+
+                
               <div className="deckDetail">
                 <div className="deckInfo">
                   <button>
@@ -183,17 +215,6 @@ class DeckDetail extends Component {
         }
 
         <div>
-          {this.state.currUser && this.state.deck._owner._id === this.state.currUser._id && (
-            <button
-              onClick={() =>
-                this.handleEditDeckClick()
-
-              }
-            >
-              Edit Deck
-            </button>
-          )}
-
           {this.state.currUser && this.state.deck._owner._id === this.state.currUser._id &&
             !!this.state.isDeckEditFormVisible && (
               <div>
@@ -205,11 +226,21 @@ class DeckDetail extends Component {
                 />
               </div>
             )}
+               {this.state.currUser && this.state.deck._owner._id === this.state.currUser._id && (
+            <button
+              onClick={() =>
+                this.handleEditDeckClick()
+
+              }
+            >
+             {this.state.isDeckEditFormVisible ? "Close edit" : "Edit Deck" }
+            </button>
+          )}
         </div>
 
         <div className="cardLinks">
           {this.state.currUser && this.state.deck._owner._id === this.state.currUser._id && (
-            <button onClick={() => this.handleClick()}> {this.state.isFormVisibile ? "Hide" : "New Card"} </button>
+            <button onClick={() => this.handleClick()}> {this.state.isFormVisible ? "Hide" : "Add Card" } </button>
           )}
 
           {this.state.currUser && this.state.deck._owner._id === this.state.currUser._id &&
@@ -244,26 +275,28 @@ class DeckDetail extends Component {
 
                   {api.isLoggedIn() && this.state.currUser && this.state.deck._owner._id === this.state.currUser._id && (
                     <div>
-                      <button onClick={() => this.handleCardEdit(card._id)}>
-                        <i className="fas fa-cog" />
-                      </button>
+                        <button onClick={() => this.handleCardEdit(card._id)}>
+                          <i className="fas fa-cog" />
+                        </button>
+    
+                        <button onClick={() => this.handleDelete(card._id)}>
+                          <i className="fas fa-trash" />
+                        </button>
+                        </div>)}
+                    {api.isLoggedIn() &&  <button onClick={() => this.handleCopyCard(i, card._id)}>
+                        <i className="fas fa-clone"></i> 
+                        </button>}
 
-                      <button onClick={() => this.toggleDeleteModal(card._id)}>
-                        <i className="fas fa-trash" />
-                      </button>
-
-                      {api.isLoggedIn() && <button onClick={() => this.handleCopyCard(i, card._id)}>
-                        <i className="fas fa-clone"></i>
-                      </button>}
-
-                      {api.isLoggedIn() && this.state.indexCopyCard === i &&
+                    {api.isLoggedIn() && this.state.indexCopyCard === i && 
                         <SelectDeck
-                          cardId={this.state.idCopyCard}
-                          history={this.props.history}
-                          deckId={this.props.match.params.deckId}>
+                        cardId={this.state.idCopyCard}
+                        history={this.props.history}
+                        deckId ={this.props.match.params.deckId}
+                        onSelectDeck={() => this.handleSelectDeck()}
+                        >
                         </SelectDeck>
-                      }
-                    </div>)}
+                            }
+                  
                 </div>
               ))}
             <Modal isOpen={this.state.cardIdToDelete} toggle={() => this.toggleDeleteModal()} size="sm">

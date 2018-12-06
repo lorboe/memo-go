@@ -7,7 +7,7 @@ const deckSchema = new mongoose.Schema({
     required: [true, 'The deck title is required'],
      minlength: 1
   },
-  description: {type: String},
+  // description: {type: String},
   category: {
     type: String, 
     enum:["web development", "languages", "business", "other"], 

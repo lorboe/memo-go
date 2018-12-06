@@ -55,10 +55,6 @@ router.post("/:deckId/copy-card/:cardId", isLoggedIn, (req,res, next) => {
   answers: card.answers,
   _deck: deck._id
   }
-  console.log("Newcard: " + newCard)
-  console.log("Question: " + card.question)
-  console.log("Answers:" + card.answers)
-  console.log("_deck: " + deck._id)
   return Card.create(newCard)
           .then(card => {
             res.json({
@@ -66,10 +62,7 @@ router.post("/:deckId/copy-card/:cardId", isLoggedIn, (req,res, next) => {
               card
             });
           })
-  }
-  )
-    
-    
+  })  
   })
  
 

@@ -64,8 +64,8 @@ class App extends Component {
             </NavLink> :
               <NavLink to="/login" className="navIcon">
                 <div className="center">
-                  <i class="fas fa-user"></i>
-                </div>
+                <img src={ProfileIcon} />
+              </div>
               </NavLink>}
 
           </nav>
