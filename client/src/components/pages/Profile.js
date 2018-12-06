@@ -3,7 +3,8 @@ import api from '../../api'
 import { Link } from 'react-router-dom'
 import EditIcon from '/Users/GG/Documents/SofDev/Ironhack/w8/Project_3/learning-app/client/src/images/original/pencil.svg';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-
+import MoveRight from '/Users/GG/Documents/SofDev/Ironhack/w8/Project_3/learning-app/client/src/images/original/Move_Right2.png'
+import MoveLeft from '/Users/GG/Documents/SofDev/Ironhack/w8/Project_3/learning-app/client/src/images/original/Move_Left.png'
 
 export default class Profile extends Component {
   constructor(props) {
@@ -160,14 +161,22 @@ export default class Profile extends Component {
             {this.state.message}
           </div>}
           <h2>Your decks:</h2>
-          <div className="scrollFlex">
-            {this.state.decks.filter(deck => deck.title.toUpperCase().includes(this.state.search.toUpperCase())).map((deck, i) => (
-              <div>
-                <Link key={i} className="deck deckHome" to={`/details/${deck._id}`}> {deck.title} </Link>
-                {api.isLoggedIn() && <button onClick={() => this.toggleDeleteModal(deck._id)}>Delete</button>}
-                {/* {api.isLoggedIn() && <button onClick={() => this.handleDelete(deck._id)}>Delete</button>} */}
-              </div>
-            ))}
+          <div className="flexRow">
+            <div className="arrow">
+              <img src={MoveLeft} />
+            </div>
+            <div className="scrollFlex">
+              {this.state.decks.filter(deck => deck.title.toUpperCase().includes(this.state.search.toUpperCase())).map((deck, i) => (
+                <div>
+                  <Link key={i} className="deck deckHome" to={`/details/${deck._id}`}> {deck.title} </Link>
+                  {api.isLoggedIn() && <button onClick={() => this.toggleDeleteModal(deck._id)}>Delete</button>}
+                  {/* {api.isLoggedIn() && <button onClick={() => this.handleDelete(deck._id)}>Delete</button>} */}
+                </div>
+              ))}
+            </div>
+            <div className="arrow">
+              <img src={MoveRight} />
+            </div>
           </div>
         </div>
         <Modal isOpen={this.state.deckIdToDelete} toggle={() => this.toggleDeleteModal()} size="sm">

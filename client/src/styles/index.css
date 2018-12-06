@@ -6542,6 +6542,14 @@ nav i:after {
   content: "";
   border-bottom: 2px solid white; }
 
+.arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px; }
+  .arrow img {
+    width: 1.3vh; }
+
 .iconCenter {
   display: flex;
   margin: auto; }

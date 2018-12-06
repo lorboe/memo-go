@@ -12,6 +12,7 @@
     "node": "8.9.4"
   },
   "dependencies": {
+    "npm": "^6.4.1",
     "react-card-flip": "^0.3.0",
     "react-flipcard-2": "^0.3.2",
     "react-popup": "^0.9.3"

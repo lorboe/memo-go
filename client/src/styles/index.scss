@@ -356,6 +356,16 @@ nav{
   }
 }
 
+.arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  img {
+    width: 1.3vh;
+  }
+}
+
 .iconCenter{
   display: flex;
   margin: auto;

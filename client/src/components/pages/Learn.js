@@ -71,7 +71,7 @@ class Learn extends Component {
         </div>
         </div>
         {this.state.iVisibleCard > 0 && <Button outline color="info" onClick={() => this.goToAnotherCard(-1)}>Previous</Button>}
-        {this.state.iVisibleCard < this.state.cards.length - 1 && <Button outline color="primary" onClick={() => this.goToAnotherCard(1)}>Next</Button>}
+        {this.state.iVisibleCard < this.state.cards.length - 1 && <Button outline color="info" onClick={() => this.goToAnotherCard(1)}>Next</Button>}
 
       </div>
     );

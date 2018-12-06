@@ -142,7 +142,7 @@ class DeckDetail extends Component {
                 <div className="deckInfo">
                   <button>
                     <Link to={`/${deckId}/learn`}>
-                      <i style={{ marginRight: "5px" }} class="fas fa-graduation-cap"></i>Practice
+                      <i style={{ marginRight: "5px" }} className="fas fa-graduation-cap"></i>Practice
                     </Link>
                   </button>
                   <br />
