@@ -172,9 +172,9 @@ deleteCard(id) {
       .catch(errHandler)
   },
 
-  deleteProfile(id) {
+  deleteProfile() {
     return service
-      .delete('/users/'+id)
+      .delete('/users/my-account')
       .then(res => res.data)
       .catch(errHandler)
   },

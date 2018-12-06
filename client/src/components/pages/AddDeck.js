@@ -37,7 +37,8 @@ class AddDeck extends Component {
     api.postDecks(data)
       .then(deck => {
         console.log('SUCCESS!', deck);
-       <Redirect to={`/details/${deck._id}`}/>
+      //  <Redirect to={`/details/${deck._id}`}/>
+       this.props.history.push(`/details/${deck._id}`)
 
         console.log("DECKid", deck._id);
         this.setState({

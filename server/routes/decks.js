@@ -76,9 +76,7 @@ router.post('/', isLoggedIn, (req, res, next) => {
   let _owner = req.user._id
  Deck.create({ title, category, visibility, difficulty, description, _owner })
     .then(deck => {
-      res.json({
-        deck
-     })
+      res.json(deck)
     })
     .catch(err => next(err))
   });

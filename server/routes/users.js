@@ -132,11 +132,10 @@ router.get("/my-decks", isLoggedIn, (req,res,next) => {
     .catch(err => next(err))
 })
 
-router.delete('/:id', isLoggedIn, (req, res, next) => {
-  id = req.params.id
-  Deck.findOneAndDelete({_owner: id}).then (deck => {
+router.delete('/my-account', isLoggedIn, (req, res, next) => {
+  Deck.deleteMany({_owner: req.user._id}).then (deck => {
   return (
-  User.findByIdAndDelete(id)
+  User.findByIdAndDelete(req.user._id)
       .then(userDoc => {
         console.log("DEBUG deckDoc", userDoc)
         res.json({
