@@ -59258,8 +59258,6 @@ var EditProfile = function (_Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__images_original_science_icon_25410_png__ = __webpack_require__(/*! ../../images/original/science-icon_25410.png */ "./src/images/original/science-icon_25410.png");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__images_original_science_icon_25410_png___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__images_original_science_icon_25410_png__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__images_original_Food_icon_379338_png__ = __webpack_require__(/*! ../../images/original/Food-icon_379338.png */ "./src/images/original/Food-icon_379338.png");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__images_original_Food_icon_379338_png___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__images_original_Food_icon_379338_png__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__images_original_Sport_icon_289620_svg__ = __webpack_require__(/*! ../../images/original/Sport_icon_289620.svg */ "./src/images/original/Sport_icon_289620.svg");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__images_original_Sport_icon_289620_svg___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__images_original_Sport_icon_289620_svg__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_router_dom__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
@@ -60716,14 +60714,14 @@ var Signup = function (_Component) {
 
 /***/ }),
 
-/***/ "./src/images/original/Food-icon_379338.png":
+
 /*!**************************************************!*\
-  !*** ./src/images/original/Food-icon_379338.png ***!
+
   \**************************************************/
 /*! dynamic exports provided */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "static/media/Food-icon_379338.3bdc924d.png";
+
 
 /***/ }),
 

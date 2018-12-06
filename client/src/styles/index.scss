@@ -12,7 +12,7 @@ $font: 'Concert One', cursive;
 // To install Boostrap:
 // 1) Run in the client folder: $ npm i bootstrap
 // 2) Import bootstrap with the following line
-// @import 'bootstrap/scss/bootstrap';
+@import 'bootstrap/scss/bootstrap';
 // ----------------------------------------
 
 
@@ -38,15 +38,24 @@ nav{
 .info{
   margin: 20px;
   padding: 5px 15px;
-  border-radius: 10px;
+  // border-radius: 10px;
   display: inline-block;
-  border: 2.4px $default;
+  // border: 2.4px $default;
   font-size: 2.4vh;
-  color: white;
+  color: #21A6AF;
 }
 
 .info.info-danger {
   background-color: #e73f3f;
+}
+
+.searchBar {
+  height: 6vh;
+}
+@media only screen and (max-width: 800px) {
+  .searchBar {
+    margin-top: 5vh;
+   }
 }
 
 button {
@@ -132,6 +141,7 @@ header{
 // --------------------
 // Style for Home component
 p {
+  font-size: 2.4vh;
     color: #21A6AF;
   }
 
@@ -213,10 +223,11 @@ select, input, textarea{
   box-sizing: border-box;
   resize: none;
   border: none;
-  border-left: 1px solid silver;
-  border-bottom: 2px solid silver;
+  border-left: 1px solid #24ceb6;
+  border-bottom: 2px solid #24ceb6;
   border-radius: 7px;
   width: 90%;
+  height: 5vh;
   font-family: $font;
   color: $fontColor;
   font-size: 100%;
@@ -224,8 +235,9 @@ select, input, textarea{
   margin-bottom: 3vh;
   align-items: center;
   justify-content: center;
-
+  background: linear-gradient(to bottom right, white, #1cfff721);
 }
+
 
 #cardContainer {
   display: flex;
@@ -255,7 +267,7 @@ select, input, textarea{
      margin-top:0;
      margin: 12vh;
      padding: 10vh;
-     border-radius: 7px;
+     border-radius: 15px;
      background: white;
      box-shadow: 0px 1px 2px silver;
      position: relative;
@@ -344,6 +356,16 @@ nav{
   }
 }
 
+.arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  img {
+    width: 1.3vh;
+  }
+}
+
 .iconCenter{
   display: flex;
   margin: auto;
@@ -352,6 +374,12 @@ nav{
 nav {
   padding: 10px;
   z-index: 4;
+}
+
+@media only screen and (max-width: 800px) {
+  nav {
+    margin-bottom: 15vh;
+   }
 }
 
 .navbar2 {

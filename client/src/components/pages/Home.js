@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Atom from "../../images/original/science-icon_25410.png";
-import Food from "../../images/original/Food-icon_379338.png";
 import Sport from "../../images/original/Sport_icon_289620.svg";
 import { Link } from 'react-router-dom'
 import api from '../../api'
@@ -57,8 +56,9 @@ class Home extends Component {
 
     this.state.decks.map(e => console.log("line 55 data for each card", e))
     return (
-      <div>
+      <div style={{margin: "20px"}}>
         <input
+          className="searchBar"
           name="searchbar"
           type="text"
           placeholder="Search"

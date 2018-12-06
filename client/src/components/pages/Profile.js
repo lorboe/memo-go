@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import api from '../../api'
 import { Link } from 'react-router-dom'
-import SettingsIcon from '../../..//src/images/original/Settings2.svg';
-import { Card } from 'reactstrap';
-
+import EditIcon from '/Users/GG/Documents/SofDev/Ironhack/w8/Project_3/learning-app/client/src/images/original/pencil.svg';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import MoveRight from '/Users/GG/Documents/SofDev/Ironhack/w8/Project_3/learning-app/client/src/images/original/Move_Right2.png'
+import MoveLeft from '/Users/GG/Documents/SofDev/Ironhack/w8/Project_3/learning-app/client/src/images/original/Move_Left.png'
 
 export default class Profile extends Component {
   constructor(props) {
@@ -17,7 +18,7 @@ export default class Profile extends Component {
       decks: [],
       message: null,
       search: "",
-
+      deckIdToDelete: null,
     }
   }
 
@@ -102,8 +103,8 @@ export default class Profile extends Component {
         console.log("Delete", deck);
         this.setState({
           // The new cards are the ones where their _id are diffrent from idClicked
-           decks: this.state.decks.filter(deck => deck._id !== idClicked)
-          
+          decks: this.state.decks.filter(deck => deck._id !== idClicked),
+          deckIdToDelete: null
         });
       })
       .catch(err => {
@@ -111,9 +112,12 @@ export default class Profile extends Component {
       });
   }
 
-
-
-
+  // deckId can be an id or undefined
+  toggleDeleteModal = (deckId) => {
+    this.setState({
+      deckIdToDelete: deckId
+    })
+  }
 
 
   handleLogoutClick(e) {
@@ -126,44 +130,62 @@ export default class Profile extends Component {
     }
     return (
 
-    <div>
+      <div>
         <input
-      name="searchbar"
-      type="text"
-      placeholder="Search"
-      value={this.state.search}
-      onChange={e => this.handleSearch(e.target.value)}
-    />
+          className="searchBar"
+          name="searchbar"
+          type="text"
+          placeholder="Search"
+          value={this.state.search}
+          onChange={e => this.handleSearch(e.target.value)}
+        />
 
 
-      <div className="Profile">
-        <div className="flexWrap">
-          <div className="flexBasic">
-          <img className="picProfile" src={this.state.pictureUrl} alt="profile picture" />
-            <h2>{this.state.name}</h2>
-          </div>
+        <div className="Profile">
+          <div className="flexWrap">
+            <div className="flexBasic">
+              <img className="picProfile" src={this.state.pictureUrl} alt="profile picture" />
+              <h2>{this.state.name}</h2>
+            </div>
             <div>
               {api.isLoggedIn() && <Link to="/" onClick={(e) => this.handleLogoutClick(e)}> <p>Logout</p> </Link>}
               <botton className="info">
-                <Link to={`/profile/edit`}> <img src={SettingsIcon} style={{ height: "30px" }} /> </Link>
+                Edit
+                <Link to={`/profile/edit`}> <img src={EditIcon} style={{ height: "30px" }} /></Link>
               </botton>
             </div>
-        </div>
+          </div>
 
-        {/* If we have this.state.message, display the message  */}
-        {this.state.message && <div className="info">
-          {this.state.message}
-        </div>}
-        <h2>Your decks:</h2>
-        <div className="scrollFlex">
-          {this.state.decks.filter(deck => deck.title.toUpperCase().includes(this.state.search.toUpperCase())).map((deck,i) => (
-           <div>
-           <Link key={i} className="deck deckHome" to={`/details/${deck._id}`}> {deck.title} </Link>
-           {api.isLoggedIn() && <button onClick={() => this.handleDelete(deck._id)}>Delete</button>}
-           </div>
-          ))}
+          {/* If we have this.state.message, display the message  */}
+          {this.state.message && <div className="info">
+            {this.state.message}
+          </div>}
+          <h2>Your decks:</h2>
+          <div className="flexRow">
+            <div className="arrow">
+              <img src={MoveLeft} />
+            </div>
+            <div className="scrollFlex">
+              {this.state.decks.filter(deck => deck.title.toUpperCase().includes(this.state.search.toUpperCase())).map((deck, i) => (
+                <div>
+                  <Link key={i} className="deck deckHome" to={`/details/${deck._id}`}> {deck.title} </Link>
+                  {api.isLoggedIn() && <button onClick={() => this.toggleDeleteModal(deck._id)}>Delete</button>}
+                  {/* {api.isLoggedIn() && <button onClick={() => this.handleDelete(deck._id)}>Delete</button>} */}
+                </div>
+              ))}
+            </div>
+            <div className="arrow">
+              <img src={MoveRight} />
+            </div>
+          </div>
         </div>
-      </div>
+        <Modal isOpen={this.state.deckIdToDelete} toggle={() => this.toggleDeleteModal()} size="sm">
+          <ModalHeader toggle={() => this.toggleDeleteModal()}>Are you sure?</ModalHeader>
+          <ModalBody className="center">
+            <Button color="danger" onClick={() => this.handleDelete(this.state.deckIdToDelete)}>Delete</Button>{' '}
+            <Button color="secondary" outline onClick={() => this.toggleDeleteModal()}>Cancel</Button>
+          </ModalBody>
+        </Modal>
       </div>
     );
   }

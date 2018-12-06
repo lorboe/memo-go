@@ -35,7 +35,7 @@ class AddCard extends Component {
         this.setState({
           question: "",
           answers: "",
-          difficulty:this.state.difficulty,
+          difficulty: this.state.difficulty,
           message: `Your card '${this.state.question}' has been created`
         })
         this.props.onAdd(data.card)
@@ -55,15 +55,16 @@ class AddCard extends Component {
     return (
       <div className="AddCard">
         <div className="flexBasic">
-        <h2>Create new card</h2>
-          <form className="flexWrap">
-            {/* Question:  */}
-            <textarea type="text" value={this.state.question} onChange={(e) => { this.handleInputChange("question", e) }} placeholder="Question" /> <br />
-            {/* Answers: */}
-            <textarea type="text" value={this.state.answers} onChange={(e) => { this.handleInputChange("answers", e) }} placeholder="Answer" /> <br />
-            <br />
-            Difficulty:
-          <select onChange={(e) => { this.handleInputChange("difficulty", e) }} value={this.state.difficulty} placeholder="Difficulty">
+          <form className="center">
+            <h3>Create new card</h3>
+
+            <textarea type="text" value={this.state.question} onChange={(e) => { this.handleInputChange("question", e) }} placeholder="Question" />
+
+            <textarea type="text" value={this.state.answers} onChange={(e) => { this.handleInputChange("answers", e) }} placeholder="Answer" />
+            <div>
+              Difficulty:
+            </div>
+            <select onChange={(e) => { this.handleInputChange("difficulty", e) }} value={this.state.difficulty} placeholder="Difficulty">
               <option value="beginner">beginner</option>
               <option value="advanced-beginner">advanced-beginner</option>
               <option value="experienced">experienced</option>
@@ -72,7 +73,7 @@ class AddCard extends Component {
             {/* Difficulty: <textarea value={this.state.difficulty} cols="30" rows="10" onChange={(e) => { this.handleInputChange("difficulty", e) }} ></textarea> <br /> */}
             <button style={{ margin: "auto" }} onClick={(e) => this.handleClick(e)}>Create card</button>
           </form>
-        <hr />
+          <hr />
           {this.state.message && <div className="info">
             {this.state.message}
           </div>}

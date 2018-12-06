@@ -66,7 +66,7 @@ class AddDeck extends Component {
           <div className="deck deckHome">
             <img className="center" src={BrainLogo} style={{objectFit: "cover", width: "60%", margin: "auto"}}/>
           </div>
-          <div className="flexBasic">
+          <div className="flexBasic" style={{width: "-webkit-fill-available"}}>
             <form className="center">
               {/* Title: */}
               <input className="selectBox" type="text" value={this.state.title} onChange={(e) => { this.handleInputChange("title", e) }} placeholder="Title of your deck" />
@@ -95,7 +95,8 @@ class AddDeck extends Component {
               </select>
               <br />
               {/* Description:  */}
-              <textarea className="selectBox" value={this.state.description} cols="30" rows="2" onChange={(e) => { this.handleInputChange("description", e) }} ></textarea> <br />
+              <textarea className="selectBox" value={this.state.description} cols="30" rows="2" onChange={(e) => { this.handleInputChange("description", e) }} />
+              <br />
               <button onClick={(e) => this.handleClick(e)}>Create deck</button>
             </form>
           </div>

@@ -110,25 +110,22 @@ export default class EditProfile extends Component {
           </div>
           <br />
 
-          <div className="flexWrap centerLeft spc">
-              <br />
-              <div>
-                Edit username:
+          <div className="flexBasic center spc">
+            <div>
+              Edit username:
               </div>
-              <br />
-              <input type="text" name="name" value={this.state.name} onChange={this.handleChange} placeholder="New Username"/>
-              <br />
-                Edit e-mail:
-
-              <input type="text" name="email" value={this.state.email} onChange={this.handleChange} />
-              <br />
-
-              <br />
-              <input type="password" name="currentPassword" value={this.state.currentPassword} onChange={this.handleChange} placeholder="Current Password"/>
-              <br />
-              
-              <input type="password" name="newPassword" value={this.state.newPassword} onChange={this.handleChange} placeholder="New Password"/>
-              <br />
+            
+            <input type="text" name="name" value={this.state.name} onChange={this.handleChange} placeholder="New Username" />
+            
+            <div>
+              Edit e-mail:
+                </div>
+            <input type="text" name="email" value={this.state.email} onChange={this.handleChange} />
+           
+            <input type="password" name="currentPassword" value={this.state.currentPassword} onChange={this.handleChange} placeholder="Current Password" />
+    
+            <input type="password" name="newPassword" value={this.state.newPassword} onChange={this.handleChange} placeholder="New Password" />
+           
           </div>
 
           <button type="submit"><i className="far fa-check-circle"></i>Update</button><span></span>
