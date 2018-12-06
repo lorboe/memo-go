@@ -10,10 +10,10 @@ const router = express.Router();
 
 // Route to get all decks
 router.get('/', (req, res, next) => {
-
   Deck.find()
   .populate('_owner') 
     .then(decks => {
+      console.log(decks)
       res.json({
         decks,
         user:req.user

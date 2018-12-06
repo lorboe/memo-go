@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Button } from "reactstrap";
 import api from "../../api";
-// import FlipCard from 'react-flipcard';
+import Flip from '/Users/GG/Documents/SofDev/Ironhack/w8/Project_3/learning-app/client/src/images/original/Flip.svg'
 
 class Learn extends Component {
   constructor(props) {
@@ -52,24 +52,36 @@ class Learn extends Component {
 
     return (
       <div>
-        <div className="flip-card-3D-wrapper">
-        <div id="cardFlip"
-          className={this.state.active ? "do-flip" : null}
-          onClick={this.toggleClass}
-        >
-          <div className="flip-card-front">
-            {!this.state.isFlipped && <div className="cardTitle">{visibleCard.question}</div>}
-            <button id="flip-card-btn-turn-to-front"
-              onClick={() => this.handleFlipClick(this.state.iVisibleCard)}>flip</button>
+        {/* <div className="cardTitle center">
+          <div id="cardFlip">
+            <div id="card">
+              <div className="frame">front</div>
+              <div className="back">back</div>
+            </div>
           </div>
+        </div> */}
+        <div className="cardTitle center">
+          <div id="cardFlip">
+            <div id="card"
+              className={this.state.active ? "do-flip" : null}
+              // onClick={this.toggleClass}
+            >
+              <div className="frame">
+                {!this.state.isFlipped && <div className="cardTitle center">{visibleCard.question}</div>}
+                {/* <button id="flip-card-btn-turn-to-front"
+                  onClick={() => this.handleFlipClick(this.state.iVisibleCard)}>flip</button> */}
+              </div>
 
+              <div className="back">
+                {!this.state.isFlipped && <div className="cardTitle center">{visibleCard.answers[0]}</div>}
+              </div>
+                {/* <button id="flip-card-btn-turn-to-back"
+                  onClick={() => this.handleFlipClick(this.state.iVisibleCard)}>flip</button> */}
+            </div>
+          </div>
         </div>
-        <div className="flip-card-back">
-          {this.state.isFlipped && <div>{visibleCard.answers}</div>}
-          <button id="flip-card-btn-turn-to-back"
-            onClick={() => this.handleFlipClick(this.state.iVisibleCard)}>flip</button>
-        </div>
-        </div>
+          {/* <button><img src={ Flip } style={{width: "3vh"}}/></button> */}
+        {<Button outline color="info" onClick={this.toggleClass}><img src={ Flip } style={{width: "3vh"}}/></Button>}
         {this.state.iVisibleCard > 0 && <Button outline color="info" onClick={() => this.goToAnotherCard(-1)}>Previous</Button>}
         {this.state.iVisibleCard < this.state.cards.length - 1 && <Button outline color="info" onClick={() => this.goToAnotherCard(1)}>Next</Button>}
 

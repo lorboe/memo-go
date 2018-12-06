@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import api from '../../api'
 import { Link } from 'react-router-dom'
-import EditIcon from '/Users/GG/Documents/SofDev/Ironhack/w8/Project_3/learning-app/client/src/images/original/pencil.svg';
+import EditIcon from '../../../src/images/original/pencil.svg';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import MoveRight from '/Users/GG/Documents/SofDev/Ironhack/w8/Project_3/learning-app/client/src/images/original/Move_Right2.png'
-import MoveLeft from '/Users/GG/Documents/SofDev/Ironhack/w8/Project_3/learning-app/client/src/images/original/Move_Left.png'
+import MoveRight from '../../../src/images/original/Move_Right2.png'
+import MoveLeft from '../../../src/images/original/Move_Left.png'
 
 export default class Profile extends Component {
   constructor(props) {

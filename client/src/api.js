@@ -172,6 +172,13 @@ deleteCard(id) {
       .catch(errHandler)
   },
 
+  deleteProfile(id) {
+    return service
+      .delete('/users/'+id)
+      .then(res => res.data)
+      .catch(errHandler)
+  },
+
   addPicture(file) {
     const formData = new FormData();
     formData.append("picture", file)

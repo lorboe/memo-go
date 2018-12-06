@@ -8,6 +8,7 @@ export default class EditProfile extends Component {
     super(props)
     this.state = {
       // user: null,
+      id: null,
       name: null,
       email: null,
       currentPassword: null,
@@ -15,7 +16,7 @@ export default class EditProfile extends Component {
       pictureUrl: null,
       alt: null,
       message: null,
-      profileIdToDelete: null,
+      idToDelete: null,
     }
   }
   handleChange = (e) => {
@@ -71,30 +72,31 @@ export default class EditProfile extends Component {
       })
   }
 
-  // handleDelete(idClicked) {
-  //   api
-  //     .deleteDeck(idClicked)
-  //     .then(profile => {
-  //       console.log("Delete", profile);
-  //       this.setState({
-  //         // The new cards are the ones where their _id are diffrent from idClicked
-  //         profiles: this.state.profiles.filter(profile => profile._id !== idClicked),
-  //         profileIdToDelete: null
-  //       });
-  //     })
-  //     .catch(err => {
-  //       console.log("ERROR", err);
-  //     });
-  // }
-
-  // toggleDeleteModal = (deckId) => {
-  //   this.setState({
-  //     profileIdToDelete: profileId
-  //   })
-  // }
-
-  render() {
-    // If there is 
+  handleDelete(id) {
+   api
+      .deleteProfile(id)
+      .then(user => {
+        console.log("Delete", user);
+        api.logout()
+        this.props.history.push('/')
+      })
+      .catch(err => {
+        console.log("ERROR", err);
+      });
+    }
+    
+    toggleDeleteModal = (id) => {
+      api.getProfile()
+      .then((data) => {
+        this.setState({
+          id:data.user._id,
+      
+        })
+      })
+    }
+  
+    render() {
+      // If there is 
     if (!this.state.email) {
       return <div><h2>Profile</h2><p>Loading...</p></div>
     }
@@ -134,22 +136,22 @@ export default class EditProfile extends Component {
 
           </div>
 
-          <button type="submit"><i className="far fa-check-circle" style={{ marginRight: "1vh" }}></i>Update</button><span></span>
-          <button type="delete"><i className="fas fa-trash" style={{ marginRight: "1vh" }}></i>Delete</button>
-          {/* onClick={() => this.toggleDeleteModal(profile._id)} */}
+          <button type="submit"><i className="far fa-check-circle"></i>Update</button><span></span>
+          <button type="delete" onClick={() => this.toggleDeleteModal(this.state.idToDelete)}><i className="fas fa-trash"></i>Delete</button>
+          
         </form>
 
         {/* If we have this.state.message, display the message  */}
         {this.state.message && <div className="info">
           {this.state.message}
         </div>}
-        {/* <Modal isOpen={this.state.profileIdToDelete} toggle={() => this.toggleDeleteModal()} size="sm">
+        <Modal isOpen={this.state.id} toggle={() => this.toggleDeleteModal()} size="sm">
           <ModalHeader toggle={() => this.toggleDeleteModal()}>Are you sure?</ModalHeader>
           <ModalBody className="center">
-            <Button color="danger" onClick={() => this.handleDelete(this.state.profileIdToDelete)}>Delete</Button>{' '}
+            <Button color="danger" onClick={() => this.handleDelete(this.state.id)}>Delete</Button>{' '}
             <Button color="secondary" outline onClick={() => this.toggleDeleteModal()}>Cancel</Button>
           </ModalBody>
-        </Modal> */}
+        </Modal>
 
       </div>
     );
@@ -158,6 +160,7 @@ export default class EditProfile extends Component {
     api.getProfile()
       .then((data) => {
         this.setState({
+          // id:data.user._id,
           name: data.user.name,
           email: data.user.email,
           pictureUrl: data.user.pictureUrl,
