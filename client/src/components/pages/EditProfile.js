@@ -7,6 +7,7 @@ export default class EditProfile extends Component {
     super(props)
     this.state = {
       // user: null,
+      id: null,
       name: null,
       email: null,
       currentPassword: null,
@@ -68,6 +69,24 @@ export default class EditProfile extends Component {
         })
       })
   }
+
+  handleDelete(id) {
+   api
+      .deleteProfile(id)
+      .then(user => {
+        console.log("Delete", user);
+        // this.setState({
+        //   // The new cards are the ones where their _id are diffrent from idClicked
+        //    decks: this.state.decks.filter(deck => deck._id !== idClicked)
+          
+        // });
+      })
+      .catch(err => {
+        console.log("ERROR", err);
+      });
+  }
+
+
   render() {
     // If there is 
     if (!this.state.email) {
@@ -113,7 +132,7 @@ export default class EditProfile extends Component {
           </div>
 
           <button type="submit"><i className="far fa-check-circle"></i>Update</button><span></span>
-          <button type="delete"><i className="fas fa-trash"></i>Delete</button>
+          <button type="delete" onClick={() => this.handleDelete(this.state.id)} ><i className="fas fa-trash"></i>Delete</button>
         </form>
 
         {/* If we have this.state.message, display the message  */}
@@ -131,6 +150,7 @@ export default class EditProfile extends Component {
     api.getProfile()
       .then((data) => {
         this.setState({
+          id:data.user._id,
           name: data.user.name,
           email: data.user.email,
           pictureUrl: data.user.pictureUrl,

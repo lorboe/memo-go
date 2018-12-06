@@ -132,4 +132,19 @@ router.get("/my-decks", isLoggedIn, (req,res,next) => {
     .catch(err => next(err))
 })
 
+router.delete('/:id', isLoggedIn, (req, res, next) => {
+  id = req.params.id
+  User.findByIdAndDelete(id)
+    .then(userDoc => {
+      console.log("DEBUG deckDoc", userDoc)
+      res.json({
+        success: !!userDoc,
+        user: userDoc,
+      })
+    })
+    .catch(err => next(err))
+})
+
+
+
 module.exports = router;
