@@ -20,6 +20,7 @@ export default class Profile extends Component {
       search: "",
       deckIdToDelete: null,
     }
+    this.scrollRef = React.createRef()
   }
 
   handleSearch = (newSearch) => {
@@ -122,6 +123,12 @@ export default class Profile extends Component {
   handleLogoutClick(e) {
     api.logout()
   }
+// Defining the scroll "size"
+  scroll(delta) {
+    let $scroll = this.scrollRef.current
+    $scroll.scroll($scroll.scrollLeft + 0.9*delta*$scroll.clientWidth, 0) // clientWidth dettects the size of the screen 
+  }
+  
   render() {
     // If there is 
     if (!this.state.email) {
@@ -166,10 +173,10 @@ export default class Profile extends Component {
           </div>}
           <h2>Your decks:</h2>
           <div className="flexRow">
-            <div className="arrow">
+            <div className="arrow" onClick={() => this.scroll(-1)}>
               <img src={MoveLeft} />
             </div>
-            <div className="scrollFlex">
+            <div className="scrollFlex" ref={this.scrollRef}>
               {this.state.decks.filter(deck => deck.title.toUpperCase().includes(this.state.search.toUpperCase())).map((deck, i) => (
                 <div>
                   <Link key={i} className="deck deckHome" to={`/details/${deck._id}`}> {deck.title} </Link>
@@ -178,7 +185,7 @@ export default class Profile extends Component {
                 </div>
               ))}
             </div>
-            <div className="arrow">
+            <div className="arrow" onClick={() => this.scroll(1)}>
               <img src={MoveRight} />
             </div>
           </div>
