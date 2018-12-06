@@ -6533,7 +6533,7 @@ select, input, textarea {
     color: white; }
 
 nav img:hover {
-  width: 17.4vh; }
+  width: 18vh; }
 
 nav i:hover {
   width: 8.4vh; }
@@ -6642,9 +6642,11 @@ i {
   backface-visibility: hidden;
   z-index: 2;
   box-shadow: 5px 6px 32px 2px rgba(133, 133, 133, 0.71); }
+  #cardFlip .flip-card-front #cardFlip:hover, #cardFlip .flip-card-back #cardFlip:hover {
+    box-shadow: 1px 6px 22px 2px rgba(133, 133, 133, 0.71); }
 
 #cardFlip .flip-card-front {
-  background: lightgreen;
+  background: #13bfb9;
   border-radius: 12%; }
 
 #cardFlip .flip-card-back {

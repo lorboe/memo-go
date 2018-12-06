@@ -7,6 +7,8 @@ $default: #21A6AF;
 $defaultLight: rgb(88, 173, 199);
 $hoverBtn: rgb(79, 144, 213);
 $font: 'Concert One', cursive;
+$darkGreen: #13bfb9;
+$lightGreen: #20ceb7;
 
 // ----------------------------------------
 // To install Boostrap:
@@ -345,7 +347,7 @@ select, input, textarea{
 
 nav{
   img:hover{
-    width: 17.4vh;
+    width: 18vh;
   }
   i:hover{
     width: 8.4vh;
@@ -488,9 +490,14 @@ i{
     backface-visibility: hidden;
     z-index: 2;
     box-shadow: 5px 6px 32px 2px rgba(133,133,133,0.71);
+    #cardFlip:hover{
+      box-shadow: 1px 6px 22px 2px rgba(133,133,133,0.71);
+      // border: 1px solid black;
+      // cursor: pointer;
+    }
   }
   #cardFlip .flip-card-front {
-    background: lightgreen;
+    background: $darkGreen;
     // border:1px solid grey;
     border-radius: 12%;
     
