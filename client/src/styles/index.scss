@@ -424,12 +424,21 @@ i{
   text-align: left;
 }
 
+.margin-top{
+  margin-top: 22vh;
+}
+@media only screen and (min-width: 800px) {
+  .margin-top {
+    margin-top:auto;
+   }
+}
+
 // FLIP the CARD
 
 #cardFlip {
   position: relative;
-  width: 30vh;
-  height: 38vh;
+  width: 40vh;
+  height: 48vh;
 }
 
 #card{
@@ -445,20 +454,21 @@ i{
   overflow: hidden;
   height: 100%;
   width: 100%;
-  background: silver;
+  background: #fbfbf7;
   backface-visibility: hidden;
   border: 0.5px solid silver;
   border-radius: 12%;
   display: flex;
   margin: auto;
+  box-shadow: 0px 15px 20px -10px gray;
 }
+// #f7f7ef;
 .back{
-  background: gray;
+  background: #f7f7ef;;
   position: absolute;
   overflow: hidden;
   height: 100%;
-  width: 100%;
-  color:white;  
+  width: 100%; 
   backface-visibility: hidden;
   border: 0.5px solid silver;
   border-radius: 12%;
@@ -469,8 +479,14 @@ i{
   display: flex;
   margin: auto;
 }
-  
+
 .do-flip {
+  transform: rotateY(-180deg);
+  // transition: all 1s ease-in-out;
+}
+
+.flipBack {
+  transition: all 0.01s;
   transform: rotateY(-180deg);
 }
   

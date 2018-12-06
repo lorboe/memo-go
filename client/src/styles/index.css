@@ -6594,10 +6594,17 @@ i {
   margin-top: 12vh;
   text-align: left; }
 
+.margin-top {
+  margin-top: 22vh; }
+
+@media only screen and (min-width: 800px) {
+  .margin-top {
+    margin-top: auto; } }
+
 #cardFlip {
   position: relative;
-  width: 30vh;
-  height: 38vh; }
+  width: 40vh;
+  height: 48vh; }
 
 #card {
   height: 100%;
@@ -6611,20 +6618,20 @@ i {
   overflow: hidden;
   height: 100%;
   width: 100%;
-  background: silver;
+  background: #fbfbf7;
   backface-visibility: hidden;
   border: 0.5px solid silver;
   border-radius: 12%;
   display: flex;
-  margin: auto; }
+  margin: auto;
+  box-shadow: 0px 15px 20px -10px gray; }
 
 .back {
-  background: gray;
+  background: #f7f7ef;
   position: absolute;
   overflow: hidden;
   height: 100%;
   width: 100%;
-  color: white;
   backface-visibility: hidden;
   border: 0.5px solid silver;
   border-radius: 12%;
@@ -6635,6 +6642,10 @@ i {
   margin: auto; }
 
 .do-flip {
+  transform: rotateY(-180deg); }
+
+.flipBack {
+  transition: all 0.01s;
   transform: rotateY(-180deg); }
 
 .footer {

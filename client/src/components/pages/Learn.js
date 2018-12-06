@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Button } from "reactstrap";
 import api from "../../api";
-import Flip from '/Users/GG/Documents/SofDev/Ironhack/w8/Project_3/learning-app/client/src/images/original/Flip.svg'
+import Flip from '../../../src/images/original/Flip.svg'
 
 class Learn extends Component {
   constructor(props) {
@@ -19,25 +19,32 @@ class Learn extends Component {
 
   toggleClass() {
     const currentState = this.state.active;
-    this.setState({ active: !currentState });
+    this.setState({ 
+      active: !currentState,
+    });
   };
 
 
-  handleFlipClick(iClicked) {
-    this.setState({
-      isFlipped: !this.state.isFlipped
-
-    })
-  }
+  // handleFlipClick(iClicked) {
+  //   this.setState({
+  //     isFlipped: !this.state.isFlipped
+  //   })
+  // }
 
   goToAnotherCard(delta) {
+    let animationDuration = this.state.active ? 1000 : 0
     let newIVisibleCard = this.state.iVisibleCard + delta
     if (newIVisibleCard < 0) newIVisibleCard = 0
     if (newIVisibleCard >= this.state.cards.length) newIVisibleCard = this.state.cards.length - 1
     this.setState({
-      iVisibleCard: newIVisibleCard,
-      isFlipped: false
+      active: false,
+      // iVisibleCard: newIVisibleCard,
     })
+    setTimeout(() => {
+      this.setState({
+        iVisibleCard: newIVisibleCard,
+      })
+    }, animationDuration / 2)
   }
 
   render() {
@@ -52,14 +59,6 @@ class Learn extends Component {
 
     return (
       <div>
-        {/* <div className="cardTitle center">
-          <div id="cardFlip">
-            <div id="card">
-              <div className="frame">front</div>
-              <div className="back">back</div>
-            </div>
-          </div>
-        </div> */}
         <div className="cardTitle center">
           <div id="cardFlip">
             <div id="card"
@@ -72,7 +71,7 @@ class Learn extends Component {
                   onClick={() => this.handleFlipClick(this.state.iVisibleCard)}>flip</button> */}
               </div>
 
-              <div className="back">
+              <div className="frame back">
                 {!this.state.isFlipped && <div className="cardTitle center">{visibleCard.answers[0]}</div>}
               </div>
                 {/* <button id="flip-card-btn-turn-to-back"
@@ -90,13 +89,20 @@ class Learn extends Component {
   }
 
   componentDidMount() {
+    function shuffle(a) {
+      for (let i = a.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [a[i], a[j]] = [a[j], a[i]];
+      }
+      return a;
+    }
     let deckId = this.props.match.params.deckId;
     api.getDeckDetail(deckId).then(data => {
       console.log(data);
       this.setState({
         deck: data.deckDoc,
         currUser: data.user,
-        cards: data.deckDoc.cards
+        cards: shuffle(data.deckDoc.cards)
       });
     });
   }

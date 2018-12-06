@@ -33,7 +33,7 @@ class Login extends Component {
     return (
       <div className="Login">
         <h2>Login</h2>
-        Don't have your account? <Link to="/signup">Signup</Link>
+        Don't have your account? <Link to="/signup" style={{color: "#21A6AF"}}>Signup</Link>
         <div className="flexWrap editProfPic">
           <div className="flexBasic">
             <form>

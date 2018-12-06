@@ -136,8 +136,8 @@ export default class EditProfile extends Component {
 
           </div>
 
-          <button type="submit"><i className="far fa-check-circle"></i>Update</button><span></span>
-          <button type="delete" onClick={() => this.toggleDeleteModal(this.state.idToDelete)}><i className="fas fa-trash"></i>Delete</button>
+          <button type="submit"><i className="far fa-check-circle" style={{marginRight:"1vh"}}></i>Update</button><span></span>
+          <button type="delete" onClick={() => this.toggleDeleteModal(this.state.idToDelete)}><i className="fas fa-trash" style={{marginRight:"1vh"}}></i>Delete</button>
           
         </form>
 

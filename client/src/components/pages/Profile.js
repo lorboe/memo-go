@@ -142,15 +142,17 @@ export default class Profile extends Component {
 
 
         <div className="Profile">
-          <div className="flexWrap">
-            <div className="flexBasic">
+          <div className="flexWrap center">
+            <div className="flexBasic center">
               <div>
                 <img className="picProfile" src={this.state.pictureUrl} alt="profile picture" />
               </div>
-              <h2>{this.state.name}</h2>
+              <div style={{margin:"5vh 0"}}>
+                <h2>{this.state.name}</h2>
+              </div>
             </div>
             <div>
-              {api.isLoggedIn() && <Link to="/" onClick={(e) => this.handleLogoutClick(e)}> <p>Logout</p> </Link>}
+              {api.isLoggedIn() && <Link to="/" onClick={(e) => this.handleLogoutClick(e)}> Logout </Link>}
               <botton className="info">
                 Edit
                 <Link to={`/profile/edit`}> <img src={EditIcon} style={{ height: "30px" }} /></Link>
