@@ -55,7 +55,7 @@ app.use('/api/decks', require('./routes/decks'))
 app.use('/api/users', require('./routes/users'))
 app.use('/api/cards', require('./routes/cards'))
 
-app.use('/api/public-profile', require('./routes/publicprofile'))
+// app.use('/api/public-profile', require('./routes/publicprofile'))
 
 // For any routes that starts with "/api", catch 404 and forward to error handler
 app.use('/api/*', (req, res, next) => {

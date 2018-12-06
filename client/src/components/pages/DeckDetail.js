@@ -163,6 +163,7 @@ class DeckDetail extends Component {
 
     return (
       <div>
+      {this.state.message && <div className="info">{this.state.message}</div>}
         {!this.state.isDeckEditFormVisible && (
           <div className="flexWrap centerLeft" style={{ marginBottom: "5vh" }}>
             <div className="flexWrap">
@@ -174,10 +175,6 @@ class DeckDetail extends Component {
                     className="fas fa-clone" ></i> }
                       
               </div>
-              {this.state.message && <div className="info">
-                {this.state.message}</div>}
-
-
                 
               <div className="deckDetail">
                 <div className="deckInfo">
@@ -195,6 +192,7 @@ class DeckDetail extends Component {
                   {this.state.deck.visibility === "private" ? "No" : "Yes"}
                   <br />
                 </div>
+
 
                 <div className="centerLeft">
                   <button onClick={() => this.addRateHard()} style={{ border: "transparent", boxShadow: "none", margin: "auto" }}>
