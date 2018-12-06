@@ -30,17 +30,15 @@ export default class SelectDeck extends Component {
       api.copyCards(this.props.cardId, this.state.selectedDeck).then( result => {
         console.log("SUCCESS!", result)
         this.setState({
-          message: "You have copied your card to your deck",
-      
+          message: "Successfully copied!",
         })
         console.log('this.state.message',this.state.message)
         setTimeout(() => {
           this.setState({
             message: null
           })
-        }, 2000)
-        console.log('this.props.history',this.props.history)
-        this.props.history.push('/details/' + this.props.deckId)
+        this.props.onSelectDeck()
+        }, 1000)
       })
       .catch(err => this.setState({ message: err.toString() }))
     }
@@ -56,6 +54,7 @@ export default class SelectDeck extends Component {
 
     return (
       <div>
+        <div>
         <form>
         <select name="selectedDeck" className="selectBox" onChange={(e) => { this.handleInputChange("selectedDeck", e) }} value={this.state.selectedDeck}> 
         {this.state.decks.map((deck, i)=>  
@@ -63,12 +62,15 @@ export default class SelectDeck extends Component {
         )}
         </select>
         </form>
-        <button onClick={this.handleCopyClick}>copy</button>
-       
+        <button 
+        onClick={this.handleCopyClick}>copy</button>
+       </div>
+       <div>
         {this.state.message && <div className="info">
    {this.state.message}</div>}
 
 
+      </div>
       </div>
     )
   }

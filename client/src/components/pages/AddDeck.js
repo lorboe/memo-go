@@ -11,7 +11,6 @@ class AddDeck extends Component {
       category: "web development",
       visibility: "public",
       difficulty: "beginner",
-      description: "",
       message: null
     }
   }
@@ -31,7 +30,6 @@ class AddDeck extends Component {
       category: this.state.category,
       visibility: this.state.visibility,
       difficulty: this.state.difficulty,
-      description: this.state.description,
     }
 
     api.postDecks(data)
@@ -46,7 +44,6 @@ class AddDeck extends Component {
           category: this.state.category,
           visibility: this.state.visibility,
           difficulty: this.state.difficulty,
-          description: this.state.description,
           message: `Your deck '${this.state.title}' has been created`
         })
        
@@ -57,7 +54,6 @@ class AddDeck extends Component {
         }, 2000)
       })
       .catch(err => this.setState({ message: err.toString() }))
-
   }
   render() {
     return (
@@ -94,9 +90,6 @@ class AddDeck extends Component {
                 <option value="experienced">experienced</option>
                 <option value="expert">expert</option>
               </select>
-              <br />
-              {/* Description:  */}
-              <textarea className="selectBox" value={this.state.description} cols="30" rows="2" onChange={(e) => { this.handleInputChange("description", e) }} />
               <br />
               <button onClick={(e) => this.handleClick(e)}>Create deck</button>
             </form>

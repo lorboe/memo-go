@@ -96,14 +96,14 @@ class Home extends Component {
         />  <button onClick={() => this.handleFilter()} >Filter results</button>
         {this.state.filterBox && 
         <div>
-       <select className="selectBox" onChange={(e) => { this.handleCategory(e) }} value={this.state.category}>
+       <select className="selectBox" onChange={(e) => { this.handleCategory(e) }} value={this.state.category} placeholder="Category">
                 <option value="">all</option>
                 <option value="web development"> web development</option>
                 <option value="languages">languages</option>
                 <option value="business">business</option>
                 <option value="other">other</option>
         </select>
-              <select className="selectBox" onChange={(e) => { this.handleDifficulty(e) }} value={this.state.difficulty}>
+              <select className="selectBox" onChange={(e) => { this.handleDifficulty(e) }} value={this.state.difficulty} placeholder="Difficulty">
                <option value="">all</option>
                 <option value="beginner">beginner</option>
                 <option value="advanced-beginner">advanced-beginner</option>
