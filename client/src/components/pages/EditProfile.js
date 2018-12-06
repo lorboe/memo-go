@@ -75,17 +75,13 @@ export default class EditProfile extends Component {
       .deleteProfile(id)
       .then(user => {
         console.log("Delete", user);
-        // this.setState({
-        //   // The new cards are the ones where their _id are diffrent from idClicked
-        //    decks: this.state.decks.filter(deck => deck._id !== idClicked)
-          
-        // });
+        api.logout()
+        this.props.history.push('/')
       })
       .catch(err => {
         console.log("ERROR", err);
       });
   }
-
 
   render() {
     // If there is 
