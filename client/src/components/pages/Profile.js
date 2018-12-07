@@ -195,7 +195,7 @@ export default class Profile extends Component {
           </div>
         </div>
         <Modal isOpen={this.state.deckIdToDelete} toggle={() => this.toggleDeleteModal()} size="sm">
-          <ModalHeader toggle={() => this.toggleDeleteModal()}>Are you sure?</ModalHeader>
+          <ModalHeader toggle={() => this.toggleDeleteModal()}>Are you sure you want to delete this deck?</ModalHeader>
           <ModalBody className="center">
             <Button color="danger" onClick={() => this.handleDelete(this.state.deckIdToDelete)}>Delete</Button>{' '}
             <Button color="secondary" outline onClick={() => this.toggleDeleteModal()}>Cancel</Button>

@@ -78,7 +78,7 @@ class DeckDetail extends Component {
       this.setState({
         deck: data.deckDoc,
         currUser: data.user,
-        message: `Your deck '${this.state.title}' has been updated`
+        message: `Your deck '${this.state.deck.title}' has been updated`
       });
     });
   }

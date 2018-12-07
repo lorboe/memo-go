@@ -60,6 +60,9 @@ class Learn extends Component {
 
     return (
       <div className="margin-top">
+
+<div>{this.state.iVisibleCard}/{this.state.cards.length}</div>
+
         <div className="cardTitle center">
           <div id="cardFlip">
             <div id="card"

@@ -33,8 +33,8 @@ router.put('/:cardId', isLoggedIn, checkId('cardId'), (req, res, next) => {
   Card.findByIdAndUpdate(id, {
     question: req.body.question,
     answers: req.body.answers,
-    visibility: req.body.visibility,
-    difficulty: req.body.difficulty,
+    // visibility: req.body.visibility,
+    // difficulty: req.body.difficulty,
   })
     .then(cardDoc => {
       res.json({
@@ -83,10 +83,10 @@ router.post("/:deckId/copy-card/:cardId", isLoggedIn, (req,res, next) => {
 //EDITING!!!! Route to add card on deck 
 
 router.post('/:deckId', isLoggedIn, (req, res, next) => {
-  let { question, answers, visibility, difficulty } = req.body
+  let { question, answers} = req.body
   let _owner = req.user._id
   let _deck= req.params.deckId
-  Card.create({ question, answers, visibility, difficulty, _deck })
+  Card.create({ question, answers, _deck })
   .then (card => {
     console.log("CARD:" + card)
     res.json({

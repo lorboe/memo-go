@@ -14,7 +14,7 @@ router.get('/', (req, res, next) => {
   Deck.find()
   .populate('_owner') 
     .then(decks => {
-      console.log(decks)
+      console.log('req.user',req.user, decks)
       res.json({
         decks,
         user:req.user
@@ -51,7 +51,7 @@ router.put('/:deckId', isLoggedIn, checkId('deckId'), (req, res, next) => {
     category: req.body.category,
     difficulty: req.body.difficulty,
     visibility: req.body.visibility,
-    description: req.body.description,
+    // description: req.body.description,
   }, {new: true}) 
   .then(result => {
    newDeck = result
@@ -73,9 +73,9 @@ router.put('/:deckId', isLoggedIn, checkId('deckId'), (req, res, next) => {
 
 // Route to add a name
 router.post('/', isLoggedIn, (req, res, next) => {
-  let { title, category, visibility, difficulty, description } = req.body
+  let { title, category, visibility, difficulty } = req.body
   let _owner = req.user._id
- Deck.create({ title, category, visibility, difficulty, description, _owner })
+ Deck.create({ title, category, visibility, difficulty, _owner })
     .then(deck => {
       res.json(deck)
     })

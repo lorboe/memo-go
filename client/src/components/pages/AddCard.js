@@ -8,7 +8,7 @@ class AddCard extends Component {
     this.state = {
       question: "",
       answers: [],
-      difficulty: "beginner",
+      // difficulty: "beginner",
       message: null,
       // const {deckId} = props.location.state
     }
@@ -27,7 +27,7 @@ class AddCard extends Component {
     let data = {
       question: this.state.question,
       answers: this.state.answers,
-      difficulty: this.state.difficulty,
+      // difficulty: this.state.difficulty,
     }
     api.postCards(data, this.props.deckId)
       .then(data => {
@@ -35,7 +35,7 @@ class AddCard extends Component {
         this.setState({
           question: "",
           answers: "",
-          difficulty: this.state.difficulty,
+          // difficulty: this.state.difficulty,
           message: `Your card '${this.state.question}' has been created`
         })
         this.props.onAdd(data.card)
