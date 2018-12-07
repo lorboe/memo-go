@@ -127,7 +127,7 @@ class DeckDetail extends Component {
     console.log(idCard)
     let isTheSameIndex = index === this.state.indexCopyCard
     this.setState({
-      // isCopyCardVisibile: !this.state.isCopyCardVisibile,
+      isCopyCardVisibile: !this.state.isCopyCardVisibile,
       indexCopyCard: isTheSameIndex ? null : index,
       idCopyCard: idCard
     })
@@ -279,11 +279,13 @@ class DeckDetail extends Component {
                       <button onClick={() => this.handleDelete(card._id)}>
                         <i className="fas fa-trash" />
                       </button>
-                      {api.isLoggedIn() && <button onClick={() => this.handleCopyCard(i, card._id)}>
+                      {/* {api.isLoggedIn() && <button onClick={() => this.handleCopyCard(i, card._id)}>
                         <i className="fas fa-clone"></i>
-                      </button>}
+                      </button>} */}
                     </div>)}
-
+{api.isLoggedIn() && <button onClick={() => this.handleCopyCard(i, card._id)}>
+<i className="fas fa-clone"></i>
+</button>}
                   {api.isLoggedIn() && this.state.indexCopyCard === i &&
                     <SelectDeck
                       cardId={this.state.idCopyCard}
