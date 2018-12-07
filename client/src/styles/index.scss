@@ -494,7 +494,13 @@ i{
 //   transition: all 0.1ms;
 //   transform: rotateY(-180deg);
 // }
-  
+.fadeIn{
+  animation: fadein 16s;
+}
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
 
 .footer {
   display: flex;

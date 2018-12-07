@@ -123,12 +123,12 @@ export default class Profile extends Component {
   handleLogoutClick(e) {
     api.logout()
   }
-// Defining the scroll "size"
+  // Defining the scroll "size"
   scroll(delta) {
     let $scroll = this.scrollRef.current
-    $scroll.scroll($scroll.scrollLeft + 0.9*delta*$scroll.clientWidth, 0) // clientWidth dettects the size of the screen 
+    $scroll.scroll($scroll.scrollLeft + 0.9 * delta * $scroll.clientWidth, 0) // clientWidth dettects the size of the screen 
   }
-  
+
   render() {
     // If there is 
     if (!this.state.email) {
@@ -154,16 +154,20 @@ export default class Profile extends Component {
               <div>
                 <img className="picProfile" src={this.state.pictureUrl} alt="profile picture" />
               </div>
-              <div style={{margin:"5vh 0"}}>
+              <div style={{ margin: "5vh 0" }}>
                 <h2>{this.state.name}</h2>
               </div>
             </div>
             <div>
-              {api.isLoggedIn() && <Link to="/" onClick={(e) => this.handleLogoutClick(e)}> Logout </Link>}
-              <botton className="info">
+              <button>
+                {api.isLoggedIn() && <Link to="/" onClick={(e) => this.handleLogoutClick(e)}>
+                </Link>}
+                <i class="fas fa-sign-out-alt" style={{ marginRight: "0.5vh" }}></i> Logout
+              </button>
+              <button>
+                <Link to={`/profile/edit`}> <img src={EditIcon} style={{ height: "23px", marginRight: "1vh" }} /></Link>
                 Edit
-                <Link to={`/profile/edit`}> <img src={EditIcon} style={{ height: "30px" }} /></Link>
-              </botton>
+              </button>
             </div>
           </div>
 
