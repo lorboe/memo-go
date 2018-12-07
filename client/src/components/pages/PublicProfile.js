@@ -28,9 +28,9 @@ export default class PublicProfile extends Component {
 
     handleSearch = (newSearch) => {
         this.setState({
-          search: newSearch
+            search: newSearch
         })
-      }
+    }
 
     render() {
         console.log("hello from public profile")
@@ -41,30 +41,27 @@ export default class PublicProfile extends Component {
     //    let  owner ;
         for (let i = 0; i < sortedDecks.length; i++) {
             if (i === 0 || sortedDecks[i].category !== sortedDecks[i - 1].category) {
-                
+
                 tableContent.push(
                     <div key={"c-" + i} className="iconCategories">
-                            {/* <img src={Atom} style={{ width: "7vh" }} /> */}
-                            {sortedDecks[i].category}
-                        </div>
-                    )
-                    console.log("hello")
-                }
-                if (sortedDecks[i].visibility === "public") {
-                 if (userId === sortedDecks[i]._owner._id) {
-                    // owner = sortedDecks[i]._owner._id;
-                    //  console.log("userId" + owner)
-
+                        {/* <img src={Atom} style={{ width: "7vh" }} /> */}
+                        <h3>{sortedDecks[i].category}</h3>
+                    </div>
+                )
+                console.log("hello")
+            }
+            if (sortedDecks[i].visibility === "public") {
+                if (userId === sortedDecks[i]._owner._id) {
                     tableContent.push(
-                        <div className="flexRow flexShadow">
-                            <div className="scrollFlex">
-                                <div className="deck deckHome">
-                                    <Link to={`/public-profile/${sortedDecks[i]._owner._id}`}><img className="picOnDeck" src={sortedDecks[i]._owner.pictureUrl} alt="pictures" /></Link>
-                                    <Link to={`/details/${sortedDecks[i]._id}`}>{sortedDecks[i].title}</Link>
-                                </div>
-
-                            </div>
+                        // <div className="flexRow flexShadow">
+                        //     <div className="scrollFlex">
+                        <div className="deck deckHome">
+                            <Link to={`/public-profile/${sortedDecks[i]._owner._id}`}><img className="picOnDeck" src={sortedDecks[i]._owner.pictureUrl} alt="pictures" /></Link>
+                            <Link to={`/details/${sortedDecks[i]._id}`}>{sortedDecks[i].title}</Link>
                         </div>
+
+                        //     </div>
+                        // </div>
                     )
                 }
             }
@@ -89,32 +86,32 @@ this.state.decks.forEach(one=> {
 
         return (
             <div>
-                 <input
-          name="searchbar"
-          type="text"
-          placeholder="Search"
-          value={this.state.search}
-          onChange={e => this.handleSearch(e.target.value)}
-        />
+                <input
+                    name="searchbar"
+                    type="text"
+                    placeholder="Search"
+                    value={this.state.search}
+                    onChange={e => this.handleSearch(e.target.value)}
+                />
                 <div className="Profile">
                     <h2>{owner}</h2>
 
                     <img className="picProfile" src={piiicture} alt="profile picture" />
                     <div>
                         <botton className="info">
-                            <i className="far fa-heart" style={{ color: "white" }}></i>
+                            <i className="far fa-heart" style={{ color: "#22a6b0" }}></i>
                         </botton>
-                    </div>
+                    </div> 
 
                     {this.state.message && <div className="info">
                         {this.state.message}
                     </div>}
-                    <div>
-                        Decks:
+                    <div style={{margin: "5vh"}}>
+                        <h2 style={{color: "#22a6b0"}}>Decks:</h2>
 
-                        <div>
-                            {tableContent}
-                        </div>
+                        {/* <div> */}
+                        {tableContent}
+                        {/* </div> */}
                     </div>
                 </div>
             </div>

@@ -129,16 +129,11 @@ export default class EditProfile extends Component {
               Edit e-mail:
                 </div>
             <input type="text" name="email" value={this.state.email} onChange={this.handleChange} />
-
             <input type="password" name="currentPassword" value={this.state.currentPassword} onChange={this.handleChange} placeholder="Current Password" />
-
             <input type="password" name="newPassword" value={this.state.newPassword} onChange={this.handleChange} placeholder="New Password" />
-
           </div>
-
           <button type="submit"><i className="far fa-check-circle" style={{marginRight:"1vh"}}></i>Update</button><span></span>
           <button type="delete" onClick={() => this.toggleDeleteModal(this.state.idToDelete)}><i className="fas fa-trash" style={{marginRight:"1vh"}}></i>Delete</button>
-          
         </form>
 
         {/* If we have this.state.message, display the message  */}

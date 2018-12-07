@@ -58,7 +58,7 @@ class Learn extends Component {
     }
 
     return (
-      <div>
+      <div className="margin-top">
         <div className="cardTitle center">
           <div id="cardFlip">
             <div id="card"
