@@ -70,7 +70,7 @@ class AddDeck extends Component {
               <br />
               {/* Category: */}
               <select className="selectBox" onChange={(e) => { this.handleInputChange("category", e) }} value={this.state.category}>
-                <option value="web developmenet"> web development</option>
+                <option value="web development"> web development</option>
                 <option value="geography">geography</option>
                 <option value="history">history</option>
                 <option value="languages">languages</option>
