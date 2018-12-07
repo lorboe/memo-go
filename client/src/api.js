@@ -49,8 +49,11 @@ export default {
 
   logout() {
     localStorage.removeItem('user')
+    console.log("logout api worked")
     return service
       .get('/logout')
+      .then(res => res.data)
+      .catch(errHandler)
   },
 
   getDecks() {

@@ -121,7 +121,9 @@ export default class Profile extends Component {
 
 
   handleLogoutClick(e) {
-    api.logout()
+    console.log("logout click")
+    api.logout().then (res => {
+    this.props.history.push('/')})
   }
   // Defining the scroll "size"
   scroll(delta) {
@@ -159,11 +161,11 @@ export default class Profile extends Component {
               </div>
             </div>
             <div>
-              <button>
-                {api.isLoggedIn() && <Link to="/" onClick={(e) => this.handleLogoutClick(e)}>
-                </Link>}
+           {api.isLoggedIn() && <button onClick={(e) => this.handleLogoutClick(e)}>
+                 {/* <Link to="/" >
+                </Link> */}
                 <i class="fas fa-sign-out-alt" style={{ marginRight: "0.5vh" }}></i> Logout
-              </button>
+              </button>}
               <button>
                 <Link to={`/profile/edit`}> <img src={EditIcon} style={{ height: "23px", marginRight: "1vh" }} /></Link>
                 Edit
