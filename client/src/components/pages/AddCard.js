@@ -62,14 +62,14 @@ class AddCard extends Component {
 
             <textarea type="text" value={this.state.answers} onChange={(e) => { this.handleInputChange("answers", e) }} placeholder="Answer" />
             <div>
-              Difficulty:
+              {/* Difficulty: */}
             </div>
-            <select onChange={(e) => { this.handleInputChange("difficulty", e) }} value={this.state.difficulty} placeholder="Difficulty">
+            {/* <select onChange={(e) => { this.handleInputChange("difficulty", e) }} value={this.state.difficulty} placeholder="Difficulty">
               <option value="beginner">beginner</option>
               <option value="advanced-beginner">advanced-beginner</option>
               <option value="experienced">experienced</option>
               <option value="expert">expert</option>
-            </select>
+            </select> */}
             {/* Difficulty: <textarea value={this.state.difficulty} cols="30" rows="10" onChange={(e) => { this.handleInputChange("difficulty", e) }} ></textarea> <br /> */}
             <button style={{ margin: "auto" }} onClick={(e) => this.handleClick(e)}>Create card</button>
           </form>
