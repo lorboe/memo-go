@@ -87,7 +87,7 @@ class Learn extends Component {
         {<Button outline color="info" onClick={this.toggleClass}><img src={ Flip } style={{width: "3vh"}}/></Button>}
         {this.state.iVisibleCard > 0 && <Button outline color="info" onClick={() => this.goToAnotherCard(-1)}>Previous</Button>}
         {this.state.iVisibleCard < this.state.cards.length - 1 && <Button outline color="info" onClick={() => this.goToAnotherCard(1)}>Next</Button>}
-        <button><Link to={`/profile`}>Leave</Link></button>
+        <button><Link to={`/details/${this.state.deck._id}`}>Leave</Link></button>
       </div>
     );
   }
