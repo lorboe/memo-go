@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Button } from "reactstrap";
 import api from "../../api";
 import Flip from '../../../src/images/original/Flip.svg'
+import { Link } from 'react-router-dom'
 
 class Learn extends Component {
   constructor(props) {
@@ -83,7 +84,7 @@ class Learn extends Component {
         {<Button outline color="info" onClick={this.toggleClass}><img src={ Flip } style={{width: "3vh"}}/></Button>}
         {this.state.iVisibleCard > 0 && <Button outline color="info" onClick={() => this.goToAnotherCard(-1)}>Previous</Button>}
         {this.state.iVisibleCard < this.state.cards.length - 1 && <Button outline color="info" onClick={() => this.goToAnotherCard(1)}>Next</Button>}
-
+        <button><Link to={`/profile`}>Leave</Link></button>
       </div>
     );
   }
