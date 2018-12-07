@@ -8,20 +8,21 @@ export default class PublicProfile extends Component {
         this.state = {
             decks: [],
             search: "",
-            pictureUrl:"",
-            name:""
+           _owner: null
         }
     }
+
 
     componentDidMount() {
         api.getDecks()
             .then(data => {
                 this.setState({
                     decks: data.decks,
-                    name: data.decks[0]._owner.name,
-                    pictureUrl: data.decks[0]._owner.pictureUrl
+                    // _owner: data.decks.filter(deck =>  {if (deck._owner._id === this.props.match.params.userId) return true},
+                    // ),
                 })
-
+                // console.log(this.state._owner)
+                
             })
     }
 
@@ -37,6 +38,7 @@ export default class PublicProfile extends Component {
         console.log("userId" + userId)
         let sortedDecks = this.state.decks.sort((a, b) => a.category > b.category ? 1 : -1).filter(deck => deck.title.toUpperCase().includes(this.state.search.toUpperCase()))
         let tableContent = [];
+    //    let  owner ;
         for (let i = 0; i < sortedDecks.length; i++) {
             if (i === 0 || sortedDecks[i].category !== sortedDecks[i - 1].category) {
                 
@@ -50,6 +52,9 @@ export default class PublicProfile extends Component {
                 }
                 if (sortedDecks[i].visibility === "public") {
                  if (userId === sortedDecks[i]._owner._id) {
+                    // owner = sortedDecks[i]._owner._id;
+                    //  console.log("userId" + owner)
+
                     tableContent.push(
                         <div className="flexRow flexShadow">
                             <div className="scrollFlex">
@@ -66,6 +71,22 @@ export default class PublicProfile extends Component {
         }
 
 
+let owner
+let piiicture
+this.state.decks.forEach(one=> {
+    
+    if (one._owner._id === this.props.match.params.userId ) {
+        
+        owner = one._owner.name
+        piiicture = one._owner.pictureUrl
+    }
+    
+    // console.log()
+    // console.log(one._owner.pictureUrl)
+    console.log(owner)
+})
+
+
         return (
             <div>
                  <input
@@ -76,9 +97,9 @@ export default class PublicProfile extends Component {
           onChange={e => this.handleSearch(e.target.value)}
         />
                 <div className="Profile">
-                    <h2>{this.state.name}</h2>
+                    <h2>{owner}</h2>
 
-                    <img className="picProfile" src={this.state.pictureUrl} alt="profile picture" />
+                    <img className="picProfile" src={piiicture} alt="profile picture" />
                     <div>
                         <botton className="info">
                             <i className="far fa-heart" style={{ color: "white" }}></i>

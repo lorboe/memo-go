@@ -14,7 +14,7 @@ router.get('/', (req, res, next) => {
   Deck.find()
   .populate('_owner') 
     .then(decks => {
-      console.log(decks)
+      console.log('req.user',req.user, decks)
       res.json({
         decks,
         user:req.user
