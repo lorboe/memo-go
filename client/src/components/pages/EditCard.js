@@ -9,7 +9,7 @@ class EditCard extends Component {
       question: "",
       answers: "",
       visibility: "",
-      difficulty: "",
+      // difficulty: "",
       deck: "",
       message: null
     }
@@ -26,8 +26,8 @@ class EditCard extends Component {
     let data = {
       question: this.state.question,
       answers: this.state.answers,
-      visibility: this.state.visibility,
-      difficulty: this.state.difficulty,
+      // visibility: this.state.visibility,
+      // difficulty: this.state.difficulty,
     }
     let deckId = this.state.deck
     api.updateCard(this.props.match.params.id, data)
@@ -58,21 +58,21 @@ class EditCard extends Component {
 
               <input className="iconCenter" type="text" value={this.state.answers} onChange={(e) => { this.handleInputChange("answers", e) }} placeholder="Answer" /> <br />
               <div>
-                Visibility:
+                {/* Visibility: */}
                 </div>
-              <select onChange={(e) => { this.handleInputChange("visibility", e) }}>
+              {/* <select onChange={(e) => { this.handleInputChange("visibility", e) }}>
                 <option value={this.state.visibility}>public</option>
                 <option value={this.state.visibility}>private</option>
-              </select>
+              </select> */}
               <div>
-                Difficulty:
+                {/* Difficulty: */}
               </div>
-              <select onChange={(e) => { this.handleInputChange("difficulty", e) }}>
+              {/* <select onChange={(e) => { this.handleInputChange("difficulty", e) }}>
                 <option value={this.state.difficulty}>beginner</option>
                 <option value={this.state.difficulty}>advanced-beginner</option>
                 <option value={this.state.difficulty}>experienced</option>
                 <option value={this.state.difficulty}>expert</option>
-              </select>
+              </select> */}
               {/* Difficulty: <textarea value={this.state.difficulty} cols="30" rows="10" onChange={(e) => { this.handleInputChange("difficulty", e) }} ></textarea> <br /> */}
               <button onClick={(e) => this.handleClick(e)}>Save<i style={{marginLeft: "2vh"}} className="fas fa-check"></i></button>
             </form>
@@ -91,8 +91,8 @@ class EditCard extends Component {
         this.setState({
           question: card.question,
           answers: card.answers,
-          visibility: card.visibility,
-          difficulty: card.difficulty,
+          // visibility: card.visibility,
+          // difficulty: card.difficulty,
           deck: card._deck
         })
       })

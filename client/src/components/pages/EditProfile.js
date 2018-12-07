@@ -95,6 +95,11 @@ export default class EditProfile extends Component {
       })
     }
   
+handleBackButton() {
+  this.props.history.push('/profile')
+}
+
+
     render() {
       // If there is 
     if (!this.state.email) {
@@ -133,6 +138,7 @@ export default class EditProfile extends Component {
             <input type="password" name="newPassword" value={this.state.newPassword} onChange={this.handleChange} placeholder="New Password" />
           </div>
           <button type="submit"><i className="far fa-check-circle" style={{marginRight:"1vh"}}></i>Update</button><span></span>
+          <button type="submit" onClick={() => this.handleBackButton()}><i className="fas fa-user" style={{marginRight:"1vh"}}></i>Back to profile</button><span></span>
           <button type="delete" onClick={() => this.toggleDeleteModal(this.state.idToDelete)}><i className="fas fa-trash" style={{marginRight:"1vh"}}></i>Delete</button>
         </form>
 
@@ -141,7 +147,7 @@ export default class EditProfile extends Component {
           {this.state.message}
         </div>}
         <Modal isOpen={this.state.id} toggle={() => this.toggleDeleteModal()} size="sm">
-          <ModalHeader toggle={() => this.toggleDeleteModal()}>Are you sure?</ModalHeader>
+          <ModalHeader toggle={() => this.toggleDeleteModal()}>Are you sure you want to delete your account?</ModalHeader>
           <ModalBody className="center">
             <Button color="danger" onClick={() => this.handleDelete(this.state.id)}>Delete</Button>{' '}
             <Button color="secondary" outline onClick={() => this.toggleDeleteModal()}>Cancel</Button>
