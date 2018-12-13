@@ -49,7 +49,7 @@ app.use(session({
 require('./passport')(app)
 
 
-app.use('/api', require('./routes/index'))
+// app.use('/api', require('./routes/index'))
 app.use('/api', require('./routes/auth'))
 app.use('/api/decks', require('./routes/decks'))
 app.use('/api/users', require('./routes/users'))

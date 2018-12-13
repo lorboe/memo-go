@@ -1,5 +1,6 @@
 const express = require('express');
 const User = require('../models/User');
+const Card = require('../models/Card');
 const Deck = require('../models/Deck');
 const { isLoggedIn } = require('../middlewares')
 const router = express.Router();
@@ -7,20 +8,20 @@ const parser = require('../configs/cloudinary')
 const bcrypt = require("bcrypt")
 const bcryptSalt = 10
 
-router.get('/profile', isLoggedIn, (req,res,next) => {
+router.get('/profile', isLoggedIn, (req, res, next) => {
   req.user.password = null
   let id = req.user._id
-Promise.all ([
-  User.findById(id),
-  Deck.find({_owner: id})
-])
-.then (([user, decks]) => {
-    console.log("USER:" + user)
-    console.log("DECK" + decks)
-    res.json({user, decks})
-  })
-  .catch(err => next(err))
-  })
+  Promise.all([
+    User.findById(id),
+    Deck.find({ _owner: id })
+  ])
+    .then(([user, decks]) => {
+      console.log("USER:" + user)
+      console.log("DECK" + decks)
+      res.json({ user, decks })
+    })
+    .catch(err => next(err))
+})
 
 router.put('/profile', isLoggedIn, (req,res,next) => {
   let updates = {
@@ -133,17 +134,16 @@ router.get("/my-decks", isLoggedIn, (req,res,next) => {
 })
 
 router.delete('/my-account', isLoggedIn, (req, res, next) => {
-  Deck.deleteMany({_owner: req.user._id}).then (deck => {
-  return (
-  User.findByIdAndDelete(req.user._id)
-      .then(userDoc => {
-        console.log("DEBUG deckDoc", userDoc)
-        res.json({
-          success: !!userDoc,
-          user: userDoc,
-        })
+  // TODO: delete all the cards that belongs to a deck that belongs to the coneect the user
+  Deck.deleteMany({ _owner: req.user._id })
+    .then(deck => Card.deleteMany({ _deck: deck._id }))
+    .then(userDoc => {
+      console.log("DEBUG deckDoc", userDoc)
+      res.json({
+        success: !!userDoc,
+        user: userDoc,
       })
-  )})
+    })
     .catch(err => next(err))
 })
 

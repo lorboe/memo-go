@@ -14,10 +14,12 @@ export default class PublicProfile extends Component {
 
 
     componentDidMount() {
+        // TODO: get the decks of the current person
         api.getDecks()
             .then(data => {
                 this.setState({
-                    decks: data.decks,
+                    // The filter is useless if the API returns directly the useful information
+                    decks: data.decks.filter(deck => deck._owner._id === this.props.match.params.userId),
                     // _owner: data.decks.filter(deck =>  {if (deck._owner._id === this.props.match.params.userId) return true},
                     // ),
                 })
@@ -51,19 +53,17 @@ export default class PublicProfile extends Component {
                 console.log("hello")
             }
             if (sortedDecks[i].visibility === "public") {
-                if (userId === sortedDecks[i]._owner._id) {
-                    tableContent.push(
-                        // <div className="flexRow flexShadow">
-                        //     <div className="scrollFlex">
-                        <div className="deck deckHome">
-                            <Link to={`/public-profile/${sortedDecks[i]._owner._id}`}><img className="picOnDeck" src={sortedDecks[i]._owner.pictureUrl} alt="pictures" /></Link>
-                            <Link to={`/details/${sortedDecks[i]._id}`}>{sortedDecks[i].title}</Link>
-                        </div>
+                tableContent.push(
+                    // <div className="flexRow flexShadow">
+                    //     <div className="scrollFlex">
+                    <div className="deck deckHome">
+                        <Link to={`/public-profile/${sortedDecks[i]._owner._id}`}><img className="picOnDeck" src={sortedDecks[i]._owner.pictureUrl} alt="pictures" /></Link>
+                        <Link to={`/details/${sortedDecks[i]._id}`}>{sortedDecks[i].title}</Link>
+                    </div>
 
-                        //     </div>
-                        // </div>
-                    )
-                }
+                    //     </div>
+                    // </div>
+                )
             }
         }
 

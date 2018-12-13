@@ -83,7 +83,7 @@ export default class SelectDeck extends Component {
       .then(decks => {
         this.setState({
           decks: decks,
-          selectedDeck: decks[0]._id
+          selectedDeck: decks.length > 0 && decks[0]._id
         })
       })
   }

@@ -45,12 +45,13 @@ class Home extends Component {
 
   render() {
     let sortedDecks = this.state.decks
-    .filter(deck => {
-      if(this.state.category && deck.category != this.state.category) return false 
-      if(this.state.difficulty && deck.difficulty != this.state.difficulty) return false 
-      if (deck.title.toUpperCase().includes(this.state.search.toUpperCase())) return true
-      return false
-    }).sort((a, b) => a.category > b.category ? 1 : -1)
+      .filter(deck => {
+        if (this.state.category && deck.category != this.state.category) return false
+        if (this.state.difficulty && deck.difficulty != this.state.difficulty) return false
+        if (deck.title.toUpperCase().includes(this.state.search.toUpperCase())) return true
+        return false
+      })
+      .sort((a, b) => a.category > b.category ? 1 : -1)
     let tableContent = [];
     for (let i = 0; i < sortedDecks.length; i++) {
       if (i === 0 || sortedDecks[i].category !== sortedDecks[i - 1].category) {
@@ -85,7 +86,7 @@ class Home extends Component {
 
     this.state.decks.map(e => console.log("line 55 data for each card", e))
     return (
-      <div style={{margin: "20px"}}>
+      <div style={{ margin: "20px" }}>
         <input
           className="searchBar"
           name="searchbar"
@@ -94,27 +95,27 @@ class Home extends Component {
           value={this.state.search}
           onChange={e => this.handleSearch(e.target.value)}
         />  <button onClick={() => this.handleFilter()} >Filter results</button>
-        {this.state.filterBox && 
-        <div>
-       <select className="selectBox" onChange={(e) => { this.handleCategory(e) }} value={this.state.category} placeholder="Category">
-                <option value="">all categories</option>
-                <option value="web development"> web development</option>
-                <option value="geography">geography</option>
-                <option value="history">history</option>
-                <option value="languages">languages</option>
-                <option value="business">business</option>
-                <option value="other">other</option>
-        </select>
-              <select className="selectBox" onChange={(e) => { this.handleDifficulty(e) }} value={this.state.difficulty} placeholder="Difficulty">
-               <option value="">all levels</option>
-                <option value="beginner">beginner</option>
-                <option value="advanced-beginner">advanced-beginner</option>
-                <option value="experienced">experienced</option>
-                <option value="expert">expert</option>
-              </select>
-              </div>
+        {this.state.filterBox &&
+          <div>
+            <select className="selectBox" onChange={(e) => { this.handleCategory(e) }} value={this.state.category} placeholder="Category">
+              <option value="">all categories</option>
+              <option value="web development"> web development</option>
+              <option value="geography">geography</option>
+              <option value="history">history</option>
+              <option value="languages">languages</option>
+              <option value="business">business</option>
+              <option value="other">other</option>
+            </select>
+            <select className="selectBox" onChange={(e) => { this.handleDifficulty(e) }} value={this.state.difficulty} placeholder="Difficulty">
+              <option value="">all levels</option>
+              <option value="beginner">beginner</option>
+              <option value="advanced-beginner">advanced-beginner</option>
+              <option value="experienced">experienced</option>
+              <option value="expert">expert</option>
+            </select>
+          </div>
         }
-       
+
 
         {/* <div className="scrollFlex"> */}
         {tableContent}
